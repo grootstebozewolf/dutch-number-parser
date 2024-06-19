@@ -1,5 +1,6 @@
+
 {
-  "name": "@grootstebozewolf/dutch-number-parser",
+  "name": "dutch-number-parser",
   "version": "1.0.0",
   "description": "A TypeScript package to parse and convert Dutch counting numbers into numeric equivalents, supporting numbers up to one million.",
   "main": "dist/index.js",
@@ -16,7 +17,7 @@
     "parser",
     "CC BY-SA 4.0"
   ],
-  "author": "Jeroen (VAA)",
+  "author": "Jeroen Bloemscheer",
   "license": "CC-BY-SA-4.0",
   "repository": {
     "type": "git",
@@ -25,8 +26,5 @@
   "bugs": {
     "url": "https://github.com/grootstebozewolf/dutch-number-parser/issues"
   },
-  "homepage": "https://github.com/grootstebozewolf/dutch-number-parser",
-  "publishConfig": {
-    "@grootstebozewolf:registry": "https://npm.pkg.github.com"
-  }
+  "homepage": "https://github.com/grootstebozewolf/dutch-number-parser"
 }
