@@ -1,3 +1,10 @@
+/**
+ * Dutch Number Parser
+ * 
+ * Licensed under the Creative Commons Attribution-ShareAlike 4.0 International License.
+ * You may obtain a copy of the License at https://creativecommons.org/licenses/by-sa/4.0/
+ */
+
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 
