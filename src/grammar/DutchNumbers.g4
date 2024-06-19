@@ -7,38 +7,72 @@
 
 grammar DutchNumbers;
 
-// Entry point
+// Parser rules
 number
-    :    ones
-    |    tens
-    |    hundreds
-    |    thousands
-    |    millions
+    : ones
+    | tens
+    | hundreds
+    | thousands
+    | millions
+    ;
+
+ordinal
+    : ordinal_ones
+    | ordinal_teens
+    | ordinal_tens
+    | ordinal_hundreds
+    | ordinal_thousands
+    | ordinal_millions
     ;
 
 ones
-    : 'een'      { $value = 1; }
-    | 'twee'     { $value = 2; }
-    | 'drie'     { $value = 3; }
-    | 'vier'     { $value = 4; }
-    | 'vijf'     { $value = 5; }
-    | 'zes'      { $value = 6; }
-    | 'zeven'    { $value = 7; }
-    | 'acht'     { $value = 8; }
-    | 'negen'    { $value = 9; }
+    : EEN
+    | TWEE
+    | DRIE
+    | VIER
+    | VIJF
+    | ZES
+    | ZEVEN
+    | ACHT
+    | NEGEN
+    ;
+
+ordinal_ones
+    : EERSTE
+    | TWEEDE
+    | DERDE
+    | VIERDE
+    | VIJFDE
+    | ZESDE
+    | ZEVENDE
+    | ACHTSTE
+    | NEGENTSTE
     ;
 
 teens
-    : 'tien'     { $value = 10; }
-    | 'elf'      { $value = 11; }
-    | 'twaalf'   { $value = 12; }
-    | 'dertien'  { $value = 13; }
-    | 'veertien' { $value = 14; }
-    | 'vijftien' { $value = 15; }
-    | 'zestien'  { $value = 16; }
-    | 'zeventien'{ $value = 17; }
-    | 'achttien' { $value = 18; }
-    | 'negentien'{ $value = 19; }
+    : TIEN
+    | ELF
+    | TWAALF
+    | DERTIEN
+    | VEERTIEN
+    | VIJFTIEN
+    | ZESTIEN
+    | ZEVENTIEN
+    | ACHTTIEN
+    | NEGENTIEN
+    ;
+
+ordinal_teens
+    : TIENDE
+    | ELFDE
+    | TWAALFDE
+    | DERTIENDE
+    | VEERTIENDE
+    | VIJFTIENDE
+    | ZESTIENDE
+    | ZEVENTIENDE
+    | ACHTTIENDE
+    | NEGENTIENDE
     ;
 
 tens
@@ -47,29 +81,148 @@ tens
     | tens_with_ones
     ;
 
+ordinal_tens
+    : ordinal_teens
+    | tens_unit_ordinal
+    | ordinal_tens_with_ones
+    ;
+
 tens_unit
-    : 'twintig'  { $value = 20; }
-    | 'dertig'   { $value = 30; }
-    | 'veertig'  { $value = 40; }
-    | 'vijftig'  { $value = 50; }
-    | 'zestig'   { $value = 60; }
-    | 'zeventig' { $value = 70; }
-    | 'tachtig'  { $value = 80; }
-    | 'negentig' { $value = 90; }
+    : TWINTIG
+    | DERTIG
+    | VEERTIG
+    | VIJFTIG
+    | ZESTIG
+    | ZEVENTIG
+    | TACHTIG
+    | NEGENTIG
+    ;
+
+tens_unit_ordinal
+    : TWINTIGSTE
+    | DERTIGSTE
+    | VEERTIGSTE
+    | VIJFTIGSTE
+    | ZESTIGSTE
+    | ZEVENTIGSTE
+    | TACHTIGSTE
+    | NEGENTIGSTE
     ;
 
 tens_with_ones
-    : ones 'en' tens_unit
+    : ones EN tens_unit
+    ;
+
+ordinal_tens_with_ones
+    : ones EN tens_unit_ordinal
     ;
 
 hundreds
-    : (ones | tens) 'honderd' ('en' number)?
+    // Support "tweehonderdeen", "tweehonderdeneen", and other variations with "een" or "één"
+    : ones HONDERD (EEN | EEN_VARIANT | EN EEN | EN EEN_VARIANT | EN number)?
+    // Support "honderdtien" pattern directly combining hundreds and tens
+    | HONDERD tens_unit
+    ;
+
+ordinal_hundreds
+    // Support "tweehonderdste" and similar combinations
+    : (ones | tens) HONDERDSTE (EN ordinal)?
+    // Direct hundreds and ordinal tens, e.g., "honderdtwintigste"
+    | HONDERD tens_unit_ordinal
     ;
 
 thousands
-    : (ones | tens | hundreds) 'duizend' ('en' number)?
+    : (ones | tens | hundreds) DUIZEND (EN number)?
+    ;
+
+ordinal_thousands
+    : (ones | tens | hundreds) DUIZENDSTE (EN ordinal)?
     ;
 
 millions
-    : (ones | tens | hundreds) 'miljoen' ('en' number)?
+    : (ones | tens | hundreds) MILJOEN (EN number)?
     ;
+
+ordinal_millions
+    : (ones | tens | hundreds) MILJOENSTE (EN ordinal)?
+    ;
+
+// Lexer rules
+EEN: 'een';  // Matching "een"
+TWEE: 'twee';
+DRIE: 'drie';
+VIER: 'vier';
+VIJF: 'vijf';
+ZES: 'zes';
+ZEVEN: 'zeven';
+ACHT: 'acht';
+NEGEN: 'negen';
+
+TIEN: 'tien';
+ELF: 'elf';
+TWAALF: 'twaalf';
+DERTIEN: 'dertien';
+VEERTIEN: 'veertien';
+VIJFTIEN: 'vijftien';
+ZESTIEN: 'zestien';
+ZEVENTIEN: 'zeventien';
+ACHTTIEN: 'achttien';
+NEGENTIEN: 'negentien';
+
+TWINTIG: 'twintig';
+
+TIENDE: 'tiende';
+ELFDE: 'elfde';
+TWAALFDE: 'twaalfde';
+DERTIENDE: 'dertiende';
+VEERTIENDE: 'veertiende';
+VIJFTIENDE: 'vijftiende';
+ZESTIENDE: 'zestiende';
+ZEVENTIENDE: 'zeventiende';
+ACHTTIENDE: 'achttiende';
+
+DERTIG: 'dertig';
+
+NEGENTIENDE: 'negentiende';
+
+EERSTE: 'eerste';
+TWEEDE: 'tweede';
+DERDE: 'derde';
+VIERDE: 'vierde';
+VIJFDE: 'vijfde';
+ZESDE: 'zesde';
+ZEVENDE: 'zevende';
+ACHTSTE: 'achtste';
+
+VEERTIG: 'veertig';
+
+NEGENTSTE: 'negende';
+
+VIJFTIG: 'vijftig';
+ZESTIG: 'zestig';
+ZEVENTIG: 'zeventig';
+TACHTIG: 'tachtig';
+NEGENTIG: 'negentig';
+
+TWINTIGSTE: 'twintigste';
+DERTIGSTE: 'dertigste';
+VEERTIGSTE: 'veertigste';
+VIJFTIGSTE: 'vijftigste';
+ZESTIGSTE: 'zestigste';
+ZEVENTIGSTE: 'zeventigste';
+TACHTIGSTE: 'tachtigste';
+NEGENTIGSTE: 'negentigste';
+
+HONDERD: 'honderd';
+DUIZEND: 'duizend';
+MILJOEN: 'miljoen';
+
+HONDERDSTE: 'honderdste';
+DUIZENDSTE: 'duizendste';
+MILJOENSTE: 'miljoenste';
+
+EN: 'en';
+EEN_VARIANT: 'één';  // Matching "één"
+
+// Define other tokens and rules after the important ones
+WS: [ \t\r\n]+ -> skip;
