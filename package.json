@@ -4,8 +4,8 @@
   "description": "A TypeScript package to parse and convert Dutch counting numbers into numeric equivalents, supporting numbers up to one million.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
-    "test": "echo \"No tests specified\" && exit 0",
+    "test": "cucumber-js",
+    "build": "echo 'No build step required with tsx'",
     "prepublishOnly": "npm run build",
     "generate:antlr": "antlr4ts -o src/grammar/generated -lib src/grammar -listener -visitor src/grammar/DutchNumbers.g4"
   },
@@ -17,7 +17,7 @@
     "parser",
     "CC BY-SA 4.0"
   ],
-  "author": "Jeroen (VAA)",
+  "author": "Jeroen Bloemscheer",
   "license": "CC-BY-SA-4.0",
   "repository": {
     "type": "git",
@@ -31,7 +31,16 @@
     "@grootstebozewolf:registry": "https://npm.pkg.github.com"
   },
   "devDependencies": {
+    "@cucumber/cucumber": "^10.8.0",
     "antlr4ts": "^0.5.0-alpha.4",
-    "antlr4ts-cli": "^0.5.0-alpha.4"
+    "antlr4ts-cli": "^0.5.0-alpha.4",
+    "chai": "^5.1.1",
+    "cucumber-console-formatter": "^1.0.0",
+    "tsx": "^4.15.6",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "cucumber-tsflow": "^4.4.4",
+    "reflect-metadata": "^0.2.2"
   }
 }
