@@ -1,0 +1,12 @@
+{
+  "name": "dutch-number-parser",
+  "version": "1.0.0",
+  "description": "Here’s a comprehensive description for the `dutch-number-parser` package. This description covers the purpose, functionality, usage examples, and how it can be integrated into a larger project. It’s tailored to be included in the `README.md` of the repository or the package's documentation.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
