@@ -7,7 +7,7 @@
 import { CharStreams, CommonTokenStream } from 'antlr4ts';
 import { DutchNumbersLexer } from './grammar/generated/DutchNumbersLexer';
 import { DutchNumbersParser } from './grammar/generated/DutchNumbersParser';
-import { TelVisitor } from './TelVisitor';
+import { NumberVisitor } from './NumberVisitor';
 import { ILogger } from './ILogger'; // Import the Logger class
 
 export class Tel {
@@ -24,10 +24,9 @@ export class Tel {
         let parser = new DutchNumbersParser(tokenStream);
 
         let tree = parser.number();
-        let visitor = new TelVisitor();
+        let visitor = new NumberVisitor();
         try {
-            const expressionTree = visitor.visit(tree);
-            return expressionTree.evaluate();
+            return visitor.visit(tree);
         } catch (error) {
             throw new Error(`Error parsing input: ${error.message}`);
         }

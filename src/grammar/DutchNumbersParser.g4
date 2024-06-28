@@ -3,7 +3,7 @@ parser grammar DutchNumbersParser;
 options { tokenVocab=DutchNumbersLexer; }
 
 number
-    : whole_number
+    : whole_number EOF
     ;
 
 whole_number
@@ -28,9 +28,9 @@ ones
     ;
 
 tens
-    : TWO_PLURAL ones
-    | THREE_PLURAL ones
-    | (ones EN)? ( TWENTY | THIRTY | FORTY | FIFTY | SIXTY | SEVENTY | EIGHTY | NINETY) 
+    : TWO_PLURAL (TWENTY | THIRTY | FORTY | FIFTY | SIXTY | SEVENTY | EIGHTY | NINETY)
+    | THREE_PLURAL (TWENTY | THIRTY | FORTY | FIFTY | SIXTY | SEVENTY | EIGHTY | NINETY)
+    | (ones EN)? (TWENTY | THIRTY | FORTY | FIFTY | SIXTY | SEVENTY | EIGHTY | NINETY)
     | TEN
     | ELEVEN
     | TWELVE
@@ -44,21 +44,17 @@ tens
     ;
 
 hundreds
-    : HUNDRED
-    | ones HUNDRED (EN? tens)?
+    : (ones|tens)? HUNDRED (EN? (ones|tens))?
     ;
 
 thousands
-    : THOUSAND
-    | ones THOUSAND (EN? ones)?
-    | ones THOUSAND (EN? hundreds)?
-    | ones THOUSAND (EN? tens)?
+    : (ones|tens|hundreds)? THOUSAND (EN? (ones|tens|hundreds))?
     ;
 
 millions
-    : ones MILLION (EN? thousands?)?
+    : (ones|tens|hundreds)? MILLION (EN (ones|tens|hundreds))?
     ;
 
 billions
-    : ones BILLION (EN? millions?)?
+    : (ones|tens|hundreds|thousands)? BILLION (EN (ones|tens|hundreds|thousands))?
     ;

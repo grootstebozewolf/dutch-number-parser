@@ -127,6 +127,8 @@ export class DutchNumbersParser extends Parser {
 			{
 			this.state = 16;
 			this.whole_number();
+			this.state = 17;
+			this.match(DutchNumbersParser.EOF);
 			}
 		}
 		catch (re) {
@@ -148,13 +150,13 @@ export class DutchNumbersParser extends Parser {
 		let _localctx: Whole_numberContext = new Whole_numberContext(this._ctx, this.state);
 		this.enterRule(_localctx, 2, DutchNumbersParser.RULE_whole_number);
 		try {
-			this.state = 24;
+			this.state = 25;
 			this._errHandler.sync(this);
 			switch ( this.interpreter.adaptivePredict(this._input, 0, this._ctx) ) {
 			case 1:
 				this.enterOuterAlt(_localctx, 1);
 				{
-				this.state = 18;
+				this.state = 19;
 				this.ones();
 				}
 				break;
@@ -162,7 +164,7 @@ export class DutchNumbersParser extends Parser {
 			case 2:
 				this.enterOuterAlt(_localctx, 2);
 				{
-				this.state = 19;
+				this.state = 20;
 				this.tens();
 				}
 				break;
@@ -170,7 +172,7 @@ export class DutchNumbersParser extends Parser {
 			case 3:
 				this.enterOuterAlt(_localctx, 3);
 				{
-				this.state = 20;
+				this.state = 21;
 				this.hundreds();
 				}
 				break;
@@ -178,7 +180,7 @@ export class DutchNumbersParser extends Parser {
 			case 4:
 				this.enterOuterAlt(_localctx, 4);
 				{
-				this.state = 21;
+				this.state = 22;
 				this.thousands();
 				}
 				break;
@@ -186,7 +188,7 @@ export class DutchNumbersParser extends Parser {
 			case 5:
 				this.enterOuterAlt(_localctx, 5);
 				{
-				this.state = 22;
+				this.state = 23;
 				this.millions();
 				}
 				break;
@@ -194,7 +196,7 @@ export class DutchNumbersParser extends Parser {
 			case 6:
 				this.enterOuterAlt(_localctx, 6);
 				{
-				this.state = 23;
+				this.state = 24;
 				this.billions();
 				}
 				break;
@@ -222,7 +224,7 @@ export class DutchNumbersParser extends Parser {
 		try {
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 26;
+			this.state = 27;
 			_la = this._input.LA(1);
 			if (!((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << DutchNumbersParser.ONE) | (1 << DutchNumbersParser.TWO) | (1 << DutchNumbersParser.THREE) | (1 << DutchNumbersParser.FOUR) | (1 << DutchNumbersParser.FIVE) | (1 << DutchNumbersParser.SIX) | (1 << DutchNumbersParser.SEVEN) | (1 << DutchNumbersParser.EIGHT) | (1 << DutchNumbersParser.NINE))) !== 0))) {
 			this._errHandler.recoverInline(this);
@@ -256,25 +258,45 @@ export class DutchNumbersParser extends Parser {
 		this.enterRule(_localctx, 6, DutchNumbersParser.RULE_tens);
 		let _la: number;
 		try {
-			this.state = 48;
+			this.state = 49;
 			this._errHandler.sync(this);
 			switch (this._input.LA(1)) {
 			case DutchNumbersParser.TWO_PLURAL:
 				this.enterOuterAlt(_localctx, 1);
 				{
-				this.state = 28;
-				this.match(DutchNumbersParser.TWO_PLURAL);
 				this.state = 29;
-				this.ones();
+				this.match(DutchNumbersParser.TWO_PLURAL);
+				this.state = 30;
+				_la = this._input.LA(1);
+				if (!((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << DutchNumbersParser.TWENTY) | (1 << DutchNumbersParser.THIRTY) | (1 << DutchNumbersParser.FORTY) | (1 << DutchNumbersParser.FIFTY) | (1 << DutchNumbersParser.SIXTY) | (1 << DutchNumbersParser.SEVENTY) | (1 << DutchNumbersParser.EIGHTY) | (1 << DutchNumbersParser.NINETY))) !== 0))) {
+				this._errHandler.recoverInline(this);
+				} else {
+					if (this._input.LA(1) === Token.EOF) {
+						this.matchedEOF = true;
+					}
+
+					this._errHandler.reportMatch(this);
+					this.consume();
+				}
 				}
 				break;
 			case DutchNumbersParser.THREE_PLURAL:
 				this.enterOuterAlt(_localctx, 2);
 				{
-				this.state = 30;
-				this.match(DutchNumbersParser.THREE_PLURAL);
 				this.state = 31;
-				this.ones();
+				this.match(DutchNumbersParser.THREE_PLURAL);
+				this.state = 32;
+				_la = this._input.LA(1);
+				if (!((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << DutchNumbersParser.TWENTY) | (1 << DutchNumbersParser.THIRTY) | (1 << DutchNumbersParser.FORTY) | (1 << DutchNumbersParser.FIFTY) | (1 << DutchNumbersParser.SIXTY) | (1 << DutchNumbersParser.SEVENTY) | (1 << DutchNumbersParser.EIGHTY) | (1 << DutchNumbersParser.NINETY))) !== 0))) {
+				this._errHandler.recoverInline(this);
+				} else {
+					if (this._input.LA(1) === Token.EOF) {
+						this.matchedEOF = true;
+					}
+
+					this._errHandler.reportMatch(this);
+					this.consume();
+				}
 				}
 				break;
 			case DutchNumbersParser.ONE:
@@ -296,19 +318,19 @@ export class DutchNumbersParser extends Parser {
 			case DutchNumbersParser.NINETY:
 				this.enterOuterAlt(_localctx, 3);
 				{
-				this.state = 35;
+				this.state = 36;
 				this._errHandler.sync(this);
 				_la = this._input.LA(1);
 				if ((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << DutchNumbersParser.ONE) | (1 << DutchNumbersParser.TWO) | (1 << DutchNumbersParser.THREE) | (1 << DutchNumbersParser.FOUR) | (1 << DutchNumbersParser.FIVE) | (1 << DutchNumbersParser.SIX) | (1 << DutchNumbersParser.SEVEN) | (1 << DutchNumbersParser.EIGHT) | (1 << DutchNumbersParser.NINE))) !== 0)) {
 					{
-					this.state = 32;
-					this.ones();
 					this.state = 33;
+					this.ones();
+					this.state = 34;
 					this.match(DutchNumbersParser.EN);
 					}
 				}
 
-				this.state = 37;
+				this.state = 38;
 				_la = this._input.LA(1);
 				if (!((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << DutchNumbersParser.TWENTY) | (1 << DutchNumbersParser.THIRTY) | (1 << DutchNumbersParser.FORTY) | (1 << DutchNumbersParser.FIFTY) | (1 << DutchNumbersParser.SIXTY) | (1 << DutchNumbersParser.SEVENTY) | (1 << DutchNumbersParser.EIGHTY) | (1 << DutchNumbersParser.NINETY))) !== 0))) {
 				this._errHandler.recoverInline(this);
@@ -325,70 +347,70 @@ export class DutchNumbersParser extends Parser {
 			case DutchNumbersParser.TEN:
 				this.enterOuterAlt(_localctx, 4);
 				{
-				this.state = 38;
+				this.state = 39;
 				this.match(DutchNumbersParser.TEN);
 				}
 				break;
 			case DutchNumbersParser.ELEVEN:
 				this.enterOuterAlt(_localctx, 5);
 				{
-				this.state = 39;
+				this.state = 40;
 				this.match(DutchNumbersParser.ELEVEN);
 				}
 				break;
 			case DutchNumbersParser.TWELVE:
 				this.enterOuterAlt(_localctx, 6);
 				{
-				this.state = 40;
+				this.state = 41;
 				this.match(DutchNumbersParser.TWELVE);
 				}
 				break;
 			case DutchNumbersParser.THIRTEEN:
 				this.enterOuterAlt(_localctx, 7);
 				{
-				this.state = 41;
+				this.state = 42;
 				this.match(DutchNumbersParser.THIRTEEN);
 				}
 				break;
 			case DutchNumbersParser.FOURTEEN:
 				this.enterOuterAlt(_localctx, 8);
 				{
-				this.state = 42;
+				this.state = 43;
 				this.match(DutchNumbersParser.FOURTEEN);
 				}
 				break;
 			case DutchNumbersParser.FIFTEEN:
 				this.enterOuterAlt(_localctx, 9);
 				{
-				this.state = 43;
+				this.state = 44;
 				this.match(DutchNumbersParser.FIFTEEN);
 				}
 				break;
 			case DutchNumbersParser.SIXTEEN:
 				this.enterOuterAlt(_localctx, 10);
 				{
-				this.state = 44;
+				this.state = 45;
 				this.match(DutchNumbersParser.SIXTEEN);
 				}
 				break;
 			case DutchNumbersParser.SEVENTEEN:
 				this.enterOuterAlt(_localctx, 11);
 				{
-				this.state = 45;
+				this.state = 46;
 				this.match(DutchNumbersParser.SEVENTEEN);
 				}
 				break;
 			case DutchNumbersParser.EIGHTEEN:
 				this.enterOuterAlt(_localctx, 12);
 				{
-				this.state = 46;
+				this.state = 47;
 				this.match(DutchNumbersParser.EIGHTEEN);
 				}
 				break;
 			case DutchNumbersParser.NINETEEN:
 				this.enterOuterAlt(_localctx, 13);
 				{
-				this.state = 47;
+				this.state = 48;
 				this.match(DutchNumbersParser.NINETEEN);
 				}
 				break;
@@ -416,55 +438,62 @@ export class DutchNumbersParser extends Parser {
 		this.enterRule(_localctx, 8, DutchNumbersParser.RULE_hundreds);
 		let _la: number;
 		try {
-			this.state = 59;
+			this.enterOuterAlt(_localctx, 1);
+			{
+			this.state = 53;
 			this._errHandler.sync(this);
-			switch (this._input.LA(1)) {
-			case DutchNumbersParser.HUNDRED:
-				this.enterOuterAlt(_localctx, 1);
-				{
-				this.state = 50;
-				this.match(DutchNumbersParser.HUNDRED);
-				}
-				break;
-			case DutchNumbersParser.ONE:
-			case DutchNumbersParser.TWO:
-			case DutchNumbersParser.THREE:
-			case DutchNumbersParser.FOUR:
-			case DutchNumbersParser.FIVE:
-			case DutchNumbersParser.SIX:
-			case DutchNumbersParser.SEVEN:
-			case DutchNumbersParser.EIGHT:
-			case DutchNumbersParser.NINE:
-				this.enterOuterAlt(_localctx, 2);
+			switch ( this.interpreter.adaptivePredict(this._input, 3, this._ctx) ) {
+			case 1:
 				{
 				this.state = 51;
 				this.ones();
+				}
+				break;
+
+			case 2:
+				{
 				this.state = 52;
-				this.match(DutchNumbersParser.HUNDRED);
+				this.tens();
+				}
+				break;
+			}
+			this.state = 55;
+			this.match(DutchNumbersParser.HUNDRED);
+			this.state = 63;
+			this._errHandler.sync(this);
+			_la = this._input.LA(1);
+			if ((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << DutchNumbersParser.ONE) | (1 << DutchNumbersParser.TWO) | (1 << DutchNumbersParser.THREE) | (1 << DutchNumbersParser.FOUR) | (1 << DutchNumbersParser.FIVE) | (1 << DutchNumbersParser.SIX) | (1 << DutchNumbersParser.SEVEN) | (1 << DutchNumbersParser.EIGHT) | (1 << DutchNumbersParser.NINE) | (1 << DutchNumbersParser.TEN) | (1 << DutchNumbersParser.ELEVEN) | (1 << DutchNumbersParser.TWELVE) | (1 << DutchNumbersParser.THIRTEEN) | (1 << DutchNumbersParser.FOURTEEN) | (1 << DutchNumbersParser.FIFTEEN) | (1 << DutchNumbersParser.SIXTEEN) | (1 << DutchNumbersParser.SEVENTEEN) | (1 << DutchNumbersParser.EIGHTEEN) | (1 << DutchNumbersParser.NINETEEN) | (1 << DutchNumbersParser.TWENTY) | (1 << DutchNumbersParser.THIRTY) | (1 << DutchNumbersParser.FORTY) | (1 << DutchNumbersParser.FIFTY) | (1 << DutchNumbersParser.SIXTY) | (1 << DutchNumbersParser.SEVENTY) | (1 << DutchNumbersParser.EIGHTY) | (1 << DutchNumbersParser.NINETY))) !== 0) || ((((_la - 32)) & ~0x1F) === 0 && ((1 << (_la - 32)) & ((1 << (DutchNumbersParser.TWO_PLURAL - 32)) | (1 << (DutchNumbersParser.THREE_PLURAL - 32)) | (1 << (DutchNumbersParser.EN - 32)))) !== 0)) {
+				{
 				this.state = 57;
 				this._errHandler.sync(this);
 				_la = this._input.LA(1);
-				if ((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << DutchNumbersParser.ONE) | (1 << DutchNumbersParser.TWO) | (1 << DutchNumbersParser.THREE) | (1 << DutchNumbersParser.FOUR) | (1 << DutchNumbersParser.FIVE) | (1 << DutchNumbersParser.SIX) | (1 << DutchNumbersParser.SEVEN) | (1 << DutchNumbersParser.EIGHT) | (1 << DutchNumbersParser.NINE) | (1 << DutchNumbersParser.TEN) | (1 << DutchNumbersParser.ELEVEN) | (1 << DutchNumbersParser.TWELVE) | (1 << DutchNumbersParser.THIRTEEN) | (1 << DutchNumbersParser.FOURTEEN) | (1 << DutchNumbersParser.FIFTEEN) | (1 << DutchNumbersParser.SIXTEEN) | (1 << DutchNumbersParser.SEVENTEEN) | (1 << DutchNumbersParser.EIGHTEEN) | (1 << DutchNumbersParser.NINETEEN) | (1 << DutchNumbersParser.TWENTY) | (1 << DutchNumbersParser.THIRTY) | (1 << DutchNumbersParser.FORTY) | (1 << DutchNumbersParser.FIFTY) | (1 << DutchNumbersParser.SIXTY) | (1 << DutchNumbersParser.SEVENTY) | (1 << DutchNumbersParser.EIGHTY) | (1 << DutchNumbersParser.NINETY))) !== 0) || ((((_la - 32)) & ~0x1F) === 0 && ((1 << (_la - 32)) & ((1 << (DutchNumbersParser.TWO_PLURAL - 32)) | (1 << (DutchNumbersParser.THREE_PLURAL - 32)) | (1 << (DutchNumbersParser.EN - 32)))) !== 0)) {
+				if (_la === DutchNumbersParser.EN) {
 					{
-					this.state = 54;
-					this._errHandler.sync(this);
-					_la = this._input.LA(1);
-					if (_la === DutchNumbersParser.EN) {
-						{
-						this.state = 53;
-						this.match(DutchNumbersParser.EN);
-						}
-					}
-
 					this.state = 56;
+					this.match(DutchNumbersParser.EN);
+					}
+				}
+
+				this.state = 61;
+				this._errHandler.sync(this);
+				switch ( this.interpreter.adaptivePredict(this._input, 5, this._ctx) ) {
+				case 1:
+					{
+					this.state = 59;
+					this.ones();
+					}
+					break;
+
+				case 2:
+					{
+					this.state = 60;
 					this.tens();
 					}
+					break;
 				}
+				}
+			}
 
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
 			}
 		}
 		catch (re) {
@@ -487,106 +516,76 @@ export class DutchNumbersParser extends Parser {
 		this.enterRule(_localctx, 10, DutchNumbersParser.RULE_thousands);
 		let _la: number;
 		try {
-			this.state = 86;
+			this.enterOuterAlt(_localctx, 1);
+			{
+			this.state = 68;
 			this._errHandler.sync(this);
-			switch ( this.interpreter.adaptivePredict(this._input, 12, this._ctx) ) {
+			switch ( this.interpreter.adaptivePredict(this._input, 7, this._ctx) ) {
 			case 1:
-				this.enterOuterAlt(_localctx, 1);
 				{
-				this.state = 61;
-				this.match(DutchNumbersParser.THOUSAND);
+				this.state = 65;
+				this.ones();
 				}
 				break;
 
 			case 2:
-				this.enterOuterAlt(_localctx, 2);
 				{
-				this.state = 62;
-				this.ones();
-				this.state = 63;
-				this.match(DutchNumbersParser.THOUSAND);
-				this.state = 68;
-				this._errHandler.sync(this);
-				_la = this._input.LA(1);
-				if ((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << DutchNumbersParser.ONE) | (1 << DutchNumbersParser.TWO) | (1 << DutchNumbersParser.THREE) | (1 << DutchNumbersParser.FOUR) | (1 << DutchNumbersParser.FIVE) | (1 << DutchNumbersParser.SIX) | (1 << DutchNumbersParser.SEVEN) | (1 << DutchNumbersParser.EIGHT) | (1 << DutchNumbersParser.NINE))) !== 0) || _la === DutchNumbersParser.EN) {
-					{
-					this.state = 65;
-					this._errHandler.sync(this);
-					_la = this._input.LA(1);
-					if (_la === DutchNumbersParser.EN) {
-						{
-						this.state = 64;
-						this.match(DutchNumbersParser.EN);
-						}
-					}
-
-					this.state = 67;
-					this.ones();
-					}
-				}
-
+				this.state = 66;
+				this.tens();
 				}
 				break;
 
 			case 3:
-				this.enterOuterAlt(_localctx, 3);
 				{
-				this.state = 70;
-				this.ones();
-				this.state = 71;
-				this.match(DutchNumbersParser.THOUSAND);
-				this.state = 76;
-				this._errHandler.sync(this);
-				_la = this._input.LA(1);
-				if ((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << DutchNumbersParser.ONE) | (1 << DutchNumbersParser.TWO) | (1 << DutchNumbersParser.THREE) | (1 << DutchNumbersParser.FOUR) | (1 << DutchNumbersParser.FIVE) | (1 << DutchNumbersParser.SIX) | (1 << DutchNumbersParser.SEVEN) | (1 << DutchNumbersParser.EIGHT) | (1 << DutchNumbersParser.NINE) | (1 << DutchNumbersParser.HUNDRED))) !== 0) || _la === DutchNumbersParser.EN) {
-					{
-					this.state = 73;
-					this._errHandler.sync(this);
-					_la = this._input.LA(1);
-					if (_la === DutchNumbersParser.EN) {
-						{
-						this.state = 72;
-						this.match(DutchNumbersParser.EN);
-						}
-					}
-
-					this.state = 75;
-					this.hundreds();
-					}
-				}
-
+				this.state = 67;
+				this.hundreds();
 				}
 				break;
-
-			case 4:
-				this.enterOuterAlt(_localctx, 4);
+			}
+			this.state = 70;
+			this.match(DutchNumbersParser.THOUSAND);
+			this.state = 79;
+			this._errHandler.sync(this);
+			_la = this._input.LA(1);
+			if ((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << DutchNumbersParser.ONE) | (1 << DutchNumbersParser.TWO) | (1 << DutchNumbersParser.THREE) | (1 << DutchNumbersParser.FOUR) | (1 << DutchNumbersParser.FIVE) | (1 << DutchNumbersParser.SIX) | (1 << DutchNumbersParser.SEVEN) | (1 << DutchNumbersParser.EIGHT) | (1 << DutchNumbersParser.NINE) | (1 << DutchNumbersParser.TEN) | (1 << DutchNumbersParser.ELEVEN) | (1 << DutchNumbersParser.TWELVE) | (1 << DutchNumbersParser.THIRTEEN) | (1 << DutchNumbersParser.FOURTEEN) | (1 << DutchNumbersParser.FIFTEEN) | (1 << DutchNumbersParser.SIXTEEN) | (1 << DutchNumbersParser.SEVENTEEN) | (1 << DutchNumbersParser.EIGHTEEN) | (1 << DutchNumbersParser.NINETEEN) | (1 << DutchNumbersParser.TWENTY) | (1 << DutchNumbersParser.THIRTY) | (1 << DutchNumbersParser.FORTY) | (1 << DutchNumbersParser.FIFTY) | (1 << DutchNumbersParser.SIXTY) | (1 << DutchNumbersParser.SEVENTY) | (1 << DutchNumbersParser.EIGHTY) | (1 << DutchNumbersParser.NINETY) | (1 << DutchNumbersParser.HUNDRED))) !== 0) || ((((_la - 32)) & ~0x1F) === 0 && ((1 << (_la - 32)) & ((1 << (DutchNumbersParser.TWO_PLURAL - 32)) | (1 << (DutchNumbersParser.THREE_PLURAL - 32)) | (1 << (DutchNumbersParser.EN - 32)))) !== 0)) {
 				{
-				this.state = 78;
-				this.ones();
-				this.state = 79;
-				this.match(DutchNumbersParser.THOUSAND);
-				this.state = 84;
+				this.state = 72;
 				this._errHandler.sync(this);
 				_la = this._input.LA(1);
-				if ((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << DutchNumbersParser.ONE) | (1 << DutchNumbersParser.TWO) | (1 << DutchNumbersParser.THREE) | (1 << DutchNumbersParser.FOUR) | (1 << DutchNumbersParser.FIVE) | (1 << DutchNumbersParser.SIX) | (1 << DutchNumbersParser.SEVEN) | (1 << DutchNumbersParser.EIGHT) | (1 << DutchNumbersParser.NINE) | (1 << DutchNumbersParser.TEN) | (1 << DutchNumbersParser.ELEVEN) | (1 << DutchNumbersParser.TWELVE) | (1 << DutchNumbersParser.THIRTEEN) | (1 << DutchNumbersParser.FOURTEEN) | (1 << DutchNumbersParser.FIFTEEN) | (1 << DutchNumbersParser.SIXTEEN) | (1 << DutchNumbersParser.SEVENTEEN) | (1 << DutchNumbersParser.EIGHTEEN) | (1 << DutchNumbersParser.NINETEEN) | (1 << DutchNumbersParser.TWENTY) | (1 << DutchNumbersParser.THIRTY) | (1 << DutchNumbersParser.FORTY) | (1 << DutchNumbersParser.FIFTY) | (1 << DutchNumbersParser.SIXTY) | (1 << DutchNumbersParser.SEVENTY) | (1 << DutchNumbersParser.EIGHTY) | (1 << DutchNumbersParser.NINETY))) !== 0) || ((((_la - 32)) & ~0x1F) === 0 && ((1 << (_la - 32)) & ((1 << (DutchNumbersParser.TWO_PLURAL - 32)) | (1 << (DutchNumbersParser.THREE_PLURAL - 32)) | (1 << (DutchNumbersParser.EN - 32)))) !== 0)) {
+				if (_la === DutchNumbersParser.EN) {
 					{
-					this.state = 81;
-					this._errHandler.sync(this);
-					_la = this._input.LA(1);
-					if (_la === DutchNumbersParser.EN) {
-						{
-						this.state = 80;
-						this.match(DutchNumbersParser.EN);
-						}
+					this.state = 71;
+					this.match(DutchNumbersParser.EN);
 					}
+				}
 
-					this.state = 83;
+				this.state = 77;
+				this._errHandler.sync(this);
+				switch ( this.interpreter.adaptivePredict(this._input, 9, this._ctx) ) {
+				case 1:
+					{
+					this.state = 74;
+					this.ones();
+					}
+					break;
+
+				case 2:
+					{
+					this.state = 75;
 					this.tens();
 					}
-				}
+					break;
 
+				case 3:
+					{
+					this.state = 76;
+					this.hundreds();
+					}
+					break;
 				}
-				break;
+				}
+			}
+
 			}
 		}
 		catch (re) {
@@ -611,38 +610,66 @@ export class DutchNumbersParser extends Parser {
 		try {
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 88;
-			this.ones();
-			this.state = 89;
-			this.match(DutchNumbersParser.MILLION);
-			this.state = 96;
+			this.state = 84;
 			this._errHandler.sync(this);
-			switch ( this.interpreter.adaptivePredict(this._input, 15, this._ctx) ) {
+			switch ( this.interpreter.adaptivePredict(this._input, 11, this._ctx) ) {
 			case 1:
 				{
-				this.state = 91;
-				this._errHandler.sync(this);
-				_la = this._input.LA(1);
-				if (_la === DutchNumbersParser.EN) {
-					{
-					this.state = 90;
-					this.match(DutchNumbersParser.EN);
-					}
+				this.state = 81;
+				this.ones();
 				}
+				break;
 
-				this.state = 94;
-				this._errHandler.sync(this);
-				_la = this._input.LA(1);
-				if ((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << DutchNumbersParser.ONE) | (1 << DutchNumbersParser.TWO) | (1 << DutchNumbersParser.THREE) | (1 << DutchNumbersParser.FOUR) | (1 << DutchNumbersParser.FIVE) | (1 << DutchNumbersParser.SIX) | (1 << DutchNumbersParser.SEVEN) | (1 << DutchNumbersParser.EIGHT) | (1 << DutchNumbersParser.NINE) | (1 << DutchNumbersParser.THOUSAND))) !== 0)) {
-					{
-					this.state = 93;
-					this.thousands();
-					}
+			case 2:
+				{
+				this.state = 82;
+				this.tens();
 				}
+				break;
 
+			case 3:
+				{
+				this.state = 83;
+				this.hundreds();
 				}
 				break;
 			}
+			this.state = 86;
+			this.match(DutchNumbersParser.MILLION);
+			this.state = 93;
+			this._errHandler.sync(this);
+			_la = this._input.LA(1);
+			if (_la === DutchNumbersParser.EN) {
+				{
+				this.state = 87;
+				this.match(DutchNumbersParser.EN);
+				this.state = 91;
+				this._errHandler.sync(this);
+				switch ( this.interpreter.adaptivePredict(this._input, 12, this._ctx) ) {
+				case 1:
+					{
+					this.state = 88;
+					this.ones();
+					}
+					break;
+
+				case 2:
+					{
+					this.state = 89;
+					this.tens();
+					}
+					break;
+
+				case 3:
+					{
+					this.state = 90;
+					this.hundreds();
+					}
+					break;
+				}
+				}
+			}
+
 			}
 		}
 		catch (re) {
@@ -667,38 +694,80 @@ export class DutchNumbersParser extends Parser {
 		try {
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 98;
-			this.ones();
 			this.state = 99;
-			this.match(DutchNumbersParser.BILLION);
-			this.state = 106;
 			this._errHandler.sync(this);
-			switch ( this.interpreter.adaptivePredict(this._input, 18, this._ctx) ) {
+			switch ( this.interpreter.adaptivePredict(this._input, 14, this._ctx) ) {
 			case 1:
 				{
-				this.state = 101;
-				this._errHandler.sync(this);
-				_la = this._input.LA(1);
-				if (_la === DutchNumbersParser.EN) {
-					{
-					this.state = 100;
-					this.match(DutchNumbersParser.EN);
-					}
+				this.state = 95;
+				this.ones();
 				}
+				break;
 
-				this.state = 104;
-				this._errHandler.sync(this);
-				_la = this._input.LA(1);
-				if ((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << DutchNumbersParser.ONE) | (1 << DutchNumbersParser.TWO) | (1 << DutchNumbersParser.THREE) | (1 << DutchNumbersParser.FOUR) | (1 << DutchNumbersParser.FIVE) | (1 << DutchNumbersParser.SIX) | (1 << DutchNumbersParser.SEVEN) | (1 << DutchNumbersParser.EIGHT) | (1 << DutchNumbersParser.NINE))) !== 0)) {
-					{
-					this.state = 103;
-					this.millions();
-					}
+			case 2:
+				{
+				this.state = 96;
+				this.tens();
 				}
+				break;
 
+			case 3:
+				{
+				this.state = 97;
+				this.hundreds();
+				}
+				break;
+
+			case 4:
+				{
+				this.state = 98;
+				this.thousands();
 				}
 				break;
 			}
+			this.state = 101;
+			this.match(DutchNumbersParser.BILLION);
+			this.state = 109;
+			this._errHandler.sync(this);
+			_la = this._input.LA(1);
+			if (_la === DutchNumbersParser.EN) {
+				{
+				this.state = 102;
+				this.match(DutchNumbersParser.EN);
+				this.state = 107;
+				this._errHandler.sync(this);
+				switch ( this.interpreter.adaptivePredict(this._input, 15, this._ctx) ) {
+				case 1:
+					{
+					this.state = 103;
+					this.ones();
+					}
+					break;
+
+				case 2:
+					{
+					this.state = 104;
+					this.tens();
+					}
+					break;
+
+				case 3:
+					{
+					this.state = 105;
+					this.hundreds();
+					}
+					break;
+
+				case 4:
+					{
+					this.state = 106;
+					this.thousands();
+					}
+					break;
+				}
+				}
+			}
+
 			}
 		}
 		catch (re) {
@@ -717,57 +786,59 @@ export class DutchNumbersParser extends Parser {
 	}
 
 	public static readonly _serializedATN: string =
-		"\x03\uC91D\uCABA\u058D\uAFBA\u4F53\u0607\uEA8B\uC241\x03%o\x04\x02\t\x02" +
+		"\x03\uC91D\uCABA\u058D\uAFBA\u4F53\u0607\uEA8B\uC241\x03%r\x04\x02\t\x02" +
 		"\x04\x03\t\x03\x04\x04\t\x04\x04\x05\t\x05\x04\x06\t\x06\x04\x07\t\x07" +
-		"\x04\b\t\b\x04\t\t\t\x03\x02\x03\x02\x03\x03\x03\x03\x03\x03\x03\x03\x03" +
-		"\x03\x03\x03\x05\x03\x1B\n\x03\x03\x04\x03\x04\x03\x05\x03\x05\x03\x05" +
-		"\x03\x05\x03\x05\x03\x05\x03\x05\x05\x05&\n\x05\x03\x05\x03\x05\x03\x05" +
-		"\x03\x05\x03\x05\x03\x05\x03\x05\x03\x05\x03\x05\x03\x05\x03\x05\x05\x05" +
-		"3\n\x05\x03\x06\x03\x06\x03\x06\x03\x06\x05\x069\n\x06\x03\x06\x05\x06" +
-		"<\n\x06\x05\x06>\n\x06\x03\x07\x03\x07\x03\x07\x03\x07\x05\x07D\n\x07" +
-		"\x03\x07\x05\x07G\n\x07\x03\x07\x03\x07\x03\x07\x05\x07L\n\x07\x03\x07" +
-		"\x05\x07O\n\x07\x03\x07\x03\x07\x03\x07\x05\x07T\n\x07\x03\x07\x05\x07" +
-		"W\n\x07\x05\x07Y\n\x07\x03\b\x03\b\x03\b\x05\b^\n\b\x03\b\x05\ba\n\b\x05" +
-		"\bc\n\b\x03\t\x03\t\x03\t\x05\th\n\t\x03\t\x05\tk\n\t\x05\tm\n\t\x03\t" +
-		"\x02\x02\x02\n\x02\x02\x04\x02\x06\x02\b\x02\n\x02\f\x02\x0E\x02\x10\x02" +
-		"\x02\x04\x03\x02\x03\v\x03\x02\x16\x1D\x02\x8A\x02\x12\x03\x02\x02\x02" +
-		"\x04\x1A\x03\x02\x02\x02\x06\x1C\x03\x02\x02\x02\b2\x03\x02\x02\x02\n" +
-		"=\x03\x02\x02\x02\fX\x03\x02\x02\x02\x0EZ\x03\x02\x02\x02\x10d\x03\x02" +
-		"\x02\x02\x12\x13\x05\x04\x03\x02\x13\x03\x03\x02\x02\x02\x14\x1B\x05\x06" +
-		"\x04\x02\x15\x1B\x05\b\x05\x02\x16\x1B\x05\n\x06\x02\x17\x1B\x05\f\x07" +
-		"\x02\x18\x1B\x05\x0E\b\x02\x19\x1B\x05\x10\t\x02\x1A\x14\x03\x02\x02\x02" +
-		"\x1A\x15\x03\x02\x02\x02\x1A\x16\x03\x02\x02\x02\x1A\x17\x03\x02\x02\x02" +
-		"\x1A\x18\x03\x02\x02\x02\x1A\x19\x03\x02\x02\x02\x1B\x05\x03\x02\x02\x02" +
-		"\x1C\x1D\t\x02\x02\x02\x1D\x07\x03\x02\x02\x02\x1E\x1F\x07\"\x02\x02\x1F" +
-		"3\x05\x06\x04\x02 !\x07#\x02\x02!3\x05\x06\x04\x02\"#\x05\x06\x04\x02" +
-		"#$\x07$\x02\x02$&\x03\x02\x02\x02%\"\x03\x02\x02\x02%&\x03\x02\x02\x02" +
-		"&\'\x03\x02\x02\x02\'3\t\x03\x02\x02(3\x07\f\x02\x02)3\x07\r\x02\x02*" +
-		"3\x07\x0E\x02\x02+3\x07\x0F\x02\x02,3\x07\x10\x02\x02-3\x07\x11\x02\x02" +
-		".3\x07\x12\x02\x02/3\x07\x13\x02\x0203\x07\x14\x02\x0213\x07\x15\x02\x02" +
-		"2\x1E\x03\x02\x02\x022 \x03\x02\x02\x022%\x03\x02\x02\x022(\x03\x02\x02" +
-		"\x022)\x03\x02\x02\x022*\x03\x02\x02\x022+\x03\x02\x02\x022,\x03\x02\x02" +
-		"\x022-\x03\x02\x02\x022.\x03\x02\x02\x022/\x03\x02\x02\x0220\x03\x02\x02" +
-		"\x0221\x03\x02\x02\x023\t\x03\x02\x02\x024>\x07\x1E\x02\x0256\x05\x06" +
-		"\x04\x026;\x07\x1E\x02\x0279\x07$\x02\x0287\x03\x02\x02\x0289\x03\x02" +
-		"\x02\x029:\x03\x02\x02\x02:<\x05\b\x05\x02;8\x03\x02\x02\x02;<\x03\x02" +
-		"\x02\x02<>\x03\x02\x02\x02=4\x03\x02\x02\x02=5\x03\x02\x02\x02>\v\x03" +
-		"\x02\x02\x02?Y\x07\x1F\x02\x02@A\x05\x06\x04\x02AF\x07\x1F\x02\x02BD\x07" +
-		"$\x02\x02CB\x03\x02\x02\x02CD\x03\x02\x02\x02DE\x03\x02\x02\x02EG\x05" +
-		"\x06\x04\x02FC\x03\x02\x02\x02FG\x03\x02\x02\x02GY\x03\x02\x02\x02HI\x05" +
-		"\x06\x04\x02IN\x07\x1F\x02\x02JL\x07$\x02\x02KJ\x03\x02\x02\x02KL\x03" +
-		"\x02\x02\x02LM\x03\x02\x02\x02MO\x05\n\x06\x02NK\x03\x02\x02\x02NO\x03" +
-		"\x02\x02\x02OY\x03\x02\x02\x02PQ\x05\x06\x04\x02QV\x07\x1F\x02\x02RT\x07" +
-		"$\x02\x02SR\x03\x02\x02\x02ST\x03\x02\x02\x02TU\x03\x02\x02\x02UW\x05" +
-		"\b\x05\x02VS\x03\x02\x02\x02VW\x03\x02\x02\x02WY\x03\x02\x02\x02X?\x03" +
-		"\x02\x02\x02X@\x03\x02\x02\x02XH\x03\x02\x02\x02XP\x03\x02\x02\x02Y\r" +
-		"\x03\x02\x02\x02Z[\x05\x06\x04\x02[b\x07 \x02\x02\\^\x07$\x02\x02]\\\x03" +
-		"\x02\x02\x02]^\x03\x02\x02\x02^`\x03\x02\x02\x02_a\x05\f\x07\x02`_\x03" +
-		"\x02\x02\x02`a\x03\x02\x02\x02ac\x03\x02\x02\x02b]\x03\x02\x02\x02bc\x03" +
-		"\x02\x02\x02c\x0F\x03\x02\x02\x02de\x05\x06\x04\x02el\x07!\x02\x02fh\x07" +
-		"$\x02\x02gf\x03\x02\x02\x02gh\x03\x02\x02\x02hj\x03\x02\x02\x02ik\x05" +
-		"\x0E\b\x02ji\x03\x02\x02\x02jk\x03\x02\x02\x02km\x03\x02\x02\x02lg\x03" +
-		"\x02\x02\x02lm\x03\x02\x02\x02m\x11\x03\x02\x02\x02\x15\x1A%28;=CFKNS" +
-		"VX]`bgjl";
+		"\x04\b\t\b\x04\t\t\t\x03\x02\x03\x02\x03\x02\x03\x03\x03\x03\x03\x03\x03" +
+		"\x03\x03\x03\x03\x03\x05\x03\x1C\n\x03\x03\x04\x03\x04\x03\x05\x03\x05" +
+		"\x03\x05\x03\x05\x03\x05\x03\x05\x03\x05\x05\x05\'\n\x05\x03\x05\x03\x05" +
+		"\x03\x05\x03\x05\x03\x05\x03\x05\x03\x05\x03\x05\x03\x05\x03\x05\x03\x05" +
+		"\x05\x054\n\x05\x03\x06\x03\x06\x05\x068\n\x06\x03\x06\x03\x06\x05\x06" +
+		"<\n\x06\x03\x06\x03\x06\x05\x06@\n\x06\x05\x06B\n\x06\x03\x07\x03\x07" +
+		"\x03\x07\x05\x07G\n\x07\x03\x07\x03\x07\x05\x07K\n\x07\x03\x07\x03\x07" +
+		"\x03\x07\x05\x07P\n\x07\x05\x07R\n\x07\x03\b\x03\b\x03\b\x05\bW\n\b\x03" +
+		"\b\x03\b\x03\b\x03\b\x03\b\x05\b^\n\b\x05\b`\n\b\x03\t\x03\t\x03\t\x03" +
+		"\t\x05\tf\n\t\x03\t\x03\t\x03\t\x03\t\x03\t\x03\t\x05\tn\n\t\x05\tp\n" +
+		"\t\x03\t\x02\x02\x02\n\x02\x02\x04\x02\x06\x02\b\x02\n\x02\f\x02\x0E\x02" +
+		"\x10\x02\x02\x04\x03\x02\x03\v\x03\x02\x16\x1D\x02\x95\x02\x12\x03\x02" +
+		"\x02\x02\x04\x1B\x03\x02\x02\x02\x06\x1D\x03\x02\x02\x02\b3\x03\x02\x02" +
+		"\x02\n7\x03\x02\x02\x02\fF\x03\x02\x02\x02\x0EV\x03\x02\x02\x02\x10e\x03" +
+		"\x02\x02\x02\x12\x13\x05\x04\x03\x02\x13\x14\x07\x02\x02\x03\x14\x03\x03" +
+		"\x02\x02\x02\x15\x1C\x05\x06\x04\x02\x16\x1C\x05\b\x05\x02\x17\x1C\x05" +
+		"\n\x06\x02\x18\x1C\x05\f\x07\x02\x19\x1C\x05\x0E\b\x02\x1A\x1C\x05\x10" +
+		"\t\x02\x1B\x15\x03\x02\x02\x02\x1B\x16\x03\x02\x02\x02\x1B\x17\x03\x02" +
+		"\x02\x02\x1B\x18\x03\x02\x02\x02\x1B\x19\x03\x02\x02\x02\x1B\x1A\x03\x02" +
+		"\x02\x02\x1C\x05\x03\x02\x02\x02\x1D\x1E\t\x02\x02\x02\x1E\x07\x03\x02" +
+		"\x02\x02\x1F \x07\"\x02\x02 4\t\x03\x02\x02!\"\x07#\x02\x02\"4\t\x03\x02" +
+		"\x02#$\x05\x06\x04\x02$%\x07$\x02\x02%\'\x03\x02\x02\x02&#\x03\x02\x02" +
+		"\x02&\'\x03\x02\x02\x02\'(\x03\x02\x02\x02(4\t\x03\x02\x02)4\x07\f\x02" +
+		"\x02*4\x07\r\x02\x02+4\x07\x0E\x02\x02,4\x07\x0F\x02\x02-4\x07\x10\x02" +
+		"\x02.4\x07\x11\x02\x02/4\x07\x12\x02\x0204\x07\x13\x02\x0214\x07\x14\x02" +
+		"\x0224\x07\x15\x02\x023\x1F\x03\x02\x02\x023!\x03\x02\x02\x023&\x03\x02" +
+		"\x02\x023)\x03\x02\x02\x023*\x03\x02\x02\x023+\x03\x02\x02\x023,\x03\x02" +
+		"\x02\x023-\x03\x02\x02\x023.\x03\x02\x02\x023/\x03\x02\x02\x0230\x03\x02" +
+		"\x02\x0231\x03\x02\x02\x0232\x03\x02\x02\x024\t\x03\x02\x02\x0258\x05" +
+		"\x06\x04\x0268\x05\b\x05\x0275\x03\x02\x02\x0276\x03\x02\x02\x0278\x03" +
+		"\x02\x02\x0289\x03\x02\x02\x029A\x07\x1E\x02\x02:<\x07$\x02\x02;:\x03" +
+		"\x02\x02\x02;<\x03\x02\x02\x02<?\x03\x02\x02\x02=@\x05\x06\x04\x02>@\x05" +
+		"\b\x05\x02?=\x03\x02\x02\x02?>\x03\x02\x02\x02@B\x03\x02\x02\x02A;\x03" +
+		"\x02\x02\x02AB\x03\x02\x02\x02B\v\x03\x02\x02\x02CG\x05\x06\x04\x02DG" +
+		"\x05\b\x05\x02EG\x05\n\x06\x02FC\x03\x02\x02\x02FD\x03\x02\x02\x02FE\x03" +
+		"\x02\x02\x02FG\x03\x02\x02\x02GH\x03\x02\x02\x02HQ\x07\x1F\x02\x02IK\x07" +
+		"$\x02\x02JI\x03\x02\x02\x02JK\x03\x02\x02\x02KO\x03\x02\x02\x02LP\x05" +
+		"\x06\x04\x02MP\x05\b\x05\x02NP\x05\n\x06\x02OL\x03\x02\x02\x02OM\x03\x02" +
+		"\x02\x02ON\x03\x02\x02\x02PR\x03\x02\x02\x02QJ\x03\x02\x02\x02QR\x03\x02" +
+		"\x02\x02R\r\x03\x02\x02\x02SW\x05\x06\x04\x02TW\x05\b\x05\x02UW\x05\n" +
+		"\x06\x02VS\x03\x02\x02\x02VT\x03\x02\x02\x02VU\x03\x02\x02\x02VW\x03\x02" +
+		"\x02\x02WX\x03\x02\x02\x02X_\x07 \x02\x02Y]\x07$\x02\x02Z^\x05\x06\x04" +
+		"\x02[^\x05\b\x05\x02\\^\x05\n\x06\x02]Z\x03\x02\x02\x02][\x03\x02\x02" +
+		"\x02]\\\x03\x02\x02\x02^`\x03\x02\x02\x02_Y\x03\x02\x02\x02_`\x03\x02" +
+		"\x02\x02`\x0F\x03\x02\x02\x02af\x05\x06\x04\x02bf\x05\b\x05\x02cf\x05" +
+		"\n\x06\x02df\x05\f\x07\x02ea\x03\x02\x02\x02eb\x03\x02\x02\x02ec\x03\x02" +
+		"\x02\x02ed\x03\x02\x02\x02ef\x03\x02\x02\x02fg\x03\x02\x02\x02go\x07!" +
+		"\x02\x02hm\x07$\x02\x02in\x05\x06\x04\x02jn\x05\b\x05\x02kn\x05\n\x06" +
+		"\x02ln\x05\f\x07\x02mi\x03\x02\x02\x02mj\x03\x02\x02\x02mk\x03\x02\x02" +
+		"\x02ml\x03\x02\x02\x02np\x03\x02\x02\x02oh\x03\x02\x02\x02op\x03\x02\x02" +
+		"\x02p\x11\x03\x02\x02\x02\x13\x1B&37;?AFJOQV]_emo";
 	public static __ATN: ATN;
 	public static get _ATN(): ATN {
 		if (!DutchNumbersParser.__ATN) {
@@ -783,6 +854,7 @@ export class NumberContext extends ParserRuleContext {
 	public whole_number(): Whole_numberContext {
 		return this.getRuleContext(0, Whole_numberContext);
 	}
+	public EOF(): TerminalNode { return this.getToken(DutchNumbersParser.EOF, 0); }
 	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
 		super(parent, invokingState);
 	}
@@ -898,10 +970,6 @@ export class OnesContext extends ParserRuleContext {
 
 export class TensContext extends ParserRuleContext {
 	public TWO_PLURAL(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.TWO_PLURAL, 0); }
-	public ones(): OnesContext | undefined {
-		return this.tryGetRuleContext(0, OnesContext);
-	}
-	public THREE_PLURAL(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.THREE_PLURAL, 0); }
 	public TWENTY(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.TWENTY, 0); }
 	public THIRTY(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.THIRTY, 0); }
 	public FORTY(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.FORTY, 0); }
@@ -910,6 +978,10 @@ export class TensContext extends ParserRuleContext {
 	public SEVENTY(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.SEVENTY, 0); }
 	public EIGHTY(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.EIGHTY, 0); }
 	public NINETY(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.NINETY, 0); }
+	public THREE_PLURAL(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.THREE_PLURAL, 0); }
+	public ones(): OnesContext | undefined {
+		return this.tryGetRuleContext(0, OnesContext);
+	}
 	public EN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.EN, 0); }
 	public TEN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.TEN, 0); }
 	public ELEVEN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.ELEVEN, 0); }
@@ -951,11 +1023,23 @@ export class TensContext extends ParserRuleContext {
 
 export class HundredsContext extends ParserRuleContext {
 	public HUNDRED(): TerminalNode { return this.getToken(DutchNumbersParser.HUNDRED, 0); }
-	public ones(): OnesContext | undefined {
-		return this.tryGetRuleContext(0, OnesContext);
+	public ones(): OnesContext[];
+	public ones(i: number): OnesContext;
+	public ones(i?: number): OnesContext | OnesContext[] {
+		if (i === undefined) {
+			return this.getRuleContexts(OnesContext);
+		} else {
+			return this.getRuleContext(i, OnesContext);
+		}
 	}
-	public tens(): TensContext | undefined {
-		return this.tryGetRuleContext(0, TensContext);
+	public tens(): TensContext[];
+	public tens(i: number): TensContext;
+	public tens(i?: number): TensContext | TensContext[] {
+		if (i === undefined) {
+			return this.getRuleContexts(TensContext);
+		} else {
+			return this.getRuleContext(i, TensContext);
+		}
 	}
 	public EN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.EN, 0); }
 	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
@@ -997,13 +1081,25 @@ export class ThousandsContext extends ParserRuleContext {
 			return this.getRuleContext(i, OnesContext);
 		}
 	}
+	public tens(): TensContext[];
+	public tens(i: number): TensContext;
+	public tens(i?: number): TensContext | TensContext[] {
+		if (i === undefined) {
+			return this.getRuleContexts(TensContext);
+		} else {
+			return this.getRuleContext(i, TensContext);
+		}
+	}
+	public hundreds(): HundredsContext[];
+	public hundreds(i: number): HundredsContext;
+	public hundreds(i?: number): HundredsContext | HundredsContext[] {
+		if (i === undefined) {
+			return this.getRuleContexts(HundredsContext);
+		} else {
+			return this.getRuleContext(i, HundredsContext);
+		}
+	}
 	public EN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.EN, 0); }
-	public hundreds(): HundredsContext | undefined {
-		return this.tryGetRuleContext(0, HundredsContext);
-	}
-	public tens(): TensContext | undefined {
-		return this.tryGetRuleContext(0, TensContext);
-	}
 	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
 		super(parent, invokingState);
 	}
@@ -1033,14 +1129,35 @@ export class ThousandsContext extends ParserRuleContext {
 
 
 export class MillionsContext extends ParserRuleContext {
-	public ones(): OnesContext {
-		return this.getRuleContext(0, OnesContext);
-	}
 	public MILLION(): TerminalNode { return this.getToken(DutchNumbersParser.MILLION, 0); }
-	public EN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.EN, 0); }
-	public thousands(): ThousandsContext | undefined {
-		return this.tryGetRuleContext(0, ThousandsContext);
+	public ones(): OnesContext[];
+	public ones(i: number): OnesContext;
+	public ones(i?: number): OnesContext | OnesContext[] {
+		if (i === undefined) {
+			return this.getRuleContexts(OnesContext);
+		} else {
+			return this.getRuleContext(i, OnesContext);
+		}
 	}
+	public tens(): TensContext[];
+	public tens(i: number): TensContext;
+	public tens(i?: number): TensContext | TensContext[] {
+		if (i === undefined) {
+			return this.getRuleContexts(TensContext);
+		} else {
+			return this.getRuleContext(i, TensContext);
+		}
+	}
+	public hundreds(): HundredsContext[];
+	public hundreds(i: number): HundredsContext;
+	public hundreds(i?: number): HundredsContext | HundredsContext[] {
+		if (i === undefined) {
+			return this.getRuleContexts(HundredsContext);
+		} else {
+			return this.getRuleContext(i, HundredsContext);
+		}
+	}
+	public EN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.EN, 0); }
 	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
 		super(parent, invokingState);
 	}
@@ -1070,14 +1187,44 @@ export class MillionsContext extends ParserRuleContext {
 
 
 export class BillionsContext extends ParserRuleContext {
-	public ones(): OnesContext {
-		return this.getRuleContext(0, OnesContext);
-	}
 	public BILLION(): TerminalNode { return this.getToken(DutchNumbersParser.BILLION, 0); }
-	public EN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.EN, 0); }
-	public millions(): MillionsContext | undefined {
-		return this.tryGetRuleContext(0, MillionsContext);
+	public ones(): OnesContext[];
+	public ones(i: number): OnesContext;
+	public ones(i?: number): OnesContext | OnesContext[] {
+		if (i === undefined) {
+			return this.getRuleContexts(OnesContext);
+		} else {
+			return this.getRuleContext(i, OnesContext);
+		}
 	}
+	public tens(): TensContext[];
+	public tens(i: number): TensContext;
+	public tens(i?: number): TensContext | TensContext[] {
+		if (i === undefined) {
+			return this.getRuleContexts(TensContext);
+		} else {
+			return this.getRuleContext(i, TensContext);
+		}
+	}
+	public hundreds(): HundredsContext[];
+	public hundreds(i: number): HundredsContext;
+	public hundreds(i?: number): HundredsContext | HundredsContext[] {
+		if (i === undefined) {
+			return this.getRuleContexts(HundredsContext);
+		} else {
+			return this.getRuleContext(i, HundredsContext);
+		}
+	}
+	public thousands(): ThousandsContext[];
+	public thousands(i: number): ThousandsContext;
+	public thousands(i?: number): ThousandsContext | ThousandsContext[] {
+		if (i === undefined) {
+			return this.getRuleContexts(ThousandsContext);
+		} else {
+			return this.getRuleContext(i, ThousandsContext);
+		}
+	}
+	public EN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.EN, 0); }
 	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
 		super(parent, invokingState);
 	}
