@@ -433,7 +433,6 @@ export class DutchNumbersParser extends Parser {
 			case 1:
 				this.enterOuterAlt(_localctx, 1);
 				{
-				{
 				this.state = 44;
 				this._errHandler.sync(this);
 				_la = this._input.LA(1);
@@ -459,12 +458,10 @@ export class DutchNumbersParser extends Parser {
 					break;
 				}
 				}
-				}
 				break;
 
 			case 2:
 				this.enterOuterAlt(_localctx, 2);
-				{
 				{
 				this.state = 52;
 				this._errHandler.sync(this);
@@ -489,12 +486,10 @@ export class DutchNumbersParser extends Parser {
 					break;
 				}
 				}
-				}
 				break;
 
 			case 3:
 				this.enterOuterAlt(_localctx, 3);
-				{
 				{
 				this.state = 58;
 				this.unit();
@@ -511,12 +506,10 @@ export class DutchNumbersParser extends Parser {
 					break;
 				}
 				}
-				}
 				break;
 
 			case 4:
 				this.enterOuterAlt(_localctx, 4);
-				{
 				{
 				this.state = 63;
 				this.unit();
@@ -531,7 +524,6 @@ export class DutchNumbersParser extends Parser {
 					this.number();
 					}
 					break;
-				}
 				}
 				}
 				break;

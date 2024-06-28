@@ -58,8 +58,8 @@ compound
     ;
 
 large_number
-    : (unit? HUNDRED (EN number)?) 
-    | (unit? THOUSAND number?)
-    | (unit MILLION number?)
-    | (unit BILLION number?)
+    : unit? HUNDRED (EN number)?
+    | unit? THOUSAND (number)?
+    | unit MILLION (number)?
+    | unit BILLION (number)?
     ;
