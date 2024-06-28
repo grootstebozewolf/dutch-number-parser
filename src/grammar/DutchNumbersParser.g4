@@ -3,9 +3,9 @@ parser grammar DutchNumbersParser;
 options { tokenVocab=DutchNumbersLexer; }
 
 number
-    : large_number
-    | simple
+    : simple
     | compound
+    | large_number
     ;
 
 simple
@@ -58,10 +58,8 @@ compound
     ;
 
 large_number
-    : (unit HUNDRED (EN? number)?) 
-    | (unit THOUSAND (EN? number)?)
-    | (unit MILLION (EN? number)?)
-    | (unit BILLION (EN? number)?)
-    | HUNDRED (EN? number)?
-    | THOUSAND (EN? number)?
+    : (unit? HUNDRED (EN number)?) 
+    | (unit? THOUSAND number?)
+    | (unit MILLION number?)
+    | (unit BILLION number?)
     ;

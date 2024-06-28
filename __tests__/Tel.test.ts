@@ -32,21 +32,23 @@ describe('Tel.parse', () => {
     });
 
     it('should parse thousands correctly', () => {
-        expect(Tel.parse('duizend')).toBe(1000);
-        expect(Tel.parse('duizend een')).toBe(1001);
+        expect(Tel.parse('tweeduizend tweeëntwintig')).toBe(2022);
+        expect(Tel.parse('tweeduizend en tweeëntwintig')).toBe(2022);
         expect(Tel.parse('elfhonderdeneen')).toBe(1101);
+        expect(Tel.parse('duizend en een')).toBe(1001);
+        expect(Tel.parse('duizend')).toBe(1000);
     });
 
     it('should parse millions correctly', () => {
-        expect(Tel.parse('miljoen')).toBe(1000000);
         expect(Tel.parse('zeventien miljoen drieënvijftigduizend negenhonderdtachtig')).toBe(17053980);
+        expect(Tel.parse('miljoen')).toBe(1000000);
         expect(Tel.parse('twee miljoen')).toBe(2000000);
     });
 
     it('should parse billions correctly', () => {
+        expect(Tel.parse('twee miljard')).toBe(2000000000);
         expect(Tel.parse('miljard')).toBe(1000000000);
         expect(Tel.parse('miljard een')).toBe(1000000001);
-        expect(Tel.parse('twee miljard')).toBe(2000000000);
     });
 
     it('should parse complex numbers correctly', () => {

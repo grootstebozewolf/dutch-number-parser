@@ -87,25 +87,33 @@ export class TelVisitor implements DutchNumbersParserVisitor<number> {
 
     visitLarge_number(ctx: Large_numberContext): number {
         let value = 0;
-        if (ctx.HUNDRED()) {
-            value += 100;
-        } else if (ctx.THOUSAND()) {
-            value += 1000;
-        } else if (ctx.MILLION()) {
-            value += 1000000;
-        } else if (ctx.BILLION()) {
-            value += 1000000000;
-        }
 
         if (ctx.unit()) {
             value += this.visitUnit(ctx.unit()!);
         }
-        if (ctx.number()) {
-            value += this.visitNumber(ctx.number()!);
+
+        if (ctx.HUNDRED()) {
+            value = (value === 0 ? 1 : value) * 100;
+            if (ctx.number()) {
+                value += this.visitNumber(ctx.number()!);
+            }
+        } else if (ctx.THOUSAND()) {
+            value = (value === 0 ? 1 : value) * 1000;
+            if (ctx.number()) {
+                value += this.visitNumber(ctx.number()!);
+            }
+        } else if (ctx.MILLION()) {
+            value = (value === 0 ? 1 : value) * 1000000;
+            if (ctx.number()) {
+                value += this.visitNumber(ctx.number()!);
+            }
+        } else if (ctx.BILLION()) {
+            value = (value === 0 ? 1 : value) * 1000000000;
+            if (ctx.number()) {
+                value += this.visitNumber(ctx.number()!);
+            }
         }
-        if (ctx.EN() && ctx.number()) {
-            value += this.visitNumber(ctx.number()!);
-        }
+
         return value;
     }
 
