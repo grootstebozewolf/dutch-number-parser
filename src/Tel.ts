@@ -5,26 +5,31 @@
  * You may obtain a copy of the License at https://creativecommons.org/licenses/by-sa/4.0/
  */
 import { CharStreams, CommonTokenStream } from 'antlr4ts';
-import { DutchNumbersLexer } from './grammar/generated/DutchNumbersLexer'; // Replace with the actual path
-import { DutchNumbersParser } from './grammar/generated/DutchNumbersParser'; // Replace with the actual path
+import { DutchNumbersLexer } from './grammar/generated/DutchNumbersLexer';
+import { DutchNumbersParser } from './grammar/generated/DutchNumbersParser';
 import { TelVisitor } from './TelVisitor';
+import { ILogger } from './ILogger'; // Import the Logger class
+
 export class Tel {
-    // Public parse method to convert Dutch numbers to integers
-    public static parse(input: string): number {
-        // Set up ANTLR to parse the input
-        const lexer = new DutchNumbersLexer(CharStreams.fromString(input));
-        const tokens = new CommonTokenStream(lexer);
-        const parser = new DutchNumbersParser(tokens);
+    // private static logger: ILogger;
 
-        // Parse the input to create a parse tree
-        const tree = parser.number(); // Change 'number' to the appropriate starting rule if needed
+    // static setLogger(logger: ILogger): void {
+    //     this.logger = logger;
+    // }
 
-        // Instantiate the Visitor
-        const visitor = new TelVisitor();
+    static parse(input: string): number {
+        try {
+            let inputStream = CharStreams.fromString(input);
+            let lexer = new DutchNumbersLexer(inputStream);
+            let tokenStream = new CommonTokenStream(lexer);
+            let parser = new DutchNumbersParser(tokenStream);
 
-        // Apply the Visitor to the Parse Tree
-        return visitor.visit(tree);
+            let tree = parser.number();
+            let visitor = new TelVisitor();
+            return visitor.visit(tree);
+        } catch (error) {
+            throw new Error(`Error parsing input: ${error.message}`);
+        }
     }
 }
-
 

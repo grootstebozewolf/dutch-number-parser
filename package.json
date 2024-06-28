@@ -7,7 +7,7 @@
     "test": "jest",
     "build": "echo 'No build step required with tsx'",
     "prepublishOnly": "npm run build",
-    "generate:antlr": "antlr4ts -o src/grammar/generated -lib src/grammar -listener -visitor src/grammar/DutchNumbers.g4"
+    "generate:antlr": "antlr4ts -o src/grammar/generated -listener -visitor src/grammar/DutchNumbersLexer.g4 && antlr4ts -o src/grammar/generated -lib src/grammar/generated -listener -visitor src/grammar/DutchNumbersParser.g4"
   },
   "keywords": [
     "antlr",

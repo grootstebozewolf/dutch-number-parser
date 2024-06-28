@@ -1,4 +1,4 @@
-// Generated from src/grammar/DutchNumbers.g4 by ANTLR 4.9.0-SNAPSHOT
+// Generated from src/grammar/DutchNumbersParser.g4 by ANTLR 4.9.0-SNAPSHOT
 
 
 import { ATN } from "antlr4ts/atn/ATN";
@@ -23,124 +23,72 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 
 import * as Utils from "antlr4ts/misc/Utils";
 
-import { DutchNumbersListener } from "./DutchNumbersListener";
-import { DutchNumbersVisitor } from "./DutchNumbersVisitor";
+import { DutchNumbersParserListener } from "./DutchNumbersParserListener";
+import { DutchNumbersParserVisitor } from "./DutchNumbersParserVisitor";
 
 
 export class DutchNumbersParser extends Parser {
-	public static readonly EEN = 1;
-	public static readonly TWEE = 2;
-	public static readonly DRIE = 3;
-	public static readonly VIER = 4;
-	public static readonly VIJF = 5;
-	public static readonly ZES = 6;
-	public static readonly ZEVEN = 7;
-	public static readonly ACHT = 8;
-	public static readonly NEGEN = 9;
-	public static readonly TIEN = 10;
-	public static readonly ELF = 11;
-	public static readonly TWAALF = 12;
-	public static readonly DERTIEN = 13;
-	public static readonly VEERTIEN = 14;
-	public static readonly VIJFTIEN = 15;
-	public static readonly ZESTIEN = 16;
-	public static readonly ZEVENTIEN = 17;
-	public static readonly ACHTTIEN = 18;
-	public static readonly NEGENTIEN = 19;
-	public static readonly TWINTIG = 20;
-	public static readonly TIENDE = 21;
-	public static readonly ELFDE = 22;
-	public static readonly TWAALFDE = 23;
-	public static readonly DERTIENDE = 24;
-	public static readonly VEERTIENDE = 25;
-	public static readonly VIJFTIENDE = 26;
-	public static readonly ZESTIENDE = 27;
-	public static readonly ZEVENTIENDE = 28;
-	public static readonly ACHTTIENDE = 29;
-	public static readonly DERTIG = 30;
-	public static readonly NEGENTIENDE = 31;
-	public static readonly EERSTE = 32;
-	public static readonly TWEEDE = 33;
-	public static readonly DERDE = 34;
-	public static readonly VIERDE = 35;
-	public static readonly VIJFDE = 36;
-	public static readonly ZESDE = 37;
-	public static readonly ZEVENDE = 38;
-	public static readonly ACHTSTE = 39;
-	public static readonly VEERTIG = 40;
-	public static readonly NEGENTSTE = 41;
-	public static readonly VIJFTIG = 42;
-	public static readonly ZESTIG = 43;
-	public static readonly ZEVENTIG = 44;
-	public static readonly TACHTIG = 45;
-	public static readonly NEGENTIG = 46;
-	public static readonly TWINTIGSTE = 47;
-	public static readonly DERTIGSTE = 48;
-	public static readonly VEERTIGSTE = 49;
-	public static readonly VIJFTIGSTE = 50;
-	public static readonly ZESTIGSTE = 51;
-	public static readonly ZEVENTIGSTE = 52;
-	public static readonly TACHTIGSTE = 53;
-	public static readonly NEGENTIGSTE = 54;
-	public static readonly HONDERD = 55;
-	public static readonly DUIZEND = 56;
-	public static readonly MILJOEN = 57;
-	public static readonly HONDERDSTE = 58;
-	public static readonly DUIZENDSTE = 59;
-	public static readonly MILJOENSTE = 60;
-	public static readonly EN = 61;
-	public static readonly EEN_VARIANT = 62;
-	public static readonly WS = 63;
+	public static readonly ONE = 1;
+	public static readonly TWO = 2;
+	public static readonly THREE = 3;
+	public static readonly FOUR = 4;
+	public static readonly FIVE = 5;
+	public static readonly SIX = 6;
+	public static readonly SEVEN = 7;
+	public static readonly EIGHT = 8;
+	public static readonly NINE = 9;
+	public static readonly TEN = 10;
+	public static readonly ELEVEN = 11;
+	public static readonly TWELVE = 12;
+	public static readonly THIRTEEN = 13;
+	public static readonly FOURTEEN = 14;
+	public static readonly FIFTEEN = 15;
+	public static readonly SIXTEEN = 16;
+	public static readonly SEVENTEEN = 17;
+	public static readonly EIGHTEEN = 18;
+	public static readonly NINETEEN = 19;
+	public static readonly TWENTY = 20;
+	public static readonly THIRTY = 21;
+	public static readonly FORTY = 22;
+	public static readonly FIFTY = 23;
+	public static readonly SIXTY = 24;
+	public static readonly SEVENTY = 25;
+	public static readonly EIGHTY = 26;
+	public static readonly NINETY = 27;
+	public static readonly HUNDRED = 28;
+	public static readonly THOUSAND = 29;
+	public static readonly MILLION = 30;
+	public static readonly BILLION = 31;
+	public static readonly TWO_PLURAL = 32;
+	public static readonly THREE_PLURAL = 33;
+	public static readonly EN = 34;
+	public static readonly WS = 35;
 	public static readonly RULE_number = 0;
-	public static readonly RULE_ordinal = 1;
-	public static readonly RULE_ones = 2;
-	public static readonly RULE_ordinal_ones = 3;
-	public static readonly RULE_teens = 4;
-	public static readonly RULE_ordinal_teens = 5;
-	public static readonly RULE_tens = 6;
-	public static readonly RULE_ordinal_tens = 7;
-	public static readonly RULE_tens_unit = 8;
-	public static readonly RULE_tens_unit_ordinal = 9;
-	public static readonly RULE_tens_with_ones = 10;
-	public static readonly RULE_ordinal_tens_with_ones = 11;
-	public static readonly RULE_hundreds = 12;
-	public static readonly RULE_ordinal_hundreds = 13;
-	public static readonly RULE_thousands = 14;
-	public static readonly RULE_ordinal_thousands = 15;
-	public static readonly RULE_millions = 16;
-	public static readonly RULE_ordinal_millions = 17;
+	public static readonly RULE_simple = 1;
+	public static readonly RULE_unit = 2;
+	public static readonly RULE_teen = 3;
+	public static readonly RULE_tens = 4;
+	public static readonly RULE_compound = 5;
+	public static readonly RULE_large_number = 6;
 	// tslint:disable:no-trailing-whitespace
 	public static readonly ruleNames: string[] = [
-		"number", "ordinal", "ones", "ordinal_ones", "teens", "ordinal_teens", 
-		"tens", "ordinal_tens", "tens_unit", "tens_unit_ordinal", "tens_with_ones", 
-		"ordinal_tens_with_ones", "hundreds", "ordinal_hundreds", "thousands", 
-		"ordinal_thousands", "millions", "ordinal_millions",
+		"number", "simple", "unit", "teen", "tens", "compound", "large_number",
 	];
 
 	private static readonly _LITERAL_NAMES: Array<string | undefined> = [
 		undefined, "'een'", "'twee'", "'drie'", "'vier'", "'vijf'", "'zes'", "'zeven'", 
 		"'acht'", "'negen'", "'tien'", "'elf'", "'twaalf'", "'dertien'", "'veertien'", 
 		"'vijftien'", "'zestien'", "'zeventien'", "'achttien'", "'negentien'", 
-		"'twintig'", "'tiende'", "'elfde'", "'twaalfde'", "'dertiende'", "'veertiende'", 
-		"'vijftiende'", "'zestiende'", "'zeventiende'", "'achttiende'", "'dertig'", 
-		"'negentiende'", "'eerste'", "'tweede'", "'derde'", "'vierde'", "'vijfde'", 
-		"'zesde'", "'zevende'", "'achtste'", "'veertig'", "'negende'", "'vijftig'", 
-		"'zestig'", "'zeventig'", "'tachtig'", "'negentig'", "'twintigste'", "'dertigste'", 
-		"'veertigste'", "'vijftigste'", "'zestigste'", "'zeventigste'", "'tachtigste'", 
-		"'negentigste'", "'honderd'", "'duizend'", "'miljoen'", "'honderdste'", 
-		"'duizendste'", "'miljoenste'", "'en'", "'\u00E9\u00E9n'",
+		"'twintig'", "'dertig'", "'veertig'", "'vijftig'", "'zestig'", "'zeventig'", 
+		"'tachtig'", "'negentig'", "'honderd'", "'duizend'", "'miljoen'", "'miljard'", 
+		"'twee\u00EBn'", "'drie\u00EBn'", "'en'",
 	];
 	private static readonly _SYMBOLIC_NAMES: Array<string | undefined> = [
-		undefined, "EEN", "TWEE", "DRIE", "VIER", "VIJF", "ZES", "ZEVEN", "ACHT", 
-		"NEGEN", "TIEN", "ELF", "TWAALF", "DERTIEN", "VEERTIEN", "VIJFTIEN", "ZESTIEN", 
-		"ZEVENTIEN", "ACHTTIEN", "NEGENTIEN", "TWINTIG", "TIENDE", "ELFDE", "TWAALFDE", 
-		"DERTIENDE", "VEERTIENDE", "VIJFTIENDE", "ZESTIENDE", "ZEVENTIENDE", "ACHTTIENDE", 
-		"DERTIG", "NEGENTIENDE", "EERSTE", "TWEEDE", "DERDE", "VIERDE", "VIJFDE", 
-		"ZESDE", "ZEVENDE", "ACHTSTE", "VEERTIG", "NEGENTSTE", "VIJFTIG", "ZESTIG", 
-		"ZEVENTIG", "TACHTIG", "NEGENTIG", "TWINTIGSTE", "DERTIGSTE", "VEERTIGSTE", 
-		"VIJFTIGSTE", "ZESTIGSTE", "ZEVENTIGSTE", "TACHTIGSTE", "NEGENTIGSTE", 
-		"HONDERD", "DUIZEND", "MILJOEN", "HONDERDSTE", "DUIZENDSTE", "MILJOENSTE", 
-		"EN", "EEN_VARIANT", "WS",
+		undefined, "ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", 
+		"NINE", "TEN", "ELEVEN", "TWELVE", "THIRTEEN", "FOURTEEN", "FIFTEEN", 
+		"SIXTEEN", "SEVENTEEN", "EIGHTEEN", "NINETEEN", "TWENTY", "THIRTY", "FORTY", 
+		"FIFTY", "SIXTY", "SEVENTY", "EIGHTY", "NINETY", "HUNDRED", "THOUSAND", 
+		"MILLION", "BILLION", "TWO_PLURAL", "THREE_PLURAL", "EN", "WS",
 	];
 	public static readonly VOCABULARY: Vocabulary = new VocabularyImpl(DutchNumbersParser._LITERAL_NAMES, DutchNumbersParser._SYMBOLIC_NAMES, []);
 
@@ -152,7 +100,7 @@ export class DutchNumbersParser extends Parser {
 	// tslint:enable:no-trailing-whitespace
 
 	// @Override
-	public get grammarFileName(): string { return "DutchNumbers.g4"; }
+	public get grammarFileName(): string { return "DutchNumbersParser.g4"; }
 
 	// @Override
 	public get ruleNames(): string[] { return DutchNumbersParser.ruleNames; }
@@ -173,46 +121,30 @@ export class DutchNumbersParser extends Parser {
 		let _localctx: NumberContext = new NumberContext(this._ctx, this.state);
 		this.enterRule(_localctx, 0, DutchNumbersParser.RULE_number);
 		try {
-			this.state = 41;
+			this.state = 17;
 			this._errHandler.sync(this);
 			switch ( this.interpreter.adaptivePredict(this._input, 0, this._ctx) ) {
 			case 1:
 				this.enterOuterAlt(_localctx, 1);
 				{
-				this.state = 36;
-				this.ones();
+				this.state = 14;
+				this.large_number();
 				}
 				break;
 
 			case 2:
 				this.enterOuterAlt(_localctx, 2);
 				{
-				this.state = 37;
-				this.tens();
+				this.state = 15;
+				this.simple();
 				}
 				break;
 
 			case 3:
 				this.enterOuterAlt(_localctx, 3);
 				{
-				this.state = 38;
-				this.hundreds();
-				}
-				break;
-
-			case 4:
-				this.enterOuterAlt(_localctx, 4);
-				{
-				this.state = 39;
-				this.thousands();
-				}
-				break;
-
-			case 5:
-				this.enterOuterAlt(_localctx, 5);
-				{
-				this.state = 40;
-				this.millions();
+				this.state = 16;
+				this.compound();
 				}
 				break;
 			}
@@ -232,157 +164,56 @@ export class DutchNumbersParser extends Parser {
 		return _localctx;
 	}
 	// @RuleVersion(0)
-	public ordinal(): OrdinalContext {
-		let _localctx: OrdinalContext = new OrdinalContext(this._ctx, this.state);
-		this.enterRule(_localctx, 2, DutchNumbersParser.RULE_ordinal);
+	public simple(): SimpleContext {
+		let _localctx: SimpleContext = new SimpleContext(this._ctx, this.state);
+		this.enterRule(_localctx, 2, DutchNumbersParser.RULE_simple);
 		try {
-			this.state = 49;
-			this._errHandler.sync(this);
-			switch ( this.interpreter.adaptivePredict(this._input, 1, this._ctx) ) {
-			case 1:
-				this.enterOuterAlt(_localctx, 1);
-				{
-				this.state = 43;
-				this.ordinal_ones();
-				}
-				break;
-
-			case 2:
-				this.enterOuterAlt(_localctx, 2);
-				{
-				this.state = 44;
-				this.ordinal_teens();
-				}
-				break;
-
-			case 3:
-				this.enterOuterAlt(_localctx, 3);
-				{
-				this.state = 45;
-				this.ordinal_tens();
-				}
-				break;
-
-			case 4:
-				this.enterOuterAlt(_localctx, 4);
-				{
-				this.state = 46;
-				this.ordinal_hundreds();
-				}
-				break;
-
-			case 5:
-				this.enterOuterAlt(_localctx, 5);
-				{
-				this.state = 47;
-				this.ordinal_thousands();
-				}
-				break;
-
-			case 6:
-				this.enterOuterAlt(_localctx, 6);
-				{
-				this.state = 48;
-				this.ordinal_millions();
-				}
-				break;
-			}
-		}
-		catch (re) {
-			if (re instanceof RecognitionException) {
-				_localctx.exception = re;
-				this._errHandler.reportError(this, re);
-				this._errHandler.recover(this, re);
-			} else {
-				throw re;
-			}
-		}
-		finally {
-			this.exitRule();
-		}
-		return _localctx;
-	}
-	// @RuleVersion(0)
-	public ones(): OnesContext {
-		let _localctx: OnesContext = new OnesContext(this._ctx, this.state);
-		this.enterRule(_localctx, 4, DutchNumbersParser.RULE_ones);
-		let _la: number;
-		try {
-			this.state = 60;
+			this.state = 22;
 			this._errHandler.sync(this);
 			switch (this._input.LA(1)) {
-			case DutchNumbersParser.EEN:
-			case DutchNumbersParser.EEN_VARIANT:
+			case DutchNumbersParser.ONE:
+			case DutchNumbersParser.TWO:
+			case DutchNumbersParser.THREE:
+			case DutchNumbersParser.FOUR:
+			case DutchNumbersParser.FIVE:
+			case DutchNumbersParser.SIX:
+			case DutchNumbersParser.SEVEN:
+			case DutchNumbersParser.EIGHT:
+			case DutchNumbersParser.NINE:
 				this.enterOuterAlt(_localctx, 1);
 				{
-				this.state = 51;
-				_la = this._input.LA(1);
-				if (!(_la === DutchNumbersParser.EEN || _la === DutchNumbersParser.EEN_VARIANT)) {
-				this._errHandler.recoverInline(this);
-				} else {
-					if (this._input.LA(1) === Token.EOF) {
-						this.matchedEOF = true;
-					}
-
-					this._errHandler.reportMatch(this);
-					this.consume();
-				}
+				this.state = 19;
+				this.unit();
 				}
 				break;
-			case DutchNumbersParser.TWEE:
+			case DutchNumbersParser.TEN:
+			case DutchNumbersParser.ELEVEN:
+			case DutchNumbersParser.TWELVE:
+			case DutchNumbersParser.THIRTEEN:
+			case DutchNumbersParser.FOURTEEN:
+			case DutchNumbersParser.FIFTEEN:
+			case DutchNumbersParser.SIXTEEN:
+			case DutchNumbersParser.SEVENTEEN:
+			case DutchNumbersParser.EIGHTEEN:
+			case DutchNumbersParser.NINETEEN:
 				this.enterOuterAlt(_localctx, 2);
 				{
-				this.state = 52;
-				this.match(DutchNumbersParser.TWEE);
+				this.state = 20;
+				this.teen();
 				}
 				break;
-			case DutchNumbersParser.DRIE:
+			case DutchNumbersParser.TWENTY:
+			case DutchNumbersParser.THIRTY:
+			case DutchNumbersParser.FORTY:
+			case DutchNumbersParser.FIFTY:
+			case DutchNumbersParser.SIXTY:
+			case DutchNumbersParser.SEVENTY:
+			case DutchNumbersParser.EIGHTY:
+			case DutchNumbersParser.NINETY:
 				this.enterOuterAlt(_localctx, 3);
 				{
-				this.state = 53;
-				this.match(DutchNumbersParser.DRIE);
-				}
-				break;
-			case DutchNumbersParser.VIER:
-				this.enterOuterAlt(_localctx, 4);
-				{
-				this.state = 54;
-				this.match(DutchNumbersParser.VIER);
-				}
-				break;
-			case DutchNumbersParser.VIJF:
-				this.enterOuterAlt(_localctx, 5);
-				{
-				this.state = 55;
-				this.match(DutchNumbersParser.VIJF);
-				}
-				break;
-			case DutchNumbersParser.ZES:
-				this.enterOuterAlt(_localctx, 6);
-				{
-				this.state = 56;
-				this.match(DutchNumbersParser.ZES);
-				}
-				break;
-			case DutchNumbersParser.ZEVEN:
-				this.enterOuterAlt(_localctx, 7);
-				{
-				this.state = 57;
-				this.match(DutchNumbersParser.ZEVEN);
-				}
-				break;
-			case DutchNumbersParser.ACHT:
-				this.enterOuterAlt(_localctx, 8);
-				{
-				this.state = 58;
-				this.match(DutchNumbersParser.ACHT);
-				}
-				break;
-			case DutchNumbersParser.NEGEN:
-				this.enterOuterAlt(_localctx, 9);
-				{
-				this.state = 59;
-				this.match(DutchNumbersParser.NEGEN);
+				this.state = 21;
+				this.tens();
 				}
 				break;
 			default:
@@ -404,16 +235,16 @@ export class DutchNumbersParser extends Parser {
 		return _localctx;
 	}
 	// @RuleVersion(0)
-	public ordinal_ones(): Ordinal_onesContext {
-		let _localctx: Ordinal_onesContext = new Ordinal_onesContext(this._ctx, this.state);
-		this.enterRule(_localctx, 6, DutchNumbersParser.RULE_ordinal_ones);
+	public unit(): UnitContext {
+		let _localctx: UnitContext = new UnitContext(this._ctx, this.state);
+		this.enterRule(_localctx, 4, DutchNumbersParser.RULE_unit);
 		let _la: number;
 		try {
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 62;
+			this.state = 24;
 			_la = this._input.LA(1);
-			if (!(((((_la - 32)) & ~0x1F) === 0 && ((1 << (_la - 32)) & ((1 << (DutchNumbersParser.EERSTE - 32)) | (1 << (DutchNumbersParser.TWEEDE - 32)) | (1 << (DutchNumbersParser.DERDE - 32)) | (1 << (DutchNumbersParser.VIERDE - 32)) | (1 << (DutchNumbersParser.VIJFDE - 32)) | (1 << (DutchNumbersParser.ZESDE - 32)) | (1 << (DutchNumbersParser.ZEVENDE - 32)) | (1 << (DutchNumbersParser.ACHTSTE - 32)) | (1 << (DutchNumbersParser.NEGENTSTE - 32)))) !== 0))) {
+			if (!((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << DutchNumbersParser.ONE) | (1 << DutchNumbersParser.TWO) | (1 << DutchNumbersParser.THREE) | (1 << DutchNumbersParser.FOUR) | (1 << DutchNumbersParser.FIVE) | (1 << DutchNumbersParser.SIX) | (1 << DutchNumbersParser.SEVEN) | (1 << DutchNumbersParser.EIGHT) | (1 << DutchNumbersParser.NINE))) !== 0))) {
 			this._errHandler.recoverInline(this);
 			} else {
 				if (this._input.LA(1) === Token.EOF) {
@@ -440,52 +271,16 @@ export class DutchNumbersParser extends Parser {
 		return _localctx;
 	}
 	// @RuleVersion(0)
-	public teens(): TeensContext {
-		let _localctx: TeensContext = new TeensContext(this._ctx, this.state);
-		this.enterRule(_localctx, 8, DutchNumbersParser.RULE_teens);
+	public teen(): TeenContext {
+		let _localctx: TeenContext = new TeenContext(this._ctx, this.state);
+		this.enterRule(_localctx, 6, DutchNumbersParser.RULE_teen);
 		let _la: number;
 		try {
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 64;
+			this.state = 26;
 			_la = this._input.LA(1);
-			if (!((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << DutchNumbersParser.TIEN) | (1 << DutchNumbersParser.ELF) | (1 << DutchNumbersParser.TWAALF) | (1 << DutchNumbersParser.DERTIEN) | (1 << DutchNumbersParser.VEERTIEN) | (1 << DutchNumbersParser.VIJFTIEN) | (1 << DutchNumbersParser.ZESTIEN) | (1 << DutchNumbersParser.ZEVENTIEN) | (1 << DutchNumbersParser.ACHTTIEN) | (1 << DutchNumbersParser.NEGENTIEN))) !== 0))) {
-			this._errHandler.recoverInline(this);
-			} else {
-				if (this._input.LA(1) === Token.EOF) {
-					this.matchedEOF = true;
-				}
-
-				this._errHandler.reportMatch(this);
-				this.consume();
-			}
-			}
-		}
-		catch (re) {
-			if (re instanceof RecognitionException) {
-				_localctx.exception = re;
-				this._errHandler.reportError(this, re);
-				this._errHandler.recover(this, re);
-			} else {
-				throw re;
-			}
-		}
-		finally {
-			this.exitRule();
-		}
-		return _localctx;
-	}
-	// @RuleVersion(0)
-	public ordinal_teens(): Ordinal_teensContext {
-		let _localctx: Ordinal_teensContext = new Ordinal_teensContext(this._ctx, this.state);
-		this.enterRule(_localctx, 10, DutchNumbersParser.RULE_ordinal_teens);
-		let _la: number;
-		try {
-			this.enterOuterAlt(_localctx, 1);
-			{
-			this.state = 66;
-			_la = this._input.LA(1);
-			if (!((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << DutchNumbersParser.TIENDE) | (1 << DutchNumbersParser.ELFDE) | (1 << DutchNumbersParser.TWAALFDE) | (1 << DutchNumbersParser.DERTIENDE) | (1 << DutchNumbersParser.VEERTIENDE) | (1 << DutchNumbersParser.VIJFTIENDE) | (1 << DutchNumbersParser.ZESTIENDE) | (1 << DutchNumbersParser.ZEVENTIENDE) | (1 << DutchNumbersParser.ACHTTIENDE) | (1 << DutchNumbersParser.NEGENTIENDE))) !== 0))) {
+			if (!((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << DutchNumbersParser.TEN) | (1 << DutchNumbersParser.ELEVEN) | (1 << DutchNumbersParser.TWELVE) | (1 << DutchNumbersParser.THIRTEEN) | (1 << DutchNumbersParser.FOURTEEN) | (1 << DutchNumbersParser.FIFTEEN) | (1 << DutchNumbersParser.SIXTEEN) | (1 << DutchNumbersParser.SEVENTEEN) | (1 << DutchNumbersParser.EIGHTEEN) | (1 << DutchNumbersParser.NINETEEN))) !== 0))) {
 			this._errHandler.recoverInline(this);
 			} else {
 				if (this._input.LA(1) === Token.EOF) {
@@ -514,158 +309,14 @@ export class DutchNumbersParser extends Parser {
 	// @RuleVersion(0)
 	public tens(): TensContext {
 		let _localctx: TensContext = new TensContext(this._ctx, this.state);
-		this.enterRule(_localctx, 12, DutchNumbersParser.RULE_tens);
-		try {
-			this.state = 71;
-			this._errHandler.sync(this);
-			switch (this._input.LA(1)) {
-			case DutchNumbersParser.TIEN:
-			case DutchNumbersParser.ELF:
-			case DutchNumbersParser.TWAALF:
-			case DutchNumbersParser.DERTIEN:
-			case DutchNumbersParser.VEERTIEN:
-			case DutchNumbersParser.VIJFTIEN:
-			case DutchNumbersParser.ZESTIEN:
-			case DutchNumbersParser.ZEVENTIEN:
-			case DutchNumbersParser.ACHTTIEN:
-			case DutchNumbersParser.NEGENTIEN:
-				this.enterOuterAlt(_localctx, 1);
-				{
-				this.state = 68;
-				this.teens();
-				}
-				break;
-			case DutchNumbersParser.TWINTIG:
-			case DutchNumbersParser.DERTIG:
-			case DutchNumbersParser.VEERTIG:
-			case DutchNumbersParser.VIJFTIG:
-			case DutchNumbersParser.ZESTIG:
-			case DutchNumbersParser.ZEVENTIG:
-			case DutchNumbersParser.TACHTIG:
-			case DutchNumbersParser.NEGENTIG:
-				this.enterOuterAlt(_localctx, 2);
-				{
-				this.state = 69;
-				this.tens_unit();
-				}
-				break;
-			case DutchNumbersParser.EEN:
-			case DutchNumbersParser.TWEE:
-			case DutchNumbersParser.DRIE:
-			case DutchNumbersParser.VIER:
-			case DutchNumbersParser.VIJF:
-			case DutchNumbersParser.ZES:
-			case DutchNumbersParser.ZEVEN:
-			case DutchNumbersParser.ACHT:
-			case DutchNumbersParser.NEGEN:
-			case DutchNumbersParser.EEN_VARIANT:
-				this.enterOuterAlt(_localctx, 3);
-				{
-				this.state = 70;
-				this.tens_with_ones();
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
-			}
-		}
-		catch (re) {
-			if (re instanceof RecognitionException) {
-				_localctx.exception = re;
-				this._errHandler.reportError(this, re);
-				this._errHandler.recover(this, re);
-			} else {
-				throw re;
-			}
-		}
-		finally {
-			this.exitRule();
-		}
-		return _localctx;
-	}
-	// @RuleVersion(0)
-	public ordinal_tens(): Ordinal_tensContext {
-		let _localctx: Ordinal_tensContext = new Ordinal_tensContext(this._ctx, this.state);
-		this.enterRule(_localctx, 14, DutchNumbersParser.RULE_ordinal_tens);
-		try {
-			this.state = 76;
-			this._errHandler.sync(this);
-			switch (this._input.LA(1)) {
-			case DutchNumbersParser.TIENDE:
-			case DutchNumbersParser.ELFDE:
-			case DutchNumbersParser.TWAALFDE:
-			case DutchNumbersParser.DERTIENDE:
-			case DutchNumbersParser.VEERTIENDE:
-			case DutchNumbersParser.VIJFTIENDE:
-			case DutchNumbersParser.ZESTIENDE:
-			case DutchNumbersParser.ZEVENTIENDE:
-			case DutchNumbersParser.ACHTTIENDE:
-			case DutchNumbersParser.NEGENTIENDE:
-				this.enterOuterAlt(_localctx, 1);
-				{
-				this.state = 73;
-				this.ordinal_teens();
-				}
-				break;
-			case DutchNumbersParser.TWINTIGSTE:
-			case DutchNumbersParser.DERTIGSTE:
-			case DutchNumbersParser.VEERTIGSTE:
-			case DutchNumbersParser.VIJFTIGSTE:
-			case DutchNumbersParser.ZESTIGSTE:
-			case DutchNumbersParser.ZEVENTIGSTE:
-			case DutchNumbersParser.TACHTIGSTE:
-			case DutchNumbersParser.NEGENTIGSTE:
-				this.enterOuterAlt(_localctx, 2);
-				{
-				this.state = 74;
-				this.tens_unit_ordinal();
-				}
-				break;
-			case DutchNumbersParser.EEN:
-			case DutchNumbersParser.TWEE:
-			case DutchNumbersParser.DRIE:
-			case DutchNumbersParser.VIER:
-			case DutchNumbersParser.VIJF:
-			case DutchNumbersParser.ZES:
-			case DutchNumbersParser.ZEVEN:
-			case DutchNumbersParser.ACHT:
-			case DutchNumbersParser.NEGEN:
-			case DutchNumbersParser.EEN_VARIANT:
-				this.enterOuterAlt(_localctx, 3);
-				{
-				this.state = 75;
-				this.ordinal_tens_with_ones();
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
-			}
-		}
-		catch (re) {
-			if (re instanceof RecognitionException) {
-				_localctx.exception = re;
-				this._errHandler.reportError(this, re);
-				this._errHandler.recover(this, re);
-			} else {
-				throw re;
-			}
-		}
-		finally {
-			this.exitRule();
-		}
-		return _localctx;
-	}
-	// @RuleVersion(0)
-	public tens_unit(): Tens_unitContext {
-		let _localctx: Tens_unitContext = new Tens_unitContext(this._ctx, this.state);
-		this.enterRule(_localctx, 16, DutchNumbersParser.RULE_tens_unit);
+		this.enterRule(_localctx, 8, DutchNumbersParser.RULE_tens);
 		let _la: number;
 		try {
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 78;
+			this.state = 28;
 			_la = this._input.LA(1);
-			if (!(((((_la - 20)) & ~0x1F) === 0 && ((1 << (_la - 20)) & ((1 << (DutchNumbersParser.TWINTIG - 20)) | (1 << (DutchNumbersParser.DERTIG - 20)) | (1 << (DutchNumbersParser.VEERTIG - 20)) | (1 << (DutchNumbersParser.VIJFTIG - 20)) | (1 << (DutchNumbersParser.ZESTIG - 20)) | (1 << (DutchNumbersParser.ZEVENTIG - 20)) | (1 << (DutchNumbersParser.TACHTIG - 20)) | (1 << (DutchNumbersParser.NEGENTIG - 20)))) !== 0))) {
+			if (!((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << DutchNumbersParser.TWENTY) | (1 << DutchNumbersParser.THIRTY) | (1 << DutchNumbersParser.FORTY) | (1 << DutchNumbersParser.FIFTY) | (1 << DutchNumbersParser.SIXTY) | (1 << DutchNumbersParser.SEVENTY) | (1 << DutchNumbersParser.EIGHTY) | (1 << DutchNumbersParser.NINETY))) !== 0))) {
 			this._errHandler.recoverInline(this);
 			} else {
 				if (this._input.LA(1) === Token.EOF) {
@@ -692,524 +343,276 @@ export class DutchNumbersParser extends Parser {
 		return _localctx;
 	}
 	// @RuleVersion(0)
-	public tens_unit_ordinal(): Tens_unit_ordinalContext {
-		let _localctx: Tens_unit_ordinalContext = new Tens_unit_ordinalContext(this._ctx, this.state);
-		this.enterRule(_localctx, 18, DutchNumbersParser.RULE_tens_unit_ordinal);
-		let _la: number;
+	public compound(): CompoundContext {
+		let _localctx: CompoundContext = new CompoundContext(this._ctx, this.state);
+		this.enterRule(_localctx, 10, DutchNumbersParser.RULE_compound);
 		try {
-			this.enterOuterAlt(_localctx, 1);
-			{
-			this.state = 80;
-			_la = this._input.LA(1);
-			if (!(((((_la - 47)) & ~0x1F) === 0 && ((1 << (_la - 47)) & ((1 << (DutchNumbersParser.TWINTIGSTE - 47)) | (1 << (DutchNumbersParser.DERTIGSTE - 47)) | (1 << (DutchNumbersParser.VEERTIGSTE - 47)) | (1 << (DutchNumbersParser.VIJFTIGSTE - 47)) | (1 << (DutchNumbersParser.ZESTIGSTE - 47)) | (1 << (DutchNumbersParser.ZEVENTIGSTE - 47)) | (1 << (DutchNumbersParser.TACHTIGSTE - 47)) | (1 << (DutchNumbersParser.NEGENTIGSTE - 47)))) !== 0))) {
-			this._errHandler.recoverInline(this);
-			} else {
-				if (this._input.LA(1) === Token.EOF) {
-					this.matchedEOF = true;
-				}
-
-				this._errHandler.reportMatch(this);
-				this.consume();
-			}
-			}
-		}
-		catch (re) {
-			if (re instanceof RecognitionException) {
-				_localctx.exception = re;
-				this._errHandler.reportError(this, re);
-				this._errHandler.recover(this, re);
-			} else {
-				throw re;
-			}
-		}
-		finally {
-			this.exitRule();
-		}
-		return _localctx;
-	}
-	// @RuleVersion(0)
-	public tens_with_ones(): Tens_with_onesContext {
-		let _localctx: Tens_with_onesContext = new Tens_with_onesContext(this._ctx, this.state);
-		this.enterRule(_localctx, 20, DutchNumbersParser.RULE_tens_with_ones);
-		try {
-			this.enterOuterAlt(_localctx, 1);
-			{
-			this.state = 82;
-			this.ones();
-			this.state = 83;
-			this.match(DutchNumbersParser.EN);
-			this.state = 84;
-			this.tens_unit();
-			}
-		}
-		catch (re) {
-			if (re instanceof RecognitionException) {
-				_localctx.exception = re;
-				this._errHandler.reportError(this, re);
-				this._errHandler.recover(this, re);
-			} else {
-				throw re;
-			}
-		}
-		finally {
-			this.exitRule();
-		}
-		return _localctx;
-	}
-	// @RuleVersion(0)
-	public ordinal_tens_with_ones(): Ordinal_tens_with_onesContext {
-		let _localctx: Ordinal_tens_with_onesContext = new Ordinal_tens_with_onesContext(this._ctx, this.state);
-		this.enterRule(_localctx, 22, DutchNumbersParser.RULE_ordinal_tens_with_ones);
-		try {
-			this.enterOuterAlt(_localctx, 1);
-			{
-			this.state = 86;
-			this.ones();
-			this.state = 87;
-			this.match(DutchNumbersParser.EN);
-			this.state = 88;
-			this.tens_unit_ordinal();
-			}
-		}
-		catch (re) {
-			if (re instanceof RecognitionException) {
-				_localctx.exception = re;
-				this._errHandler.reportError(this, re);
-				this._errHandler.recover(this, re);
-			} else {
-				throw re;
-			}
-		}
-		finally {
-			this.exitRule();
-		}
-		return _localctx;
-	}
-	// @RuleVersion(0)
-	public hundreds(): HundredsContext {
-		let _localctx: HundredsContext = new HundredsContext(this._ctx, this.state);
-		this.enterRule(_localctx, 24, DutchNumbersParser.RULE_hundreds);
-		try {
-			this.state = 104;
+			this.state = 41;
 			this._errHandler.sync(this);
 			switch (this._input.LA(1)) {
-			case DutchNumbersParser.EEN:
-			case DutchNumbersParser.TWEE:
-			case DutchNumbersParser.DRIE:
-			case DutchNumbersParser.VIER:
-			case DutchNumbersParser.VIJF:
-			case DutchNumbersParser.ZES:
-			case DutchNumbersParser.ZEVEN:
-			case DutchNumbersParser.ACHT:
-			case DutchNumbersParser.NEGEN:
-			case DutchNumbersParser.EEN_VARIANT:
+			case DutchNumbersParser.TWENTY:
+			case DutchNumbersParser.THIRTY:
+			case DutchNumbersParser.FORTY:
+			case DutchNumbersParser.FIFTY:
+			case DutchNumbersParser.SIXTY:
+			case DutchNumbersParser.SEVENTY:
+			case DutchNumbersParser.EIGHTY:
+			case DutchNumbersParser.NINETY:
 				this.enterOuterAlt(_localctx, 1);
 				{
-				this.state = 90;
-				this.ones();
-				this.state = 91;
-				this.match(DutchNumbersParser.HONDERD);
-				this.state = 100;
+				this.state = 30;
+				this.tens();
+				this.state = 31;
+				this.unit();
+				}
+				break;
+			case DutchNumbersParser.ONE:
+			case DutchNumbersParser.TWO:
+			case DutchNumbersParser.THREE:
+			case DutchNumbersParser.FOUR:
+			case DutchNumbersParser.FIVE:
+			case DutchNumbersParser.SIX:
+			case DutchNumbersParser.SEVEN:
+			case DutchNumbersParser.EIGHT:
+			case DutchNumbersParser.NINE:
+				this.enterOuterAlt(_localctx, 2);
+				{
+				this.state = 33;
+				this.unit();
+				this.state = 34;
+				this.match(DutchNumbersParser.EN);
+				this.state = 35;
+				this.tens();
+				}
+				break;
+			case DutchNumbersParser.TWO_PLURAL:
+				this.enterOuterAlt(_localctx, 3);
+				{
+				this.state = 37;
+				this.match(DutchNumbersParser.TWO_PLURAL);
+				this.state = 38;
+				this.tens();
+				}
+				break;
+			case DutchNumbersParser.THREE_PLURAL:
+				this.enterOuterAlt(_localctx, 4);
+				{
+				this.state = 39;
+				this.match(DutchNumbersParser.THREE_PLURAL);
+				this.state = 40;
+				this.tens();
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+		}
+		catch (re) {
+			if (re instanceof RecognitionException) {
+				_localctx.exception = re;
+				this._errHandler.reportError(this, re);
+				this._errHandler.recover(this, re);
+			} else {
+				throw re;
+			}
+		}
+		finally {
+			this.exitRule();
+		}
+		return _localctx;
+	}
+	// @RuleVersion(0)
+	public large_number(): Large_numberContext {
+		let _localctx: Large_numberContext = new Large_numberContext(this._ctx, this.state);
+		this.enterRule(_localctx, 12, DutchNumbersParser.RULE_large_number);
+		let _la: number;
+		try {
+			this.state = 89;
+			this._errHandler.sync(this);
+			switch ( this.interpreter.adaptivePredict(this._input, 15, this._ctx) ) {
+			case 1:
+				this.enterOuterAlt(_localctx, 1);
+				{
+				{
+				this.state = 43;
+				this.unit();
+				this.state = 44;
+				this.match(DutchNumbersParser.HUNDRED);
+				this.state = 49;
 				this._errHandler.sync(this);
-				switch ( this.interpreter.adaptivePredict(this._input, 5, this._ctx) ) {
+				switch ( this.interpreter.adaptivePredict(this._input, 4, this._ctx) ) {
 				case 1:
 					{
-					this.state = 92;
-					this.match(DutchNumbersParser.EEN);
+					this.state = 46;
+					this._errHandler.sync(this);
+					_la = this._input.LA(1);
+					if (_la === DutchNumbersParser.EN) {
+						{
+						this.state = 45;
+						this.match(DutchNumbersParser.EN);
+						}
+					}
+
+					this.state = 48;
+					this.number();
 					}
 					break;
+				}
+				}
+				}
+				break;
 
-				case 2:
+			case 2:
+				this.enterOuterAlt(_localctx, 2);
+				{
+				{
+				this.state = 51;
+				this.unit();
+				this.state = 52;
+				this.match(DutchNumbersParser.THOUSAND);
+				this.state = 57;
+				this._errHandler.sync(this);
+				switch ( this.interpreter.adaptivePredict(this._input, 6, this._ctx) ) {
+				case 1:
 					{
-					this.state = 93;
-					this.match(DutchNumbersParser.EEN_VARIANT);
+					this.state = 54;
+					this._errHandler.sync(this);
+					_la = this._input.LA(1);
+					if (_la === DutchNumbersParser.EN) {
+						{
+						this.state = 53;
+						this.match(DutchNumbersParser.EN);
+						}
+					}
+
+					this.state = 56;
+					this.number();
 					}
 					break;
+				}
+				}
+				}
+				break;
 
-				case 3:
+			case 3:
+				this.enterOuterAlt(_localctx, 3);
+				{
+				{
+				this.state = 59;
+				this.unit();
+				this.state = 60;
+				this.match(DutchNumbersParser.MILLION);
+				this.state = 65;
+				this._errHandler.sync(this);
+				switch ( this.interpreter.adaptivePredict(this._input, 8, this._ctx) ) {
+				case 1:
 					{
-					this.state = 94;
-					this.match(DutchNumbersParser.EN);
-					this.state = 95;
-					this.match(DutchNumbersParser.EEN);
+					this.state = 62;
+					this._errHandler.sync(this);
+					_la = this._input.LA(1);
+					if (_la === DutchNumbersParser.EN) {
+						{
+						this.state = 61;
+						this.match(DutchNumbersParser.EN);
+						}
+					}
+
+					this.state = 64;
+					this.number();
 					}
 					break;
+				}
+				}
+				}
+				break;
 
-				case 4:
+			case 4:
+				this.enterOuterAlt(_localctx, 4);
+				{
+				{
+				this.state = 67;
+				this.unit();
+				this.state = 68;
+				this.match(DutchNumbersParser.BILLION);
+				this.state = 73;
+				this._errHandler.sync(this);
+				switch ( this.interpreter.adaptivePredict(this._input, 10, this._ctx) ) {
+				case 1:
 					{
-					this.state = 96;
-					this.match(DutchNumbersParser.EN);
-					this.state = 97;
-					this.match(DutchNumbersParser.EEN_VARIANT);
+					this.state = 70;
+					this._errHandler.sync(this);
+					_la = this._input.LA(1);
+					if (_la === DutchNumbersParser.EN) {
+						{
+						this.state = 69;
+						this.match(DutchNumbersParser.EN);
+						}
+					}
+
+					this.state = 72;
+					this.number();
 					}
 					break;
+				}
+				}
+				}
+				break;
 
-				case 5:
+			case 5:
+				this.enterOuterAlt(_localctx, 5);
+				{
+				this.state = 75;
+				this.match(DutchNumbersParser.HUNDRED);
+				this.state = 80;
+				this._errHandler.sync(this);
+				switch ( this.interpreter.adaptivePredict(this._input, 12, this._ctx) ) {
+				case 1:
 					{
-					this.state = 98;
-					this.match(DutchNumbersParser.EN);
-					this.state = 99;
+					this.state = 77;
+					this._errHandler.sync(this);
+					_la = this._input.LA(1);
+					if (_la === DutchNumbersParser.EN) {
+						{
+						this.state = 76;
+						this.match(DutchNumbersParser.EN);
+						}
+					}
+
+					this.state = 79;
 					this.number();
 					}
 					break;
 				}
 				}
 				break;
-			case DutchNumbersParser.HONDERD:
-				this.enterOuterAlt(_localctx, 2);
+
+			case 6:
+				this.enterOuterAlt(_localctx, 6);
 				{
-				this.state = 102;
-				this.match(DutchNumbersParser.HONDERD);
-				this.state = 103;
-				this.tens_unit();
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
-			}
-		}
-		catch (re) {
-			if (re instanceof RecognitionException) {
-				_localctx.exception = re;
-				this._errHandler.reportError(this, re);
-				this._errHandler.recover(this, re);
-			} else {
-				throw re;
-			}
-		}
-		finally {
-			this.exitRule();
-		}
-		return _localctx;
-	}
-	// @RuleVersion(0)
-	public ordinal_hundreds(): Ordinal_hundredsContext {
-		let _localctx: Ordinal_hundredsContext = new Ordinal_hundredsContext(this._ctx, this.state);
-		this.enterRule(_localctx, 26, DutchNumbersParser.RULE_ordinal_hundreds);
-		try {
-			this.state = 117;
-			this._errHandler.sync(this);
-			switch (this._input.LA(1)) {
-			case DutchNumbersParser.EEN:
-			case DutchNumbersParser.TWEE:
-			case DutchNumbersParser.DRIE:
-			case DutchNumbersParser.VIER:
-			case DutchNumbersParser.VIJF:
-			case DutchNumbersParser.ZES:
-			case DutchNumbersParser.ZEVEN:
-			case DutchNumbersParser.ACHT:
-			case DutchNumbersParser.NEGEN:
-			case DutchNumbersParser.TIEN:
-			case DutchNumbersParser.ELF:
-			case DutchNumbersParser.TWAALF:
-			case DutchNumbersParser.DERTIEN:
-			case DutchNumbersParser.VEERTIEN:
-			case DutchNumbersParser.VIJFTIEN:
-			case DutchNumbersParser.ZESTIEN:
-			case DutchNumbersParser.ZEVENTIEN:
-			case DutchNumbersParser.ACHTTIEN:
-			case DutchNumbersParser.NEGENTIEN:
-			case DutchNumbersParser.TWINTIG:
-			case DutchNumbersParser.DERTIG:
-			case DutchNumbersParser.VEERTIG:
-			case DutchNumbersParser.VIJFTIG:
-			case DutchNumbersParser.ZESTIG:
-			case DutchNumbersParser.ZEVENTIG:
-			case DutchNumbersParser.TACHTIG:
-			case DutchNumbersParser.NEGENTIG:
-			case DutchNumbersParser.EEN_VARIANT:
-				this.enterOuterAlt(_localctx, 1);
-				{
-				this.state = 108;
+				this.state = 82;
+				this.match(DutchNumbersParser.THOUSAND);
+				this.state = 87;
 				this._errHandler.sync(this);
-				switch ( this.interpreter.adaptivePredict(this._input, 7, this._ctx) ) {
+				switch ( this.interpreter.adaptivePredict(this._input, 14, this._ctx) ) {
 				case 1:
 					{
-					this.state = 106;
-					this.ones();
+					this.state = 84;
+					this._errHandler.sync(this);
+					_la = this._input.LA(1);
+					if (_la === DutchNumbersParser.EN) {
+						{
+						this.state = 83;
+						this.match(DutchNumbersParser.EN);
+						}
 					}
-					break;
 
-				case 2:
-					{
-					this.state = 107;
-					this.tens();
-					}
-					break;
-				}
-				this.state = 110;
-				this.match(DutchNumbersParser.HONDERDSTE);
-				this.state = 113;
-				this._errHandler.sync(this);
-				switch ( this.interpreter.adaptivePredict(this._input, 8, this._ctx) ) {
-				case 1:
-					{
-					this.state = 111;
-					this.match(DutchNumbersParser.EN);
-					this.state = 112;
-					this.ordinal();
+					this.state = 86;
+					this.number();
 					}
 					break;
 				}
 				}
 				break;
-			case DutchNumbersParser.HONDERD:
-				this.enterOuterAlt(_localctx, 2);
-				{
-				this.state = 115;
-				this.match(DutchNumbersParser.HONDERD);
-				this.state = 116;
-				this.tens_unit_ordinal();
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
-			}
-		}
-		catch (re) {
-			if (re instanceof RecognitionException) {
-				_localctx.exception = re;
-				this._errHandler.reportError(this, re);
-				this._errHandler.recover(this, re);
-			} else {
-				throw re;
-			}
-		}
-		finally {
-			this.exitRule();
-		}
-		return _localctx;
-	}
-	// @RuleVersion(0)
-	public thousands(): ThousandsContext {
-		let _localctx: ThousandsContext = new ThousandsContext(this._ctx, this.state);
-		this.enterRule(_localctx, 28, DutchNumbersParser.RULE_thousands);
-		let _la: number;
-		try {
-			this.enterOuterAlt(_localctx, 1);
-			{
-			this.state = 122;
-			this._errHandler.sync(this);
-			switch ( this.interpreter.adaptivePredict(this._input, 10, this._ctx) ) {
-			case 1:
-				{
-				this.state = 119;
-				this.ones();
-				}
-				break;
-
-			case 2:
-				{
-				this.state = 120;
-				this.tens();
-				}
-				break;
-
-			case 3:
-				{
-				this.state = 121;
-				this.hundreds();
-				}
-				break;
-			}
-			this.state = 124;
-			this.match(DutchNumbersParser.DUIZEND);
-			this.state = 127;
-			this._errHandler.sync(this);
-			_la = this._input.LA(1);
-			if (_la === DutchNumbersParser.EN) {
-				{
-				this.state = 125;
-				this.match(DutchNumbersParser.EN);
-				this.state = 126;
-				this.number();
-				}
-			}
-
-			}
-		}
-		catch (re) {
-			if (re instanceof RecognitionException) {
-				_localctx.exception = re;
-				this._errHandler.reportError(this, re);
-				this._errHandler.recover(this, re);
-			} else {
-				throw re;
-			}
-		}
-		finally {
-			this.exitRule();
-		}
-		return _localctx;
-	}
-	// @RuleVersion(0)
-	public ordinal_thousands(): Ordinal_thousandsContext {
-		let _localctx: Ordinal_thousandsContext = new Ordinal_thousandsContext(this._ctx, this.state);
-		this.enterRule(_localctx, 30, DutchNumbersParser.RULE_ordinal_thousands);
-		try {
-			this.enterOuterAlt(_localctx, 1);
-			{
-			this.state = 132;
-			this._errHandler.sync(this);
-			switch ( this.interpreter.adaptivePredict(this._input, 12, this._ctx) ) {
-			case 1:
-				{
-				this.state = 129;
-				this.ones();
-				}
-				break;
-
-			case 2:
-				{
-				this.state = 130;
-				this.tens();
-				}
-				break;
-
-			case 3:
-				{
-				this.state = 131;
-				this.hundreds();
-				}
-				break;
-			}
-			this.state = 134;
-			this.match(DutchNumbersParser.DUIZENDSTE);
-			this.state = 137;
-			this._errHandler.sync(this);
-			switch ( this.interpreter.adaptivePredict(this._input, 13, this._ctx) ) {
-			case 1:
-				{
-				this.state = 135;
-				this.match(DutchNumbersParser.EN);
-				this.state = 136;
-				this.ordinal();
-				}
-				break;
-			}
-			}
-		}
-		catch (re) {
-			if (re instanceof RecognitionException) {
-				_localctx.exception = re;
-				this._errHandler.reportError(this, re);
-				this._errHandler.recover(this, re);
-			} else {
-				throw re;
-			}
-		}
-		finally {
-			this.exitRule();
-		}
-		return _localctx;
-	}
-	// @RuleVersion(0)
-	public millions(): MillionsContext {
-		let _localctx: MillionsContext = new MillionsContext(this._ctx, this.state);
-		this.enterRule(_localctx, 32, DutchNumbersParser.RULE_millions);
-		let _la: number;
-		try {
-			this.enterOuterAlt(_localctx, 1);
-			{
-			this.state = 142;
-			this._errHandler.sync(this);
-			switch ( this.interpreter.adaptivePredict(this._input, 14, this._ctx) ) {
-			case 1:
-				{
-				this.state = 139;
-				this.ones();
-				}
-				break;
-
-			case 2:
-				{
-				this.state = 140;
-				this.tens();
-				}
-				break;
-
-			case 3:
-				{
-				this.state = 141;
-				this.hundreds();
-				}
-				break;
-			}
-			this.state = 144;
-			this.match(DutchNumbersParser.MILJOEN);
-			this.state = 147;
-			this._errHandler.sync(this);
-			_la = this._input.LA(1);
-			if (_la === DutchNumbersParser.EN) {
-				{
-				this.state = 145;
-				this.match(DutchNumbersParser.EN);
-				this.state = 146;
-				this.number();
-				}
-			}
-
-			}
-		}
-		catch (re) {
-			if (re instanceof RecognitionException) {
-				_localctx.exception = re;
-				this._errHandler.reportError(this, re);
-				this._errHandler.recover(this, re);
-			} else {
-				throw re;
-			}
-		}
-		finally {
-			this.exitRule();
-		}
-		return _localctx;
-	}
-	// @RuleVersion(0)
-	public ordinal_millions(): Ordinal_millionsContext {
-		let _localctx: Ordinal_millionsContext = new Ordinal_millionsContext(this._ctx, this.state);
-		this.enterRule(_localctx, 34, DutchNumbersParser.RULE_ordinal_millions);
-		try {
-			this.enterOuterAlt(_localctx, 1);
-			{
-			this.state = 152;
-			this._errHandler.sync(this);
-			switch ( this.interpreter.adaptivePredict(this._input, 16, this._ctx) ) {
-			case 1:
-				{
-				this.state = 149;
-				this.ones();
-				}
-				break;
-
-			case 2:
-				{
-				this.state = 150;
-				this.tens();
-				}
-				break;
-
-			case 3:
-				{
-				this.state = 151;
-				this.hundreds();
-				}
-				break;
-			}
-			this.state = 154;
-			this.match(DutchNumbersParser.MILJOENSTE);
-			this.state = 157;
-			this._errHandler.sync(this);
-			switch ( this.interpreter.adaptivePredict(this._input, 17, this._ctx) ) {
-			case 1:
-				{
-				this.state = 155;
-				this.match(DutchNumbersParser.EN);
-				this.state = 156;
-				this.ordinal();
-				}
-				break;
-			}
 			}
 		}
 		catch (re) {
@@ -1228,78 +631,47 @@ export class DutchNumbersParser extends Parser {
 	}
 
 	public static readonly _serializedATN: string =
-		"\x03\uC91D\uCABA\u058D\uAFBA\u4F53\u0607\uEA8B\uC241\x03A\xA2\x04\x02" +
-		"\t\x02\x04\x03\t\x03\x04\x04\t\x04\x04\x05\t\x05\x04\x06\t\x06\x04\x07" +
-		"\t\x07\x04\b\t\b\x04\t\t\t\x04\n\t\n\x04\v\t\v\x04\f\t\f\x04\r\t\r\x04" +
-		"\x0E\t\x0E\x04\x0F\t\x0F\x04\x10\t\x10\x04\x11\t\x11\x04\x12\t\x12\x04" +
-		"\x13\t\x13\x03\x02\x03\x02\x03\x02\x03\x02\x03\x02\x05\x02,\n\x02\x03" +
-		"\x03\x03\x03\x03\x03\x03\x03\x03\x03\x03\x03\x05\x034\n\x03\x03\x04\x03" +
-		"\x04\x03\x04\x03\x04\x03\x04\x03\x04\x03\x04\x03\x04\x03\x04\x05\x04?" +
-		"\n\x04\x03\x05\x03\x05\x03\x06\x03\x06\x03\x07\x03\x07\x03\b\x03\b\x03" +
-		"\b\x05\bJ\n\b\x03\t\x03\t\x03\t\x05\tO\n\t\x03\n\x03\n\x03\v\x03\v\x03" +
-		"\f\x03\f\x03\f\x03\f\x03\r\x03\r\x03\r\x03\r\x03\x0E\x03\x0E\x03\x0E\x03" +
-		"\x0E\x03\x0E\x03\x0E\x03\x0E\x03\x0E\x03\x0E\x03\x0E\x05\x0Eg\n\x0E\x03" +
-		"\x0E\x03\x0E\x05\x0Ek\n\x0E\x03\x0F\x03\x0F\x05\x0Fo\n\x0F\x03\x0F\x03" +
-		"\x0F\x03\x0F\x05\x0Ft\n\x0F\x03\x0F\x03\x0F\x05\x0Fx\n\x0F\x03\x10\x03" +
-		"\x10\x03\x10\x05\x10}\n\x10\x03\x10\x03\x10\x03\x10\x05\x10\x82\n\x10" +
-		"\x03\x11\x03\x11\x03\x11\x05\x11\x87\n\x11\x03\x11\x03\x11\x03\x11\x05" +
-		"\x11\x8C\n\x11\x03\x12\x03\x12\x03\x12\x05\x12\x91\n\x12\x03\x12\x03\x12" +
-		"\x03\x12\x05\x12\x96\n\x12\x03\x13\x03\x13\x03\x13\x05\x13\x9B\n\x13\x03" +
-		"\x13\x03\x13\x03\x13\x05\x13\xA0\n\x13\x03\x13\x02\x02\x02\x14\x02\x02" +
-		"\x04\x02\x06\x02\b\x02\n\x02\f\x02\x0E\x02\x10\x02\x12\x02\x14\x02\x16" +
-		"\x02\x18\x02\x1A\x02\x1C\x02\x1E\x02 \x02\"\x02$\x02\x02\b\x04\x02\x03" +
-		"\x03@@\x04\x02\")++\x03\x02\f\x15\x04\x02\x17\x1F!!\x06\x02\x16\x16  " +
-		"**,0\x03\x0218\x02\xB9\x02+\x03\x02\x02\x02\x043\x03\x02\x02\x02\x06>" +
-		"\x03\x02\x02\x02\b@\x03\x02\x02\x02\nB\x03\x02\x02\x02\fD\x03\x02\x02" +
-		"\x02\x0EI\x03\x02\x02\x02\x10N\x03\x02\x02\x02\x12P\x03\x02\x02\x02\x14" +
-		"R\x03\x02\x02\x02\x16T\x03\x02\x02\x02\x18X\x03\x02\x02\x02\x1Aj\x03\x02" +
-		"\x02\x02\x1Cw\x03\x02\x02\x02\x1E|\x03\x02\x02\x02 \x86\x03\x02\x02\x02" +
-		"\"\x90\x03\x02\x02\x02$\x9A\x03\x02\x02\x02&,\x05\x06\x04\x02\',\x05\x0E" +
-		"\b\x02(,\x05\x1A\x0E\x02),\x05\x1E\x10\x02*,\x05\"\x12\x02+&\x03\x02\x02" +
-		"\x02+\'\x03\x02\x02\x02+(\x03\x02\x02\x02+)\x03\x02\x02\x02+*\x03\x02" +
-		"\x02\x02,\x03\x03\x02\x02\x02-4\x05\b\x05\x02.4\x05\f\x07\x02/4\x05\x10" +
-		"\t\x0204\x05\x1C\x0F\x0214\x05 \x11\x0224\x05$\x13\x023-\x03\x02\x02\x02" +
-		"3.\x03\x02\x02\x023/\x03\x02\x02\x0230\x03\x02\x02\x0231\x03\x02\x02\x02" +
-		"32\x03\x02\x02\x024\x05\x03\x02\x02\x025?\t\x02\x02\x026?\x07\x04\x02" +
-		"\x027?\x07\x05\x02\x028?\x07\x06\x02\x029?\x07\x07\x02\x02:?\x07\b\x02" +
-		"\x02;?\x07\t\x02\x02<?\x07\n\x02\x02=?\x07\v\x02\x02>5\x03\x02\x02\x02" +
-		">6\x03\x02\x02\x02>7\x03\x02\x02\x02>8\x03\x02\x02\x02>9\x03\x02\x02\x02" +
-		">:\x03\x02\x02\x02>;\x03\x02\x02\x02><\x03\x02\x02\x02>=\x03\x02\x02\x02" +
-		"?\x07\x03\x02\x02\x02@A\t\x03\x02\x02A\t\x03\x02\x02\x02BC\t\x04\x02\x02" +
-		"C\v\x03\x02\x02\x02DE\t\x05\x02\x02E\r\x03\x02\x02\x02FJ\x05\n\x06\x02" +
-		"GJ\x05\x12\n\x02HJ\x05\x16\f\x02IF\x03\x02\x02\x02IG\x03\x02\x02\x02I" +
-		"H\x03\x02\x02\x02J\x0F\x03\x02\x02\x02KO\x05\f\x07\x02LO\x05\x14\v\x02" +
-		"MO\x05\x18\r\x02NK\x03\x02\x02\x02NL\x03\x02\x02\x02NM\x03\x02\x02\x02" +
-		"O\x11\x03\x02\x02\x02PQ\t\x06\x02\x02Q\x13\x03\x02\x02\x02RS\t\x07\x02" +
-		"\x02S\x15\x03\x02\x02\x02TU\x05\x06\x04\x02UV\x07?\x02\x02VW\x05\x12\n" +
-		"\x02W\x17\x03\x02\x02\x02XY\x05\x06\x04\x02YZ\x07?\x02\x02Z[\x05\x14\v" +
-		"\x02[\x19\x03\x02\x02\x02\\]\x05\x06\x04\x02]f\x079\x02\x02^g\x07\x03" +
-		"\x02\x02_g\x07@\x02\x02`a\x07?\x02\x02ag\x07\x03\x02\x02bc\x07?\x02\x02" +
-		"cg\x07@\x02\x02de\x07?\x02\x02eg\x05\x02\x02\x02f^\x03\x02\x02\x02f_\x03" +
-		"\x02\x02\x02f`\x03\x02\x02\x02fb\x03\x02\x02\x02fd\x03\x02\x02\x02fg\x03" +
-		"\x02\x02\x02gk\x03\x02\x02\x02hi\x079\x02\x02ik\x05\x12\n\x02j\\\x03\x02" +
-		"\x02\x02jh\x03\x02\x02\x02k\x1B\x03\x02\x02\x02lo\x05\x06\x04\x02mo\x05" +
-		"\x0E\b\x02nl\x03\x02\x02\x02nm\x03\x02\x02\x02op\x03\x02\x02\x02ps\x07" +
-		"<\x02\x02qr\x07?\x02\x02rt\x05\x04\x03\x02sq\x03\x02\x02\x02st\x03\x02" +
-		"\x02\x02tx\x03\x02\x02\x02uv\x079\x02\x02vx\x05\x14\v\x02wn\x03\x02\x02" +
-		"\x02wu\x03\x02\x02\x02x\x1D\x03\x02\x02\x02y}\x05\x06\x04\x02z}\x05\x0E" +
-		"\b\x02{}\x05\x1A\x0E\x02|y\x03\x02\x02\x02|z\x03\x02\x02\x02|{\x03\x02" +
-		"\x02\x02}~\x03\x02\x02\x02~\x81\x07:\x02\x02\x7F\x80\x07?\x02\x02\x80" +
-		"\x82\x05\x02\x02\x02\x81\x7F\x03\x02\x02\x02\x81\x82\x03\x02\x02\x02\x82" +
-		"\x1F\x03\x02\x02\x02\x83\x87\x05\x06\x04\x02\x84\x87\x05\x0E\b\x02\x85" +
-		"\x87\x05\x1A\x0E\x02\x86\x83\x03\x02\x02\x02\x86\x84\x03\x02\x02\x02\x86" +
-		"\x85\x03\x02\x02\x02\x87\x88\x03\x02\x02\x02\x88\x8B\x07=\x02\x02\x89" +
-		"\x8A\x07?\x02\x02\x8A\x8C\x05\x04\x03\x02\x8B\x89\x03\x02\x02\x02\x8B" +
-		"\x8C\x03\x02\x02\x02\x8C!\x03\x02\x02\x02\x8D\x91\x05\x06\x04\x02\x8E" +
-		"\x91\x05\x0E\b\x02\x8F\x91\x05\x1A\x0E\x02\x90\x8D\x03\x02\x02\x02\x90" +
-		"\x8E\x03\x02\x02\x02\x90\x8F\x03\x02\x02\x02\x91\x92\x03\x02\x02\x02\x92" +
-		"\x95\x07;\x02\x02\x93\x94\x07?\x02\x02\x94\x96\x05\x02\x02\x02\x95\x93" +
-		"\x03\x02\x02\x02\x95\x96\x03\x02\x02\x02\x96#\x03\x02\x02\x02\x97\x9B" +
-		"\x05\x06\x04\x02\x98\x9B\x05\x0E\b\x02\x99\x9B\x05\x1A\x0E\x02\x9A\x97" +
-		"\x03\x02\x02\x02\x9A\x98\x03\x02\x02\x02\x9A\x99\x03\x02\x02\x02\x9B\x9C" +
-		"\x03\x02\x02\x02\x9C\x9F\x07>\x02\x02\x9D\x9E\x07?\x02\x02\x9E\xA0\x05" +
-		"\x04\x03\x02\x9F\x9D\x03\x02\x02\x02\x9F\xA0\x03\x02\x02\x02\xA0%\x03" +
-		"\x02\x02\x02\x14+3>INfjnsw|\x81\x86\x8B\x90\x95\x9A\x9F";
+		"\x03\uC91D\uCABA\u058D\uAFBA\u4F53\u0607\uEA8B\uC241\x03%^\x04\x02\t\x02" +
+		"\x04\x03\t\x03\x04\x04\t\x04\x04\x05\t\x05\x04\x06\t\x06\x04\x07\t\x07" +
+		"\x04\b\t\b\x03\x02\x03\x02\x03\x02\x05\x02\x14\n\x02\x03\x03\x03\x03\x03" +
+		"\x03\x05\x03\x19\n\x03\x03\x04\x03\x04\x03\x05\x03\x05\x03\x06\x03\x06" +
+		"\x03\x07\x03\x07\x03\x07\x03\x07\x03\x07\x03\x07\x03\x07\x03\x07\x03\x07" +
+		"\x03\x07\x03\x07\x05\x07,\n\x07\x03\b\x03\b\x03\b\x05\b1\n\b\x03\b\x05" +
+		"\b4\n\b\x03\b\x03\b\x03\b\x05\b9\n\b\x03\b\x05\b<\n\b\x03\b\x03\b\x03" +
+		"\b\x05\bA\n\b\x03\b\x05\bD\n\b\x03\b\x03\b\x03\b\x05\bI\n\b\x03\b\x05" +
+		"\bL\n\b\x03\b\x03\b\x05\bP\n\b\x03\b\x05\bS\n\b\x03\b\x03\b\x05\bW\n\b" +
+		"\x03\b\x05\bZ\n\b\x05\b\\\n\b\x03\b\x02\x02\x02\t\x02\x02\x04\x02\x06" +
+		"\x02\b\x02\n\x02\f\x02\x0E\x02\x02\x05\x03\x02\x03\v\x03\x02\f\x15\x03" +
+		"\x02\x16\x1D\x02n\x02\x13\x03\x02\x02\x02\x04\x18\x03\x02\x02\x02\x06" +
+		"\x1A\x03\x02\x02\x02\b\x1C\x03\x02\x02\x02\n\x1E\x03\x02\x02\x02\f+\x03" +
+		"\x02\x02\x02\x0E[\x03\x02\x02\x02\x10\x14\x05\x0E\b\x02\x11\x14\x05\x04" +
+		"\x03\x02\x12\x14\x05\f\x07\x02\x13\x10\x03\x02\x02\x02\x13\x11\x03\x02" +
+		"\x02\x02\x13\x12\x03\x02\x02\x02\x14\x03\x03\x02\x02\x02\x15\x19\x05\x06" +
+		"\x04\x02\x16\x19\x05\b\x05\x02\x17\x19\x05\n\x06\x02\x18\x15\x03\x02\x02" +
+		"\x02\x18\x16\x03\x02\x02\x02\x18\x17\x03\x02\x02\x02\x19\x05\x03\x02\x02" +
+		"\x02\x1A\x1B\t\x02\x02\x02\x1B\x07\x03\x02\x02\x02\x1C\x1D\t\x03\x02\x02" +
+		"\x1D\t\x03\x02\x02\x02\x1E\x1F\t\x04\x02\x02\x1F\v\x03\x02\x02\x02 !\x05" +
+		"\n\x06\x02!\"\x05\x06\x04\x02\",\x03\x02\x02\x02#$\x05\x06\x04\x02$%\x07" +
+		"$\x02\x02%&\x05\n\x06\x02&,\x03\x02\x02\x02\'(\x07\"\x02\x02(,\x05\n\x06" +
+		"\x02)*\x07#\x02\x02*,\x05\n\x06\x02+ \x03\x02\x02\x02+#\x03\x02\x02\x02" +
+		"+\'\x03\x02\x02\x02+)\x03\x02\x02\x02,\r\x03\x02\x02\x02-.\x05\x06\x04" +
+		"\x02.3\x07\x1E\x02\x02/1\x07$\x02\x020/\x03\x02\x02\x0201\x03\x02\x02" +
+		"\x0212\x03\x02\x02\x0224\x05\x02\x02\x0230\x03\x02\x02\x0234\x03\x02\x02" +
+		"\x024\\\x03\x02\x02\x0256\x05\x06\x04\x026;\x07\x1F\x02\x0279\x07$\x02" +
+		"\x0287\x03\x02\x02\x0289\x03\x02\x02\x029:\x03\x02\x02\x02:<\x05\x02\x02" +
+		"\x02;8\x03\x02\x02\x02;<\x03\x02\x02\x02<\\\x03\x02\x02\x02=>\x05\x06" +
+		"\x04\x02>C\x07 \x02\x02?A\x07$\x02\x02@?\x03\x02\x02\x02@A\x03\x02\x02" +
+		"\x02AB\x03\x02\x02\x02BD\x05\x02\x02\x02C@\x03\x02\x02\x02CD\x03\x02\x02" +
+		"\x02D\\\x03\x02\x02\x02EF\x05\x06\x04\x02FK\x07!\x02\x02GI\x07$\x02\x02" +
+		"HG\x03\x02\x02\x02HI\x03\x02\x02\x02IJ\x03\x02\x02\x02JL\x05\x02\x02\x02" +
+		"KH\x03\x02\x02\x02KL\x03\x02\x02\x02L\\\x03\x02\x02\x02MR\x07\x1E\x02" +
+		"\x02NP\x07$\x02\x02ON\x03\x02\x02\x02OP\x03\x02\x02\x02PQ\x03\x02\x02" +
+		"\x02QS\x05\x02\x02\x02RO\x03\x02\x02\x02RS\x03\x02\x02\x02S\\\x03\x02" +
+		"\x02\x02TY\x07\x1F\x02\x02UW\x07$\x02\x02VU\x03\x02\x02\x02VW\x03\x02" +
+		"\x02\x02WX\x03\x02\x02\x02XZ\x05\x02\x02\x02YV\x03\x02\x02\x02YZ\x03\x02" +
+		"\x02\x02Z\\\x03\x02\x02\x02[-\x03\x02\x02\x02[5\x03\x02\x02\x02[=\x03" +
+		"\x02\x02\x02[E\x03\x02\x02\x02[M\x03\x02\x02\x02[T\x03\x02\x02\x02\\\x0F" +
+		"\x03\x02\x02\x02\x12\x13\x18+038;@CHKORVY[";
 	public static __ATN: ATN;
 	public static get _ATN(): ATN {
 		if (!DutchNumbersParser.__ATN) {
@@ -1312,20 +684,14 @@ export class DutchNumbersParser extends Parser {
 }
 
 export class NumberContext extends ParserRuleContext {
-	public ones(): OnesContext | undefined {
-		return this.tryGetRuleContext(0, OnesContext);
+	public large_number(): Large_numberContext | undefined {
+		return this.tryGetRuleContext(0, Large_numberContext);
 	}
-	public tens(): TensContext | undefined {
-		return this.tryGetRuleContext(0, TensContext);
+	public simple(): SimpleContext | undefined {
+		return this.tryGetRuleContext(0, SimpleContext);
 	}
-	public hundreds(): HundredsContext | undefined {
-		return this.tryGetRuleContext(0, HundredsContext);
-	}
-	public thousands(): ThousandsContext | undefined {
-		return this.tryGetRuleContext(0, ThousandsContext);
-	}
-	public millions(): MillionsContext | undefined {
-		return this.tryGetRuleContext(0, MillionsContext);
+	public compound(): CompoundContext | undefined {
+		return this.tryGetRuleContext(0, CompoundContext);
 	}
 	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
 		super(parent, invokingState);
@@ -1333,19 +699,19 @@ export class NumberContext extends ParserRuleContext {
 	// @Override
 	public get ruleIndex(): number { return DutchNumbersParser.RULE_number; }
 	// @Override
-	public enterRule(listener: DutchNumbersListener): void {
+	public enterRule(listener: DutchNumbersParserListener): void {
 		if (listener.enterNumber) {
 			listener.enterNumber(this);
 		}
 	}
 	// @Override
-	public exitRule(listener: DutchNumbersListener): void {
+	public exitRule(listener: DutchNumbersParserListener): void {
 		if (listener.exitNumber) {
 			listener.exitNumber(this);
 		}
 	}
 	// @Override
-	public accept<Result>(visitor: DutchNumbersVisitor<Result>): Result {
+	public accept<Result>(visitor: DutchNumbersParserVisitor<Result>): Result {
 		if (visitor.visitNumber) {
 			return visitor.visitNumber(this);
 		} else {
@@ -1355,46 +721,37 @@ export class NumberContext extends ParserRuleContext {
 }
 
 
-export class OrdinalContext extends ParserRuleContext {
-	public ordinal_ones(): Ordinal_onesContext | undefined {
-		return this.tryGetRuleContext(0, Ordinal_onesContext);
+export class SimpleContext extends ParserRuleContext {
+	public unit(): UnitContext | undefined {
+		return this.tryGetRuleContext(0, UnitContext);
 	}
-	public ordinal_teens(): Ordinal_teensContext | undefined {
-		return this.tryGetRuleContext(0, Ordinal_teensContext);
+	public teen(): TeenContext | undefined {
+		return this.tryGetRuleContext(0, TeenContext);
 	}
-	public ordinal_tens(): Ordinal_tensContext | undefined {
-		return this.tryGetRuleContext(0, Ordinal_tensContext);
-	}
-	public ordinal_hundreds(): Ordinal_hundredsContext | undefined {
-		return this.tryGetRuleContext(0, Ordinal_hundredsContext);
-	}
-	public ordinal_thousands(): Ordinal_thousandsContext | undefined {
-		return this.tryGetRuleContext(0, Ordinal_thousandsContext);
-	}
-	public ordinal_millions(): Ordinal_millionsContext | undefined {
-		return this.tryGetRuleContext(0, Ordinal_millionsContext);
+	public tens(): TensContext | undefined {
+		return this.tryGetRuleContext(0, TensContext);
 	}
 	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return DutchNumbersParser.RULE_ordinal; }
+	public get ruleIndex(): number { return DutchNumbersParser.RULE_simple; }
 	// @Override
-	public enterRule(listener: DutchNumbersListener): void {
-		if (listener.enterOrdinal) {
-			listener.enterOrdinal(this);
+	public enterRule(listener: DutchNumbersParserListener): void {
+		if (listener.enterSimple) {
+			listener.enterSimple(this);
 		}
 	}
 	// @Override
-	public exitRule(listener: DutchNumbersListener): void {
-		if (listener.exitOrdinal) {
-			listener.exitOrdinal(this);
+	public exitRule(listener: DutchNumbersParserListener): void {
+		if (listener.exitSimple) {
+			listener.exitSimple(this);
 		}
 	}
 	// @Override
-	public accept<Result>(visitor: DutchNumbersVisitor<Result>): Result {
-		if (visitor.visitOrdinal) {
-			return visitor.visitOrdinal(this);
+	public accept<Result>(visitor: DutchNumbersParserVisitor<Result>): Result {
+		if (visitor.visitSimple) {
+			return visitor.visitSimple(this);
 		} else {
 			return visitor.visitChildren(this);
 		}
@@ -1402,38 +759,37 @@ export class OrdinalContext extends ParserRuleContext {
 }
 
 
-export class OnesContext extends ParserRuleContext {
-	public EEN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.EEN, 0); }
-	public EEN_VARIANT(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.EEN_VARIANT, 0); }
-	public TWEE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.TWEE, 0); }
-	public DRIE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.DRIE, 0); }
-	public VIER(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.VIER, 0); }
-	public VIJF(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.VIJF, 0); }
-	public ZES(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.ZES, 0); }
-	public ZEVEN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.ZEVEN, 0); }
-	public ACHT(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.ACHT, 0); }
-	public NEGEN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.NEGEN, 0); }
+export class UnitContext extends ParserRuleContext {
+	public ONE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.ONE, 0); }
+	public TWO(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.TWO, 0); }
+	public THREE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.THREE, 0); }
+	public FOUR(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.FOUR, 0); }
+	public FIVE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.FIVE, 0); }
+	public SIX(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.SIX, 0); }
+	public SEVEN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.SEVEN, 0); }
+	public EIGHT(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.EIGHT, 0); }
+	public NINE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.NINE, 0); }
 	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return DutchNumbersParser.RULE_ones; }
+	public get ruleIndex(): number { return DutchNumbersParser.RULE_unit; }
 	// @Override
-	public enterRule(listener: DutchNumbersListener): void {
-		if (listener.enterOnes) {
-			listener.enterOnes(this);
+	public enterRule(listener: DutchNumbersParserListener): void {
+		if (listener.enterUnit) {
+			listener.enterUnit(this);
 		}
 	}
 	// @Override
-	public exitRule(listener: DutchNumbersListener): void {
-		if (listener.exitOnes) {
-			listener.exitOnes(this);
+	public exitRule(listener: DutchNumbersParserListener): void {
+		if (listener.exitUnit) {
+			listener.exitUnit(this);
 		}
 	}
 	// @Override
-	public accept<Result>(visitor: DutchNumbersVisitor<Result>): Result {
-		if (visitor.visitOnes) {
-			return visitor.visitOnes(this);
+	public accept<Result>(visitor: DutchNumbersParserVisitor<Result>): Result {
+		if (visitor.visitUnit) {
+			return visitor.visitUnit(this);
 		} else {
 			return visitor.visitChildren(this);
 		}
@@ -1441,115 +797,38 @@ export class OnesContext extends ParserRuleContext {
 }
 
 
-export class Ordinal_onesContext extends ParserRuleContext {
-	public EERSTE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.EERSTE, 0); }
-	public TWEEDE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.TWEEDE, 0); }
-	public DERDE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.DERDE, 0); }
-	public VIERDE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.VIERDE, 0); }
-	public VIJFDE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.VIJFDE, 0); }
-	public ZESDE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.ZESDE, 0); }
-	public ZEVENDE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.ZEVENDE, 0); }
-	public ACHTSTE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.ACHTSTE, 0); }
-	public NEGENTSTE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.NEGENTSTE, 0); }
+export class TeenContext extends ParserRuleContext {
+	public TEN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.TEN, 0); }
+	public ELEVEN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.ELEVEN, 0); }
+	public TWELVE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.TWELVE, 0); }
+	public THIRTEEN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.THIRTEEN, 0); }
+	public FOURTEEN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.FOURTEEN, 0); }
+	public FIFTEEN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.FIFTEEN, 0); }
+	public SIXTEEN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.SIXTEEN, 0); }
+	public SEVENTEEN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.SEVENTEEN, 0); }
+	public EIGHTEEN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.EIGHTEEN, 0); }
+	public NINETEEN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.NINETEEN, 0); }
 	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return DutchNumbersParser.RULE_ordinal_ones; }
+	public get ruleIndex(): number { return DutchNumbersParser.RULE_teen; }
 	// @Override
-	public enterRule(listener: DutchNumbersListener): void {
-		if (listener.enterOrdinal_ones) {
-			listener.enterOrdinal_ones(this);
+	public enterRule(listener: DutchNumbersParserListener): void {
+		if (listener.enterTeen) {
+			listener.enterTeen(this);
 		}
 	}
 	// @Override
-	public exitRule(listener: DutchNumbersListener): void {
-		if (listener.exitOrdinal_ones) {
-			listener.exitOrdinal_ones(this);
+	public exitRule(listener: DutchNumbersParserListener): void {
+		if (listener.exitTeen) {
+			listener.exitTeen(this);
 		}
 	}
 	// @Override
-	public accept<Result>(visitor: DutchNumbersVisitor<Result>): Result {
-		if (visitor.visitOrdinal_ones) {
-			return visitor.visitOrdinal_ones(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
-}
-
-
-export class TeensContext extends ParserRuleContext {
-	public TIEN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.TIEN, 0); }
-	public ELF(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.ELF, 0); }
-	public TWAALF(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.TWAALF, 0); }
-	public DERTIEN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.DERTIEN, 0); }
-	public VEERTIEN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.VEERTIEN, 0); }
-	public VIJFTIEN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.VIJFTIEN, 0); }
-	public ZESTIEN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.ZESTIEN, 0); }
-	public ZEVENTIEN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.ZEVENTIEN, 0); }
-	public ACHTTIEN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.ACHTTIEN, 0); }
-	public NEGENTIEN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.NEGENTIEN, 0); }
-	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-		super(parent, invokingState);
-	}
-	// @Override
-	public get ruleIndex(): number { return DutchNumbersParser.RULE_teens; }
-	// @Override
-	public enterRule(listener: DutchNumbersListener): void {
-		if (listener.enterTeens) {
-			listener.enterTeens(this);
-		}
-	}
-	// @Override
-	public exitRule(listener: DutchNumbersListener): void {
-		if (listener.exitTeens) {
-			listener.exitTeens(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DutchNumbersVisitor<Result>): Result {
-		if (visitor.visitTeens) {
-			return visitor.visitTeens(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
-}
-
-
-export class Ordinal_teensContext extends ParserRuleContext {
-	public TIENDE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.TIENDE, 0); }
-	public ELFDE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.ELFDE, 0); }
-	public TWAALFDE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.TWAALFDE, 0); }
-	public DERTIENDE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.DERTIENDE, 0); }
-	public VEERTIENDE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.VEERTIENDE, 0); }
-	public VIJFTIENDE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.VIJFTIENDE, 0); }
-	public ZESTIENDE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.ZESTIENDE, 0); }
-	public ZEVENTIENDE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.ZEVENTIENDE, 0); }
-	public ACHTTIENDE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.ACHTTIENDE, 0); }
-	public NEGENTIENDE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.NEGENTIENDE, 0); }
-	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-		super(parent, invokingState);
-	}
-	// @Override
-	public get ruleIndex(): number { return DutchNumbersParser.RULE_ordinal_teens; }
-	// @Override
-	public enterRule(listener: DutchNumbersListener): void {
-		if (listener.enterOrdinal_teens) {
-			listener.enterOrdinal_teens(this);
-		}
-	}
-	// @Override
-	public exitRule(listener: DutchNumbersListener): void {
-		if (listener.exitOrdinal_teens) {
-			listener.exitOrdinal_teens(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DutchNumbersVisitor<Result>): Result {
-		if (visitor.visitOrdinal_teens) {
-			return visitor.visitOrdinal_teens(this);
+	public accept<Result>(visitor: DutchNumbersParserVisitor<Result>): Result {
+		if (visitor.visitTeen) {
+			return visitor.visitTeen(this);
 		} else {
 			return visitor.visitChildren(this);
 		}
@@ -1558,34 +837,33 @@ export class Ordinal_teensContext extends ParserRuleContext {
 
 
 export class TensContext extends ParserRuleContext {
-	public teens(): TeensContext | undefined {
-		return this.tryGetRuleContext(0, TeensContext);
-	}
-	public tens_unit(): Tens_unitContext | undefined {
-		return this.tryGetRuleContext(0, Tens_unitContext);
-	}
-	public tens_with_ones(): Tens_with_onesContext | undefined {
-		return this.tryGetRuleContext(0, Tens_with_onesContext);
-	}
+	public TWENTY(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.TWENTY, 0); }
+	public THIRTY(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.THIRTY, 0); }
+	public FORTY(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.FORTY, 0); }
+	public FIFTY(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.FIFTY, 0); }
+	public SIXTY(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.SIXTY, 0); }
+	public SEVENTY(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.SEVENTY, 0); }
+	public EIGHTY(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.EIGHTY, 0); }
+	public NINETY(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.NINETY, 0); }
 	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
 		super(parent, invokingState);
 	}
 	// @Override
 	public get ruleIndex(): number { return DutchNumbersParser.RULE_tens; }
 	// @Override
-	public enterRule(listener: DutchNumbersListener): void {
+	public enterRule(listener: DutchNumbersParserListener): void {
 		if (listener.enterTens) {
 			listener.enterTens(this);
 		}
 	}
 	// @Override
-	public exitRule(listener: DutchNumbersListener): void {
+	public exitRule(listener: DutchNumbersParserListener): void {
 		if (listener.exitTens) {
 			listener.exitTens(this);
 		}
 	}
 	// @Override
-	public accept<Result>(visitor: DutchNumbersVisitor<Result>): Result {
+	public accept<Result>(visitor: DutchNumbersParserVisitor<Result>): Result {
 		if (visitor.visitTens) {
 			return visitor.visitTens(this);
 		} else {
@@ -1595,441 +873,77 @@ export class TensContext extends ParserRuleContext {
 }
 
 
-export class Ordinal_tensContext extends ParserRuleContext {
-	public ordinal_teens(): Ordinal_teensContext | undefined {
-		return this.tryGetRuleContext(0, Ordinal_teensContext);
+export class CompoundContext extends ParserRuleContext {
+	public tens(): TensContext {
+		return this.getRuleContext(0, TensContext);
 	}
-	public tens_unit_ordinal(): Tens_unit_ordinalContext | undefined {
-		return this.tryGetRuleContext(0, Tens_unit_ordinalContext);
+	public unit(): UnitContext | undefined {
+		return this.tryGetRuleContext(0, UnitContext);
 	}
-	public ordinal_tens_with_ones(): Ordinal_tens_with_onesContext | undefined {
-		return this.tryGetRuleContext(0, Ordinal_tens_with_onesContext);
-	}
-	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-		super(parent, invokingState);
-	}
-	// @Override
-	public get ruleIndex(): number { return DutchNumbersParser.RULE_ordinal_tens; }
-	// @Override
-	public enterRule(listener: DutchNumbersListener): void {
-		if (listener.enterOrdinal_tens) {
-			listener.enterOrdinal_tens(this);
-		}
-	}
-	// @Override
-	public exitRule(listener: DutchNumbersListener): void {
-		if (listener.exitOrdinal_tens) {
-			listener.exitOrdinal_tens(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DutchNumbersVisitor<Result>): Result {
-		if (visitor.visitOrdinal_tens) {
-			return visitor.visitOrdinal_tens(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
-}
-
-
-export class Tens_unitContext extends ParserRuleContext {
-	public TWINTIG(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.TWINTIG, 0); }
-	public DERTIG(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.DERTIG, 0); }
-	public VEERTIG(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.VEERTIG, 0); }
-	public VIJFTIG(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.VIJFTIG, 0); }
-	public ZESTIG(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.ZESTIG, 0); }
-	public ZEVENTIG(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.ZEVENTIG, 0); }
-	public TACHTIG(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.TACHTIG, 0); }
-	public NEGENTIG(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.NEGENTIG, 0); }
-	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-		super(parent, invokingState);
-	}
-	// @Override
-	public get ruleIndex(): number { return DutchNumbersParser.RULE_tens_unit; }
-	// @Override
-	public enterRule(listener: DutchNumbersListener): void {
-		if (listener.enterTens_unit) {
-			listener.enterTens_unit(this);
-		}
-	}
-	// @Override
-	public exitRule(listener: DutchNumbersListener): void {
-		if (listener.exitTens_unit) {
-			listener.exitTens_unit(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DutchNumbersVisitor<Result>): Result {
-		if (visitor.visitTens_unit) {
-			return visitor.visitTens_unit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
-}
-
-
-export class Tens_unit_ordinalContext extends ParserRuleContext {
-	public TWINTIGSTE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.TWINTIGSTE, 0); }
-	public DERTIGSTE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.DERTIGSTE, 0); }
-	public VEERTIGSTE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.VEERTIGSTE, 0); }
-	public VIJFTIGSTE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.VIJFTIGSTE, 0); }
-	public ZESTIGSTE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.ZESTIGSTE, 0); }
-	public ZEVENTIGSTE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.ZEVENTIGSTE, 0); }
-	public TACHTIGSTE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.TACHTIGSTE, 0); }
-	public NEGENTIGSTE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.NEGENTIGSTE, 0); }
-	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-		super(parent, invokingState);
-	}
-	// @Override
-	public get ruleIndex(): number { return DutchNumbersParser.RULE_tens_unit_ordinal; }
-	// @Override
-	public enterRule(listener: DutchNumbersListener): void {
-		if (listener.enterTens_unit_ordinal) {
-			listener.enterTens_unit_ordinal(this);
-		}
-	}
-	// @Override
-	public exitRule(listener: DutchNumbersListener): void {
-		if (listener.exitTens_unit_ordinal) {
-			listener.exitTens_unit_ordinal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DutchNumbersVisitor<Result>): Result {
-		if (visitor.visitTens_unit_ordinal) {
-			return visitor.visitTens_unit_ordinal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
-}
-
-
-export class Tens_with_onesContext extends ParserRuleContext {
-	public ones(): OnesContext {
-		return this.getRuleContext(0, OnesContext);
-	}
-	public EN(): TerminalNode { return this.getToken(DutchNumbersParser.EN, 0); }
-	public tens_unit(): Tens_unitContext {
-		return this.getRuleContext(0, Tens_unitContext);
-	}
-	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-		super(parent, invokingState);
-	}
-	// @Override
-	public get ruleIndex(): number { return DutchNumbersParser.RULE_tens_with_ones; }
-	// @Override
-	public enterRule(listener: DutchNumbersListener): void {
-		if (listener.enterTens_with_ones) {
-			listener.enterTens_with_ones(this);
-		}
-	}
-	// @Override
-	public exitRule(listener: DutchNumbersListener): void {
-		if (listener.exitTens_with_ones) {
-			listener.exitTens_with_ones(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DutchNumbersVisitor<Result>): Result {
-		if (visitor.visitTens_with_ones) {
-			return visitor.visitTens_with_ones(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
-}
-
-
-export class Ordinal_tens_with_onesContext extends ParserRuleContext {
-	public ones(): OnesContext {
-		return this.getRuleContext(0, OnesContext);
-	}
-	public EN(): TerminalNode { return this.getToken(DutchNumbersParser.EN, 0); }
-	public tens_unit_ordinal(): Tens_unit_ordinalContext {
-		return this.getRuleContext(0, Tens_unit_ordinalContext);
-	}
-	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-		super(parent, invokingState);
-	}
-	// @Override
-	public get ruleIndex(): number { return DutchNumbersParser.RULE_ordinal_tens_with_ones; }
-	// @Override
-	public enterRule(listener: DutchNumbersListener): void {
-		if (listener.enterOrdinal_tens_with_ones) {
-			listener.enterOrdinal_tens_with_ones(this);
-		}
-	}
-	// @Override
-	public exitRule(listener: DutchNumbersListener): void {
-		if (listener.exitOrdinal_tens_with_ones) {
-			listener.exitOrdinal_tens_with_ones(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DutchNumbersVisitor<Result>): Result {
-		if (visitor.visitOrdinal_tens_with_ones) {
-			return visitor.visitOrdinal_tens_with_ones(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
-}
-
-
-export class HundredsContext extends ParserRuleContext {
-	public ones(): OnesContext | undefined {
-		return this.tryGetRuleContext(0, OnesContext);
-	}
-	public HONDERD(): TerminalNode { return this.getToken(DutchNumbersParser.HONDERD, 0); }
-	public EEN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.EEN, 0); }
-	public EEN_VARIANT(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.EEN_VARIANT, 0); }
 	public EN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.EN, 0); }
+	public TWO_PLURAL(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.TWO_PLURAL, 0); }
+	public THREE_PLURAL(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.THREE_PLURAL, 0); }
+	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+		super(parent, invokingState);
+	}
+	// @Override
+	public get ruleIndex(): number { return DutchNumbersParser.RULE_compound; }
+	// @Override
+	public enterRule(listener: DutchNumbersParserListener): void {
+		if (listener.enterCompound) {
+			listener.enterCompound(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: DutchNumbersParserListener): void {
+		if (listener.exitCompound) {
+			listener.exitCompound(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: DutchNumbersParserVisitor<Result>): Result {
+		if (visitor.visitCompound) {
+			return visitor.visitCompound(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
+}
+
+
+export class Large_numberContext extends ParserRuleContext {
+	public unit(): UnitContext | undefined {
+		return this.tryGetRuleContext(0, UnitContext);
+	}
+	public HUNDRED(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.HUNDRED, 0); }
 	public number(): NumberContext | undefined {
 		return this.tryGetRuleContext(0, NumberContext);
 	}
-	public tens_unit(): Tens_unitContext | undefined {
-		return this.tryGetRuleContext(0, Tens_unitContext);
-	}
-	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-		super(parent, invokingState);
-	}
-	// @Override
-	public get ruleIndex(): number { return DutchNumbersParser.RULE_hundreds; }
-	// @Override
-	public enterRule(listener: DutchNumbersListener): void {
-		if (listener.enterHundreds) {
-			listener.enterHundreds(this);
-		}
-	}
-	// @Override
-	public exitRule(listener: DutchNumbersListener): void {
-		if (listener.exitHundreds) {
-			listener.exitHundreds(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DutchNumbersVisitor<Result>): Result {
-		if (visitor.visitHundreds) {
-			return visitor.visitHundreds(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
-}
-
-
-export class Ordinal_hundredsContext extends ParserRuleContext {
-	public HONDERDSTE(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.HONDERDSTE, 0); }
-	public ones(): OnesContext | undefined {
-		return this.tryGetRuleContext(0, OnesContext);
-	}
-	public tens(): TensContext | undefined {
-		return this.tryGetRuleContext(0, TensContext);
-	}
 	public EN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.EN, 0); }
-	public ordinal(): OrdinalContext | undefined {
-		return this.tryGetRuleContext(0, OrdinalContext);
-	}
-	public HONDERD(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.HONDERD, 0); }
-	public tens_unit_ordinal(): Tens_unit_ordinalContext | undefined {
-		return this.tryGetRuleContext(0, Tens_unit_ordinalContext);
-	}
+	public THOUSAND(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.THOUSAND, 0); }
+	public MILLION(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.MILLION, 0); }
+	public BILLION(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.BILLION, 0); }
 	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return DutchNumbersParser.RULE_ordinal_hundreds; }
+	public get ruleIndex(): number { return DutchNumbersParser.RULE_large_number; }
 	// @Override
-	public enterRule(listener: DutchNumbersListener): void {
-		if (listener.enterOrdinal_hundreds) {
-			listener.enterOrdinal_hundreds(this);
+	public enterRule(listener: DutchNumbersParserListener): void {
+		if (listener.enterLarge_number) {
+			listener.enterLarge_number(this);
 		}
 	}
 	// @Override
-	public exitRule(listener: DutchNumbersListener): void {
-		if (listener.exitOrdinal_hundreds) {
-			listener.exitOrdinal_hundreds(this);
+	public exitRule(listener: DutchNumbersParserListener): void {
+		if (listener.exitLarge_number) {
+			listener.exitLarge_number(this);
 		}
 	}
 	// @Override
-	public accept<Result>(visitor: DutchNumbersVisitor<Result>): Result {
-		if (visitor.visitOrdinal_hundreds) {
-			return visitor.visitOrdinal_hundreds(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
-}
-
-
-export class ThousandsContext extends ParserRuleContext {
-	public DUIZEND(): TerminalNode { return this.getToken(DutchNumbersParser.DUIZEND, 0); }
-	public ones(): OnesContext | undefined {
-		return this.tryGetRuleContext(0, OnesContext);
-	}
-	public tens(): TensContext | undefined {
-		return this.tryGetRuleContext(0, TensContext);
-	}
-	public hundreds(): HundredsContext | undefined {
-		return this.tryGetRuleContext(0, HundredsContext);
-	}
-	public EN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.EN, 0); }
-	public number(): NumberContext | undefined {
-		return this.tryGetRuleContext(0, NumberContext);
-	}
-	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-		super(parent, invokingState);
-	}
-	// @Override
-	public get ruleIndex(): number { return DutchNumbersParser.RULE_thousands; }
-	// @Override
-	public enterRule(listener: DutchNumbersListener): void {
-		if (listener.enterThousands) {
-			listener.enterThousands(this);
-		}
-	}
-	// @Override
-	public exitRule(listener: DutchNumbersListener): void {
-		if (listener.exitThousands) {
-			listener.exitThousands(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DutchNumbersVisitor<Result>): Result {
-		if (visitor.visitThousands) {
-			return visitor.visitThousands(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
-}
-
-
-export class Ordinal_thousandsContext extends ParserRuleContext {
-	public DUIZENDSTE(): TerminalNode { return this.getToken(DutchNumbersParser.DUIZENDSTE, 0); }
-	public ones(): OnesContext | undefined {
-		return this.tryGetRuleContext(0, OnesContext);
-	}
-	public tens(): TensContext | undefined {
-		return this.tryGetRuleContext(0, TensContext);
-	}
-	public hundreds(): HundredsContext | undefined {
-		return this.tryGetRuleContext(0, HundredsContext);
-	}
-	public EN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.EN, 0); }
-	public ordinal(): OrdinalContext | undefined {
-		return this.tryGetRuleContext(0, OrdinalContext);
-	}
-	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-		super(parent, invokingState);
-	}
-	// @Override
-	public get ruleIndex(): number { return DutchNumbersParser.RULE_ordinal_thousands; }
-	// @Override
-	public enterRule(listener: DutchNumbersListener): void {
-		if (listener.enterOrdinal_thousands) {
-			listener.enterOrdinal_thousands(this);
-		}
-	}
-	// @Override
-	public exitRule(listener: DutchNumbersListener): void {
-		if (listener.exitOrdinal_thousands) {
-			listener.exitOrdinal_thousands(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DutchNumbersVisitor<Result>): Result {
-		if (visitor.visitOrdinal_thousands) {
-			return visitor.visitOrdinal_thousands(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
-}
-
-
-export class MillionsContext extends ParserRuleContext {
-	public MILJOEN(): TerminalNode { return this.getToken(DutchNumbersParser.MILJOEN, 0); }
-	public ones(): OnesContext | undefined {
-		return this.tryGetRuleContext(0, OnesContext);
-	}
-	public tens(): TensContext | undefined {
-		return this.tryGetRuleContext(0, TensContext);
-	}
-	public hundreds(): HundredsContext | undefined {
-		return this.tryGetRuleContext(0, HundredsContext);
-	}
-	public EN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.EN, 0); }
-	public number(): NumberContext | undefined {
-		return this.tryGetRuleContext(0, NumberContext);
-	}
-	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-		super(parent, invokingState);
-	}
-	// @Override
-	public get ruleIndex(): number { return DutchNumbersParser.RULE_millions; }
-	// @Override
-	public enterRule(listener: DutchNumbersListener): void {
-		if (listener.enterMillions) {
-			listener.enterMillions(this);
-		}
-	}
-	// @Override
-	public exitRule(listener: DutchNumbersListener): void {
-		if (listener.exitMillions) {
-			listener.exitMillions(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DutchNumbersVisitor<Result>): Result {
-		if (visitor.visitMillions) {
-			return visitor.visitMillions(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
-}
-
-
-export class Ordinal_millionsContext extends ParserRuleContext {
-	public MILJOENSTE(): TerminalNode { return this.getToken(DutchNumbersParser.MILJOENSTE, 0); }
-	public ones(): OnesContext | undefined {
-		return this.tryGetRuleContext(0, OnesContext);
-	}
-	public tens(): TensContext | undefined {
-		return this.tryGetRuleContext(0, TensContext);
-	}
-	public hundreds(): HundredsContext | undefined {
-		return this.tryGetRuleContext(0, HundredsContext);
-	}
-	public EN(): TerminalNode | undefined { return this.tryGetToken(DutchNumbersParser.EN, 0); }
-	public ordinal(): OrdinalContext | undefined {
-		return this.tryGetRuleContext(0, OrdinalContext);
-	}
-	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-		super(parent, invokingState);
-	}
-	// @Override
-	public get ruleIndex(): number { return DutchNumbersParser.RULE_ordinal_millions; }
-	// @Override
-	public enterRule(listener: DutchNumbersListener): void {
-		if (listener.enterOrdinal_millions) {
-			listener.enterOrdinal_millions(this);
-		}
-	}
-	// @Override
-	public exitRule(listener: DutchNumbersListener): void {
-		if (listener.exitOrdinal_millions) {
-			listener.exitOrdinal_millions(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DutchNumbersVisitor<Result>): Result {
-		if (visitor.visitOrdinal_millions) {
-			return visitor.visitOrdinal_millions(this);
+	public accept<Result>(visitor: DutchNumbersParserVisitor<Result>): Result {
+		if (visitor.visitLarge_number) {
+			return visitor.visitLarge_number(this);
 		} else {
 			return visitor.visitChildren(this);
 		}
