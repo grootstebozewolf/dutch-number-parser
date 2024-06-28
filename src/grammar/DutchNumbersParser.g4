@@ -3,18 +3,19 @@ parser grammar DutchNumbersParser;
 options { tokenVocab=DutchNumbersLexer; }
 
 number
-    : simple
-    | compound
-    | large_number
+    : whole_number
     ;
 
-simple
-    : unit
-    | teen
+whole_number
+    : ones
     | tens
+    | hundreds
+    | thousands
+    | millions
+    | billions
     ;
 
-unit
+ones
     : ONE
     | TWO
     | THREE
@@ -26,8 +27,11 @@ unit
     | NINE
     ;
 
-teen
-    : TEN
+tens
+    : TWO_PLURAL ones
+    | THREE_PLURAL ones
+    | (ones EN)? ( TWENTY | THIRTY | FORTY | FIFTY | SIXTY | SEVENTY | EIGHTY | NINETY) 
+    | TEN
     | ELEVEN
     | TWELVE
     | THIRTEEN
@@ -39,27 +43,22 @@ teen
     | NINETEEN
     ;
 
-tens
-    : TWENTY
-    | THIRTY
-    | FORTY
-    | FIFTY
-    | SIXTY
-    | SEVENTY
-    | EIGHTY
-    | NINETY
+hundreds
+    : HUNDRED
+    | ones HUNDRED (EN? tens)?
     ;
 
-compound
-    : tens unit
-    | unit EN tens
-    | TWO_PLURAL tens
-    | THREE_PLURAL tens
+thousands
+    : THOUSAND
+    | ones THOUSAND (EN? ones)?
+    | ones THOUSAND (EN? hundreds)?
+    | ones THOUSAND (EN? tens)?
     ;
 
-large_number
-    : unit? HUNDRED (EN number)?
-    | unit? THOUSAND (number)?
-    | unit MILLION (number)?
-    | unit BILLION (number)?
+millions
+    : ones MILLION (EN? thousands?)?
+    ;
+
+billions
+    : ones BILLION (EN? millions?)?
     ;

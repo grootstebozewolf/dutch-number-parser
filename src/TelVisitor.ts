@@ -1,9 +1,43 @@
 import { ParseTree, RuleNode, TerminalNode, ErrorNode } from 'antlr4ts/tree';
 import { DutchNumbersParserVisitor } from './grammar/generated/DutchNumbersParserVisitor';
-import { NumberContext, SimpleContext, UnitContext, TeenContext, TensContext, CompoundContext, Large_numberContext } from './grammar/generated/DutchNumbersParser';
+import { NumberContext, Whole_numberContext, OnesContext, TensContext, HundredsContext, ThousandsContext, MillionsContext, BillionsContext } from './grammar/generated/DutchNumbersParser';
 
-export class TelVisitor implements DutchNumbersParserVisitor<number> {
-    visit(tree: ParseTree): number {
+abstract class ExpressionNode {
+    abstract evaluate(): number;
+}
+
+class ValueNode extends ExpressionNode {
+    constructor(private value: number) {
+        super();
+    }
+
+    evaluate(): number {
+        return this.value;
+    }
+}
+
+class AddNode extends ExpressionNode {
+    constructor(private left: ExpressionNode, private right: ExpressionNode) {
+        super();
+    }
+
+    evaluate(): number {
+        return this.left.evaluate() + this.right.evaluate();
+    }
+}
+
+class MultiplyNode extends ExpressionNode {
+    constructor(private left: ExpressionNode, private right: ExpressionNode) {
+        super();
+    }
+
+    evaluate(): number {
+        return this.left.evaluate() * this.right.evaluate();
+    }
+}
+
+export class TelVisitor implements DutchNumbersParserVisitor<ExpressionNode> {
+    visit(tree: ParseTree): ExpressionNode {
         if (tree instanceof NumberContext) {
             return this.visitNumber(tree);
         } else {
@@ -11,126 +45,133 @@ export class TelVisitor implements DutchNumbersParserVisitor<number> {
         }
     }
 
-    visitNumber(ctx: NumberContext): number {
-        if (ctx.simple()) {
-            return this.visitSimple(ctx.simple()!);
-        } else if (ctx.compound()) {
-            return this.visitCompound(ctx.compound()!);
-        } else if (ctx.large_number()) {
-            return this.visitLarge_number(ctx.large_number()!);
+    visitNumber(ctx: NumberContext): ExpressionNode {
+        let result: ExpressionNode = new ValueNode(0);
+
+        if (ctx.whole_number()) {
+            result = new AddNode(result, this.visitWhole_number(ctx.whole_number()));
         }
-        throw new Error('Invalid number context');
+
+        return result;
     }
 
-    visitSimple(ctx: SimpleContext): number {
-        if (ctx.unit()) {
-            return this.visitUnit(ctx.unit()!);
-        } else if (ctx.teen()) {
-            return this.visitTeen(ctx.teen()!);
+    visitWhole_number(ctx: Whole_numberContext): ExpressionNode {
+        if (ctx.ones()) {
+            return this.visitOnes(ctx.ones()!);  // Use the first element in the ones array
         } else if (ctx.tens()) {
             return this.visitTens(ctx.tens()!);
+        } else if (ctx.hundreds()) {
+            return this.visitHundreds(ctx.hundreds()!);
+        } else if (ctx.thousands()) {
+            return this.visitThousands(ctx.thousands()!);
+        } else if (ctx.millions()) {
+            return this.visitMillions(ctx.millions()!);
+        } else if (ctx.billions()) {
+            return this.visitBillions(ctx.billions()!);
+        } else {
+            throw new Error('Invalid whole_number context');
         }
-        throw new Error('Invalid simple context');
     }
 
-    visitUnit(ctx: UnitContext): number {
-        if (ctx.ONE()) return 1;
-        if (ctx.TWO()) return 2;
-        if (ctx.THREE()) return 3;
-        if (ctx.FOUR()) return 4;
-        if (ctx.FIVE()) return 5;
-        if (ctx.SIX()) return 6;
-        if (ctx.SEVEN()) return 7;
-        if (ctx.EIGHT()) return 8;
-        if (ctx.NINE()) return 9;
-        throw new Error('Invalid unit context');
+    visitOnes(ctx: OnesContext): ExpressionNode {
+        if (ctx.ONE()) return new ValueNode(1);
+        if (ctx.TWO()) return new ValueNode(2);
+        if (ctx.THREE()) return new ValueNode(3);
+        if (ctx.FOUR()) return new ValueNode(4);
+        if (ctx.FIVE()) return new ValueNode(5);
+        if (ctx.SIX()) return new ValueNode(6);
+        if (ctx.SEVEN()) return new ValueNode(7);
+        if (ctx.EIGHT()) return new ValueNode(8);
+        if (ctx.NINE()) return new ValueNode(9);
+        throw new Error('Invalid ones context');
     }
 
-    visitTeen(ctx: TeenContext): number {
-        if (ctx.TEN()) return 10;
-        if (ctx.ELEVEN()) return 11;
-        if (ctx.TWELVE()) return 12;
-        if (ctx.THIRTEEN()) return 13;
-        if (ctx.FOURTEEN()) return 14;
-        if (ctx.FIFTEEN()) return 15;
-        if (ctx.SIXTEEN()) return 16;
-        if (ctx.SEVENTEEN()) return 17;
-        if (ctx.EIGHTEEN()) return 18;
-        if (ctx.NINETEEN()) return 19;
-        throw new Error('Invalid teen context');
-    }
-
-    visitTens(ctx: TensContext): number {
-        if (ctx.TWENTY()) return 20;
-        if (ctx.THIRTY()) return 30;
-        if (ctx.FORTY()) return 40;
-        if (ctx.FIFTY()) return 50;
-        if (ctx.SIXTY()) return 60;
-        if (ctx.SEVENTY()) return 70;
-        if (ctx.EIGHTY()) return 80;
-        if (ctx.NINETY()) return 90;
+    visitTens(ctx: TensContext): ExpressionNode {
+        if (ctx.TWENTY()) return new ValueNode(20);
+        if (ctx.THIRTY()) return new ValueNode(30);
+        if (ctx.FORTY()) return new ValueNode(40);
+        if (ctx.FIFTY()) return new ValueNode(50);
+        if (ctx.SIXTY()) return new ValueNode(60);
+        if (ctx.SEVENTY()) return new ValueNode(70);
+        if (ctx.EIGHTY()) return new ValueNode(80);
+        if (ctx.NINETY()) return new ValueNode(90);
+        if (ctx.TEN()) return new ValueNode(10);
+        if (ctx.ELEVEN()) return new ValueNode(11);
+        if (ctx.TWELVE()) return new ValueNode(12);
+        if (ctx.THIRTEEN()) return new ValueNode(13);
+        if (ctx.FOURTEEN()) return new ValueNode(14);
+        if (ctx.FIFTEEN()) return new ValueNode(15);
+        if (ctx.SIXTEEN()) return new ValueNode(16);
+        if (ctx.SEVENTEEN()) return new ValueNode(17);
+        if (ctx.EIGHTEEN()) return new ValueNode(18);
+        if (ctx.NINETEEN()) return new ValueNode(19);
+        if (ctx.TWO_PLURAL() && ctx.TWENTY()) return new AddNode(new ValueNode(2), new ValueNode(20));
+        if (ctx.THREE_PLURAL() && ctx.THIRTY()) return new AddNode(new ValueNode(3), new ValueNode(30));
         throw new Error('Invalid tens context');
     }
 
-    visitCompound(ctx: CompoundContext): number {
-        if (ctx.tens() && ctx.unit()) {
-            return this.visitTens(ctx.tens()!) + this.visitUnit(ctx.unit()!);
-        } else if (ctx.unit() && ctx.EN() && ctx.tens()) {
-            return this.visitUnit(ctx.unit()!) + this.visitTens(ctx.tens()!);
-        } else if (ctx.TWO_PLURAL() && ctx.tens()) {
-            return 2 + this.visitTens(ctx.tens()!);
-        } else if (ctx.THREE_PLURAL() && ctx.tens()) {
-            return 3 + this.visitTens(ctx.tens()!);
-        }
-        throw new Error('Invalid compound context');
-    }
-
-    visitLarge_number(ctx: Large_numberContext): number {
-        let value = 0;
-
-        if (ctx.unit()) {
-            value += this.visitUnit(ctx.unit()!);
-        }
-
+    visitHundreds(ctx: HundredsContext): ExpressionNode {
+        let value = ctx.HUNDRED() ? new ValueNode(100) : this.visitOnes(ctx.ones()!);
         if (ctx.HUNDRED()) {
-            value = (value === 0 ? 1 : value) * 100;
-            if (ctx.number()) {
-                value += this.visitNumber(ctx.number()!);
-            }
-        } else if (ctx.THOUSAND()) {
-            value = (value === 0 ? 1 : value) * 1000;
-            if (ctx.number()) {
-                value += this.visitNumber(ctx.number()!);
-            }
-        } else if (ctx.MILLION()) {
-            value = (value === 0 ? 1 : value) * 1000000;
-            if (ctx.number()) {
-                value += this.visitNumber(ctx.number()!);
-            }
-        } else if (ctx.BILLION()) {
-            value = (value === 0 ? 1 : value) * 1000000000;
-            if (ctx.number()) {
-                value += this.visitNumber(ctx.number()!);
+            value = new MultiplyNode(value, new ValueNode(100));
+            if (ctx.tens()) {
+                value = new AddNode(value, this.visitTens(ctx.tens()!));
             }
         }
-
         return value;
     }
 
-    visitChildren(node: RuleNode): number {
-        let result = 0;
+    visitThousands(ctx: ThousandsContext): ExpressionNode {
+        let value = ctx.THOUSAND() ? new ValueNode(1000) : this.visitOnes(ctx.ones(0));
+        if (ctx.THOUSAND()) {
+            value = new MultiplyNode(value, new ValueNode(1000));
+            if (ctx.hundreds()) {
+                value = new AddNode(value, this.visitHundreds(ctx.hundreds()!));
+            } else if (ctx.tens()) {
+                value = new AddNode(value, this.visitTens(ctx.tens()!));
+            } else if (ctx.ones()) {
+                value = new AddNode(value, this.visitOnes(ctx.ones(0)));
+            }
+        }
+        return value;
+    }
+
+    visitMillions(ctx: MillionsContext): ExpressionNode {
+        let value = this.visitOnes(ctx.ones()!);
+        if (ctx.MILLION()) {
+            value = new MultiplyNode(value, new ValueNode(1000000));
+            if (ctx.thousands()) {
+                value = new AddNode(value, this.visitThousands(ctx.thousands()!));
+            }
+        }
+        return value;
+    }
+
+    visitBillions(ctx: BillionsContext): ExpressionNode {
+        let value = this.visitOnes(ctx.ones()!);
+        if (ctx.BILLION()) {
+            value = new MultiplyNode(value, new ValueNode(1000000000));
+            if (ctx.millions()) {
+                value = new AddNode(value, this.visitMillions(ctx.millions()!));
+            }
+        }
+        return value;
+    }
+
+    visitChildren(node: RuleNode): ExpressionNode {
+        let result = new ValueNode(0) as ExpressionNode;
         for (let i = 0; i < node.childCount; i++) {
             const child = node.getChild(i);
-            result += this.visit(child);
+            result = new AddNode(result, this.visit(child));
         }
         return result;
     }
 
-    visitTerminal(node: TerminalNode): number {
-        return 0;
+    visitTerminal(node: TerminalNode): ExpressionNode {
+        return new ValueNode(0);
     }
 
-    visitErrorNode(node: ErrorNode): number {
+    visitErrorNode(node: ErrorNode): ExpressionNode {
         throw new Error(`Error at node: ${node.text}`);
     }
 }

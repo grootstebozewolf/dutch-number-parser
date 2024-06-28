@@ -18,15 +18,16 @@ export class Tel {
     // }
 
     static parse(input: string): number {
-        try {
-            let inputStream = CharStreams.fromString(input);
-            let lexer = new DutchNumbersLexer(inputStream);
-            let tokenStream = new CommonTokenStream(lexer);
-            let parser = new DutchNumbersParser(tokenStream);
+        let inputStream = CharStreams.fromString(input);
+        let lexer = new DutchNumbersLexer(inputStream);
+        let tokenStream = new CommonTokenStream(lexer);
+        let parser = new DutchNumbersParser(tokenStream);
 
-            let tree = parser.number();
-            let visitor = new TelVisitor();
-            return visitor.visit(tree);
+        let tree = parser.number();
+        let visitor = new TelVisitor();
+        try {
+            const expressionTree = visitor.visit(tree);
+            return expressionTree.evaluate();
         } catch (error) {
             throw new Error(`Error parsing input: ${error.message}`);
         }

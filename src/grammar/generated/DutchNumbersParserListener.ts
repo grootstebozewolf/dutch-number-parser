@@ -4,12 +4,13 @@
 import { ParseTreeListener } from "antlr4ts/tree/ParseTreeListener";
 
 import { NumberContext } from "./DutchNumbersParser";
-import { SimpleContext } from "./DutchNumbersParser";
-import { UnitContext } from "./DutchNumbersParser";
-import { TeenContext } from "./DutchNumbersParser";
+import { Whole_numberContext } from "./DutchNumbersParser";
+import { OnesContext } from "./DutchNumbersParser";
 import { TensContext } from "./DutchNumbersParser";
-import { CompoundContext } from "./DutchNumbersParser";
-import { Large_numberContext } from "./DutchNumbersParser";
+import { HundredsContext } from "./DutchNumbersParser";
+import { ThousandsContext } from "./DutchNumbersParser";
+import { MillionsContext } from "./DutchNumbersParser";
+import { BillionsContext } from "./DutchNumbersParser";
 
 
 /**
@@ -29,37 +30,26 @@ export interface DutchNumbersParserListener extends ParseTreeListener {
 	exitNumber?: (ctx: NumberContext) => void;
 
 	/**
-	 * Enter a parse tree produced by `DutchNumbersParser.simple`.
+	 * Enter a parse tree produced by `DutchNumbersParser.whole_number`.
 	 * @param ctx the parse tree
 	 */
-	enterSimple?: (ctx: SimpleContext) => void;
+	enterWhole_number?: (ctx: Whole_numberContext) => void;
 	/**
-	 * Exit a parse tree produced by `DutchNumbersParser.simple`.
+	 * Exit a parse tree produced by `DutchNumbersParser.whole_number`.
 	 * @param ctx the parse tree
 	 */
-	exitSimple?: (ctx: SimpleContext) => void;
+	exitWhole_number?: (ctx: Whole_numberContext) => void;
 
 	/**
-	 * Enter a parse tree produced by `DutchNumbersParser.unit`.
+	 * Enter a parse tree produced by `DutchNumbersParser.ones`.
 	 * @param ctx the parse tree
 	 */
-	enterUnit?: (ctx: UnitContext) => void;
+	enterOnes?: (ctx: OnesContext) => void;
 	/**
-	 * Exit a parse tree produced by `DutchNumbersParser.unit`.
+	 * Exit a parse tree produced by `DutchNumbersParser.ones`.
 	 * @param ctx the parse tree
 	 */
-	exitUnit?: (ctx: UnitContext) => void;
-
-	/**
-	 * Enter a parse tree produced by `DutchNumbersParser.teen`.
-	 * @param ctx the parse tree
-	 */
-	enterTeen?: (ctx: TeenContext) => void;
-	/**
-	 * Exit a parse tree produced by `DutchNumbersParser.teen`.
-	 * @param ctx the parse tree
-	 */
-	exitTeen?: (ctx: TeenContext) => void;
+	exitOnes?: (ctx: OnesContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `DutchNumbersParser.tens`.
@@ -73,25 +63,47 @@ export interface DutchNumbersParserListener extends ParseTreeListener {
 	exitTens?: (ctx: TensContext) => void;
 
 	/**
-	 * Enter a parse tree produced by `DutchNumbersParser.compound`.
+	 * Enter a parse tree produced by `DutchNumbersParser.hundreds`.
 	 * @param ctx the parse tree
 	 */
-	enterCompound?: (ctx: CompoundContext) => void;
+	enterHundreds?: (ctx: HundredsContext) => void;
 	/**
-	 * Exit a parse tree produced by `DutchNumbersParser.compound`.
+	 * Exit a parse tree produced by `DutchNumbersParser.hundreds`.
 	 * @param ctx the parse tree
 	 */
-	exitCompound?: (ctx: CompoundContext) => void;
+	exitHundreds?: (ctx: HundredsContext) => void;
 
 	/**
-	 * Enter a parse tree produced by `DutchNumbersParser.large_number`.
+	 * Enter a parse tree produced by `DutchNumbersParser.thousands`.
 	 * @param ctx the parse tree
 	 */
-	enterLarge_number?: (ctx: Large_numberContext) => void;
+	enterThousands?: (ctx: ThousandsContext) => void;
 	/**
-	 * Exit a parse tree produced by `DutchNumbersParser.large_number`.
+	 * Exit a parse tree produced by `DutchNumbersParser.thousands`.
 	 * @param ctx the parse tree
 	 */
-	exitLarge_number?: (ctx: Large_numberContext) => void;
+	exitThousands?: (ctx: ThousandsContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `DutchNumbersParser.millions`.
+	 * @param ctx the parse tree
+	 */
+	enterMillions?: (ctx: MillionsContext) => void;
+	/**
+	 * Exit a parse tree produced by `DutchNumbersParser.millions`.
+	 * @param ctx the parse tree
+	 */
+	exitMillions?: (ctx: MillionsContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `DutchNumbersParser.billions`.
+	 * @param ctx the parse tree
+	 */
+	enterBillions?: (ctx: BillionsContext) => void;
+	/**
+	 * Exit a parse tree produced by `DutchNumbersParser.billions`.
+	 * @param ctx the parse tree
+	 */
+	exitBillions?: (ctx: BillionsContext) => void;
 }
 

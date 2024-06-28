@@ -4,12 +4,13 @@
 import { ParseTreeVisitor } from "antlr4ts/tree/ParseTreeVisitor";
 
 import { NumberContext } from "./DutchNumbersParser";
-import { SimpleContext } from "./DutchNumbersParser";
-import { UnitContext } from "./DutchNumbersParser";
-import { TeenContext } from "./DutchNumbersParser";
+import { Whole_numberContext } from "./DutchNumbersParser";
+import { OnesContext } from "./DutchNumbersParser";
 import { TensContext } from "./DutchNumbersParser";
-import { CompoundContext } from "./DutchNumbersParser";
-import { Large_numberContext } from "./DutchNumbersParser";
+import { HundredsContext } from "./DutchNumbersParser";
+import { ThousandsContext } from "./DutchNumbersParser";
+import { MillionsContext } from "./DutchNumbersParser";
+import { BillionsContext } from "./DutchNumbersParser";
 
 
 /**
@@ -28,25 +29,18 @@ export interface DutchNumbersParserVisitor<Result> extends ParseTreeVisitor<Resu
 	visitNumber?: (ctx: NumberContext) => Result;
 
 	/**
-	 * Visit a parse tree produced by `DutchNumbersParser.simple`.
+	 * Visit a parse tree produced by `DutchNumbersParser.whole_number`.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	visitSimple?: (ctx: SimpleContext) => Result;
+	visitWhole_number?: (ctx: Whole_numberContext) => Result;
 
 	/**
-	 * Visit a parse tree produced by `DutchNumbersParser.unit`.
+	 * Visit a parse tree produced by `DutchNumbersParser.ones`.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	visitUnit?: (ctx: UnitContext) => Result;
-
-	/**
-	 * Visit a parse tree produced by `DutchNumbersParser.teen`.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	visitTeen?: (ctx: TeenContext) => Result;
+	visitOnes?: (ctx: OnesContext) => Result;
 
 	/**
 	 * Visit a parse tree produced by `DutchNumbersParser.tens`.
@@ -56,17 +50,31 @@ export interface DutchNumbersParserVisitor<Result> extends ParseTreeVisitor<Resu
 	visitTens?: (ctx: TensContext) => Result;
 
 	/**
-	 * Visit a parse tree produced by `DutchNumbersParser.compound`.
+	 * Visit a parse tree produced by `DutchNumbersParser.hundreds`.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	visitCompound?: (ctx: CompoundContext) => Result;
+	visitHundreds?: (ctx: HundredsContext) => Result;
 
 	/**
-	 * Visit a parse tree produced by `DutchNumbersParser.large_number`.
+	 * Visit a parse tree produced by `DutchNumbersParser.thousands`.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	visitLarge_number?: (ctx: Large_numberContext) => Result;
+	visitThousands?: (ctx: ThousandsContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `DutchNumbersParser.millions`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitMillions?: (ctx: MillionsContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `DutchNumbersParser.billions`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitBillions?: (ctx: BillionsContext) => Result;
 }
 
