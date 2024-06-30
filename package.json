@@ -2,13 +2,19 @@
   "name": "@grootstebozewolf/dutch-number-parser",
   "version": "1.0.0",
   "description": "A TypeScript package to parse and convert Dutch counting numbers into numeric equivalents, supporting numbers up to one million.",
-  "main": "dist/index.js",
+  "main": "dist/Tel.js",
+  "types": "dist/Tel.d.ts",
   "scripts": {
     "test": "jest",
-    "build": "echo 'No build step required with tsx'",
+    "build": "tsc",
     "prepublishOnly": "npm run build",
     "generate:antlr": "antlr4ts -o src/grammar/generated -listener -visitor src/grammar/DutchNumbersLexer.g4 && antlr4ts -o src/grammar/generated -lib src/grammar/generated -listener -visitor src/grammar/DutchNumbers.g4"
   },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
   "keywords": [
     "antlr",
     "typescript",
