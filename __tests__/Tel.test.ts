@@ -20,9 +20,9 @@ describe('Tel.parse', () => {
     });
 
     it('should parse compound Dutch numbers correctly', () => {
-        expect(Tel.parse('twintig een')).toBe(21);
-        expect(Tel.parse('dertig twee')).toBe(32);
-        expect(Tel.parse('vijftig drie')).toBe(53);
+        expect(Tel.parse('eenentwintig')).toBe(21);
+        expect(Tel.parse('tweeëndertig')).toBe(32);
+        expect(Tel.parse('drieenvijftig')).toBe(53);
     });
 
     it('should parse hundreds correctly', () => {

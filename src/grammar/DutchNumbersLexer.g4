@@ -1,4 +1,10 @@
-lexer grammar DutchNumbersLexer;
+/**
+ * Dutch Number Parser
+ * 
+ * Licensed under the Creative Commons Attribution-ShareAlike 4.0 International License.
+ * You may obtain a copy of the License at https://creativecommons.org/licenses/by-sa/4.0/
+ */
+ lexer grammar DutchNumbersLexer;
 
 ONE: 'een';
 TWO: 'twee';
@@ -31,8 +37,10 @@ HUNDRED: 'honderd';
 THOUSAND: 'duizend';
 MILLION: 'miljoen';
 BILLION: 'miljard';
-TWO_PLURAL: 'tweeën';
-THREE_PLURAL: 'drieën';
-EN: 'en';
+TRILION: 'biljoen';
+QUADRILION: 'biljard';
+QUINTILION: 'triljoen';
+SEXTILION: 'triljard';
+EN: 'en'|'ën';
 
 WS          : [ \t\r\n]+ -> skip ; // Skip whitespace

@@ -6,25 +6,34 @@
  */
 import { CharStreams, CommonTokenStream } from 'antlr4ts';
 import { DutchNumbersLexer } from './grammar/generated/DutchNumbersLexer';
-import { DutchNumbersParser } from './grammar/generated/DutchNumbersParser';
-import { NumberVisitor } from './NumberVisitor';
+import { DutchNumbers } from './grammar/generated/DutchNumbers';
+import { TelVisitor } from './TelVisitor';
+import { Token } from 'antlr4ts/Token';
 import { ILogger } from './ILogger'; // Import the Logger class
 
 export class Tel {
-    // private static logger: ILogger;
-
-    // static setLogger(logger: ILogger): void {
-    //     this.logger = logger;
-    // }
-
     static parse(input: string): number {
         let inputStream = CharStreams.fromString(input);
         let lexer = new DutchNumbersLexer(inputStream);
         let tokenStream = new CommonTokenStream(lexer);
-        let parser = new DutchNumbersParser(tokenStream);
+        let parser = new DutchNumbers(tokenStream);
 
-        let tree = parser.number();
-        let visitor = new NumberVisitor();
+        // Check for lexer errors
+        lexer.removeErrorListeners();
+        lexer.addErrorListener({
+            syntaxError(recognizer, offendingSymbol, line, charPositionInLine, msg, e) {
+                throw new Error(`Error parsing input: Invalid number context`);
+            }
+        });
+
+        let tree;
+        try {
+            tree = parser.number();
+        } catch (error) {
+            throw new Error(`Error parsing input: ${error.message}`);
+        }
+
+        let visitor = new TelVisitor();
         try {
             return visitor.visit(tree);
         } catch (error) {
@@ -32,4 +41,3 @@ export class Tel {
         }
     }
 }
-
