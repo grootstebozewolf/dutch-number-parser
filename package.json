@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/grootstebozewolf/dutch-number-parser",
   "publishConfig": {
-    "@grootstebozewolf:registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com"
   },
   "devDependencies": {
     "@babel/core": "^7.24.7",

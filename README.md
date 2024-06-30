@@ -1,7 +1,3 @@
-Here’s a comprehensive description for the `dutch-number-parser` package. This description covers the purpose, functionality, usage examples, and how it can be integrated into a larger project. It’s tailored to be included in the `README.md` of the repository or the package's documentation.
-
----
-
 # Dutch Number Parser
 
 **Dutch Number Parser** is a TypeScript library designed to parse and convert Dutch counting numbers into their numeric equivalents. This package is ideal for applications that need to interpret Dutch-written numbers in a numerical format, supporting numbers up to one million.
@@ -11,66 +7,58 @@ Here’s a comprehensive description for the `dutch-number-parser` package. This
 - **Comprehensive Parsing**: Handles Dutch numbers up to one million, including complex forms like "twee honderd drie en veertig duizend vijf honderd zes en zeventig".
 - **Integration with ANTLR**: Uses ANTLR (ANother Tool for Language Recognition) for robust parsing of Dutch number phrases.
 - **TypeScript Support**: Fully written in TypeScript, providing type safety and autocompletion in TypeScript projects.
-- **Easy Integration**: Can be used as a standalone package or integrated into larger projects using Git subtree or npm.
+- **Logging Support**: Includes an ILogger interface for flexible logging integration.
 
 ## Installation
 
 You can install the package via npm:
 
 ```bash
-npm install dutch-number-parser
-```
-
-Or integrate it directly into your project as a Git subtree:
-
-```bash
-git subtree add --prefix=dutch-number-parser https://github.com/yourusername/dutch-number-parser.git main --squash
+npm install @grootstebozewolf/dutch-number-parser
 ```
 
 ## Usage
 
 ### Basic Usage
 
-First, import the parser function from the package:
+Import the Tel class from the package:
 
 ```typescript
-import { parseDutchNumber } from 'dutch-number-parser';
+import { Tel } from '@grootstebozewolf/dutch-number-parser';
 
 const dutchNumberString = "vier honderd zes en twintig";
-const numericValue = parseDutchNumber(dutchNumberString);
+const numericValue = Tel.parse(dutchNumberString);
 console.log(numericValue); // Outputs: 426
 ```
 
-### Advanced Usage in Cucumber.js Step Definitions
+### Using with Logger
 
-The package can be seamlessly integrated with Cucumber.js for testing scenarios that involve Dutch number phrases.
+You can set a custom logger that implements the ILogger interface:
 
 ```typescript
-import { Given, When, Then } from '@cucumber/cucumber';
-import { parseDutchNumber } from 'dutch-number-parser';
+import { Tel, ILogger } from '@grootstebozewolf/dutch-number-parser';
 
-Given('I have {string} apples', function (dutchNumberString: string) {
-  const number = parseDutchNumber(dutchNumberString);
-  console.log(`Number of apples: ${number}`);
-  // Implement your step logic here
-});
+class CustomLogger implements ILogger {
+    logError(message: string): void {
+        console.error(`Custom Error: ${message}`);
+    }
+    logInfo(message: string): void {
+        console.log(`Custom Info: ${message}`);
+    }
+    logWarning(message: string): void {
+        console.warn(`Custom Warning: ${message}`);
+    }
+}
 
-When('I eat {string} apples', function (dutchNumberString: string) {
-  const number = parseDutchNumber(dutchNumberString);
-  console.log(`Eating ${number} apples`);
-  // Implement your step logic here
-});
+Tel.setLogger(new CustomLogger());
 
-Then('I should have {string} apples left', function (dutchNumberString: string) {
-  const number = parseDutchNumber(dutchNumberString);
-  console.log(`Apples left: ${number}`);
-  // Implement your assertion here
-});
+const result = Tel.parse("drie honderd");
+// This will use your custom logger for any logs
 ```
 
 ### Supported Dutch Numbers
 
-The `dutch-number-parser` can handle a wide range of Dutch number phrases, including but not limited to:
+The Dutch Number Parser can handle a wide range of Dutch number phrases, including but not limited to:
 
 - Simple numbers: "een", "twee", "drie"
 - Tens: "twintig", "dertig", "veertig"
@@ -78,33 +66,16 @@ The `dutch-number-parser` can handle a wide range of Dutch number phrases, inclu
 - Thousands: "duizend", "vier duizend drie honderd"
 - Complex forms: "twee honderd drie en veertig duizend vijf honderd zes en zeventig"
 
-## Integration
-
-### Git Subtree
-
-To keep `dutch-number-parser` as part of your project’s repository, you can integrate it using Git subtree:
-
-```bash
-git subtree add --prefix=dutch-number-parser https://github.com/yourusername/dutch-number-parser.git main --squash
-```
-
-### NPM Package
-
-Add it as a dependency in your `package.json`:
-
-```bash
-npm install dutch-number-parser
-```
-
 ## Development and Contribution
 
-Contributions are welcome! If you find a bug or have a feature request, please open an issue on the [GitHub repository](https://github.com/yourusername/dutch-number-parser).
+Contributions are welcome! If you find a bug or have a feature request, please open an issue on the [GitHub repository](https://github.com/grootstebozewolf/dutch-number-parser).
 
 To develop locally:
 
 1. Clone the repository.
 2. Install dependencies using `npm install`.
 3. Build the project with `npm run build`.
+4. Run tests with `npm test`.
 
 ## License
 
