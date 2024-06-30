@@ -27,7 +27,7 @@
   "license": "CC-BY-SA-4.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/grootstebozewolf/dutch-number-parser.git"
+    "url": "git+https://github.com/grootstebozewolf/dutch-number-parser.git"
   },
   "bugs": {
     "url": "https://github.com/grootstebozewolf/dutch-number-parser/issues"
