@@ -1,6 +1,6 @@
 {
   "name": "@grootstebozewolf/dutch-number-parser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A TypeScript package to parse and convert Dutch counting numbers into numeric equivalents, supporting numbers up to one million.",
   "main": "dist/Tel.js",
   "types": "dist/Tel.d.ts",
