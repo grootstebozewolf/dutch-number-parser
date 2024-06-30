@@ -1,6 +1,23 @@
 import { Tel } from '../src/Tel';
+import { ILogger } from '../src/ILogger';
 
 describe('Tel.parse', () => {
+    let mockLogger: jest.Mocked<ILogger>;
+
+    beforeEach(() => {
+        mockLogger = {
+            logError: jest.fn(),
+            logInfo: jest.fn(),
+            logWarning: jest.fn()
+        };
+        Tel.setLogger(mockLogger);
+    });
+
+    it('should parse valid Dutch numbers', () => {
+        expect(Tel.parse('drie')).toBe(3);
+        expect(mockLogger.logInfo).toHaveBeenCalledWith('Successfully parsed input: drie to 3');
+    });
+
     it('should parse simple Dutch numbers correctly', () => {
         expect(Tel.parse('een')).toBe(1);
         expect(Tel.parse('twee')).toBe(2);
@@ -58,5 +75,6 @@ describe('Tel.parse', () => {
 
     it('should throw an error for invalid input', () => {
         expect(() => Tel.parse('invalid')).toThrowError('Error parsing input: Invalid number context');
+        expect(mockLogger.logError).toHaveBeenCalledWith('Error parsing input: Invalid number context');
     });
 });
